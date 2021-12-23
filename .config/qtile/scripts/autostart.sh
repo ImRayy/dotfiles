@@ -33,5 +33,8 @@ run copyq &
 
 #bash ~/.config/polybar/launch.sh &
 
+# run /usr/lib/geoclue-2.0/demos/agent &
+
+
 
 

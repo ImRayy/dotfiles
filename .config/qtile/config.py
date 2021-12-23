@@ -138,7 +138,28 @@ keys = [
 
     ]
 
-groups = [Group(i) for i in "123456789"]
+groups = []
+
+# FOR QWERTY KEYBOARDS
+group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
+
+# FOR AZERTY KEYBOARDS
+#group_names = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla", "agrave",]
+
+#group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
+group_labels = ["", "", "", "", "", "", "", "", "", "",]
+#group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
+
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
+#group_layouts = ["monadtall", "matrix", "monadtall", "bsp", "monadtall", "matrix", "monadtall", "bsp", "monadtall", "monadtall",]
+
+for i in range(len(group_names)):
+    groups.append(
+        Group(
+            name=group_names[i],
+            layout=group_layouts[i].lower(),
+            label=group_labels[i],
+        ))
 
 for i in groups:
     keys.extend([
@@ -197,18 +218,8 @@ def init_colors():
         ["#000000", "#000000"],  # color 12
         ["#f2ce00", "#f2ce00"],  # magenta 13
         ["#7a5ccc", "#7a5ccc"],  # cyan 14
-        # ["#ecf0c1", "#ecf0c1"],  # ACTIVE WORKSPACES 0
-        # ["#e33400", "#e33400"],  # red 3
-        # ["#5ccc96", "#5ccc96"],  # green 4
-        # ["#b3a1e6", "#b3a1e6"],  # yellow 5
-        # ["#00a3cc", "#00a3cc"],  # blue 6
-        # ["#7a5ccc", "#7a5ccc"],  # cyan 8
-        # ["#686f9a", "#686f9a"],  # white 9
-        # ["#f0f1ce", "#f0f1ce"],  # grey 10
-        # ["#d08770", "#d08770"],  # orange 11
-        # ["#1b1c36", "#1b1c36"],  # super cyan12
-        # ["#0f111b", "#0f111b"],  # super blue 13
-        # ["#0e131a", "#0e131a"],  # super dark background 14
+        ["#78cd78","#78cd78"],   # green 15
+        ["#ffc85a","#ffc85a"],   # yellow 16
     ]
 
 
@@ -234,8 +245,7 @@ def init_widgets_list():
     widgets_list = [
         widget.Sep(linewidth=0, padding=9, foreground=colors[2], background=colors[2]),
         widget.TextBox(
-            # text="ऋ ",
-            text="",
+            text="",
             # font="Noto Color Emoji",
             font="FiraMono Nerd Font",
             fontsize=23,
@@ -243,7 +253,7 @@ def init_widgets_list():
             background=colors[2],
             margin_x=5,
             padding_y=4,
-            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("rofi -show run")},
+            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("jgmenu_run")},
         ),
         widget.Sep(linewidth=0, padding=11, foreground=colors[2], background="#ffffff"),
         widget.Sep(linewidth=0, padding=5, foreground=colors[4], background="#05AFF2"),
@@ -252,18 +262,18 @@ def init_widgets_list():
         widget.Sep(linewidth=0, padding=5, foreground=colors[2], background="#D93D4A"),
         widget.GroupBox(
             font="FiraMono Nerd Font",
-            fontsize=13,
-            margin_y=3,
-            margin_x=6,
+            fontsize=16,
+            margin_y=2,
+            margin_x=10,
             padding_y=4,
             padding_x=3,
             borderwidth=0,
-            active=colors[2],
+            active=colors[16],
             inactive=colors[9],
             rounded=True,
             highlight_color=colors[0],
             highlight_method="text",
-            this_current_screen_border=colors[14],
+            this_current_screen_border=colors[15],
             block_highlight_text_color=colors[2],
             foreground=colors[2],
             background=colors[0],
@@ -279,9 +289,9 @@ def init_widgets_list():
             max_title_width=250,
             # rounded=True,
             padding_x=10,
-            padding_y=2.5,
+            padding_y=2,
             margin_y=0,
-            fontsize=12,
+            fontsize=14,
             border=colors[12],
             foreground=colors[2],
             margin=0,
@@ -321,8 +331,6 @@ def init_widgets_list():
         ),
         widget.Sep(linewidth=0, padding=5, foreground=colors[2], background=colors[0]),
         widget.Systray(background=colors[0], padding=9),
-        widget.Sep(linewidth=0, padding=5, foreground=colors[2], background=colors[0]),
-        widget.Systray(background=colors[0], padding=9),
         widget.Net(
             font="Noto Sans",
             fontsize=12,
@@ -335,16 +343,6 @@ def init_widgets_list():
         ),
         # widget.Backlight(update_interval=1),
         widget.Sep(linewidth=0, padding=10, foreground=colors[2], background=colors[0]),
-        widget.TextBox(
-            text="",
-            font="Noto Color Emoji",
-            fontsize=18,
-            foreground=colors[13],
-            background=colors[0],
-            margin_x=5,
-            padding_y=4,
-
-        ),
         widget.CPU(
             font="FiraMono Nerd Font",
             format=" CPU {load_percent}%",
@@ -444,20 +442,10 @@ def init_widgets_list():
         #     },
         # ),
         widget.Sep(linewidth=0, padding=8, foreground=colors[2], background=colors[8]),
-        #widget.Pomodoro(
-            #prefix_inactive="Pomodoro",
-            #font="FiraMono Nerd Font",
-            #prefix_paused="Paused",
-            #fontsize=13,
-            #color_inactive=colors[2],
-            #background=colors[8],
-            #foreground=colors[2],
-            #opacity = 0.2
-        #),
-         widget.Net(
-            prefix = "Network",
-            prefix_inactive="Network",
+        widget.Pomodoro(
+            prefix_inactive="Pomodoro",
             font="FiraMono Nerd Font",
+            prefix_paused="Paused",
             fontsize=13,
             color_inactive=colors[2],
             background=colors[8],
@@ -465,6 +453,7 @@ def init_widgets_list():
             opacity = 0.2
         ),
         widget.Sep(linewidth=0, padding=8, foreground=colors[2], background=colors[8]),
+        widget.Clipboard(padding=20),
         # widget.Sep(linewidth=0, padding=8, foreground=colors[2], background=colors[0]),
         widget.CheckUpdates(
             distro="Arch_checkupdates",
