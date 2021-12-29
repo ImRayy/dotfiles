@@ -1,0 +1,339 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+background = #cf2d2d2d
+background-alt = #363636
+foreground = #d3d0c8
+primary = #6699cc
+secondary = #66cccc
+alert = #652566
+disabled = #747369
+
+red = #e65256
+green = #78cd78
+yellow = #ffc85a
+blue = #4a8ccd
+magenta = #d080d0
+cyan = #43cbcb
+white = #d3d0c8
+
+bred = #f2777a
+bgreen = #99cc99
+byellow = #ffcc66
+bblue = #6699cc
+bmagenta = #cc99cc
+bcyan = #66cccc
+bwhite = #f2f0ec
+trans = #00000000
+[bar/mybar]
+width = 100%
+height = 3.5%
+radius = 0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 1.5
+padding-right = 1.5
+
+offset-x = 0
+offset-y = 0
+
+module-margin = 1
+
+separator = |
+separator-foreground = ${colors.disabled}
+
+
+font-0=FiraCode Nerd Font:size=12:weight=Bold;0
+font-1=Material Design Icons Desktop:size=12;0
+
+modules-left = powermenu xworkspaces xwindow
+modules-right =  pulseaudio battery wlan eth filesystem memory cpu  
+modules-center =  date
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+fixed-center= true
+#tray-position = right
+
+; wm-restack = generic
+; wm-restack = bspwm
+; wm-restack = i3
+#tray-offset-x = 50
+; override-redirect = true
+
+[module/networkwrapper]
+type = custom/script
+exec = ~/.config/polybar/networkwrapper/networkwrapper.rb
+
+tail = true
+
+interval = 1
+
+[module/xworkspaces]
+type = internal/xworkspaces
+
+label-active = %name%
+label-active-foreground = ${colors.green}
+#label-active-background = ${colors.blue}
+#label-active-underline= ${colors.blue}
+label-active-padding = 1
+
+label-occupied = %name%
+label-occupied-padding = 1
+label-occupied-foreground = ${colors.bblue}
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-foreground = ${colors.blue}
+label-empty-padding = 1
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:60:...%
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+;label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
+
+label-mounted-foreground = ${colors.magenta}
+label-mounted =  %percentage_used%%
+
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.disabled}
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open =  
+label-open-foreground = ${colors.red}
+label-close =  cancel
+label-close-foreground = ${colors.red}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = 勒 reboot
+menu-0-0-exec = menu-open-1
+menu-0-0-foreground = ${colors.yellow}
+menu-0-1 = ﮣ power off
+menu-0-1-foreground = ${colors.green}
+menu-0-1-exec = menu-open-2
+menu-0-2-foreground = ${colors.blue}
+menu-0-2 = ⏾ log out
+menu-0-2-exec = menu-open-3
+
+menu-1-0 = back
+menu-1-0-exec = menu-open-0
+menu-1-1-foreground = ${colors.yellow}
+menu-1-1 =勒 confirm
+menu-1-1-exec = systemctl reboot
+
+menu-2-0 = back
+menu-2-0-exec = menu-open-0
+menu-2-1-foreground = ${colors.green}
+menu-2-1 = ﮣ confirm
+menu-2-1-exec = systemctl poweroff
+
+menu-3-0 = back
+menu--0-exec = menu-open-0
+menu-3-1-foreground = ${colors.blue}
+menu-3-1 = ⏾ confirm
+menu-3-1-exec = i3-msg exit
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+label-charging = %percentage%%
+format-charging-foreground = ${colors.green}
+format-charging-spacing = 1
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage%%
+format-discharging-foreground = ${colors.yellow}
+format-discharging-spacing = 1
+
+format-full =    <label-full>
+
+;format-full-prefix = 
+format-full-spacing = 2
+format-full-foreground = ${colors.green}
+
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.red}
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = ${colors.yellow}
+ramp-capacity-2 = 
+ramp-capacity-2-foreground = ${colors.green}
+ramp-capacity-3 = 
+ramp-capacity-3-foreground = ${colors.green}
+
+;animation-charging-0 =  
+animation-charging-0 =    
+animation-charging-1 =  
+animation-charging-2=  
+animation-charging-3 =  
+animation-charging-framerate = 500 
+
+
+[module/eth]
+type = internal/network
+interface = enp1s0f0u10
+interval = 1
+
+accumulate-stats = true
+unknown-as-up = true
+label-disconnected = 
+label-disconnected-foreground = ${colors.red}
+
+format-connected = <label-connected>
+label-connected =  %downspeed%
+label-connected-foreground = ${colors.green}
+
+[module/wlan]
+type=internal/network
+interface = wlp6s0f3u4
+interval = 1
+
+format-disconnected = 
+format-disconnected-foreground = ${colors.red}
+
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-foreground = ${colors.green}
+
+label-connected = %essid% %upspeed%
+
+
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+
+ramp-signal-font = 1
+
+
+[module/mpd]
+type = internal/mpd
+
+menu-0-1 = 
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume-prefix = "墳 "
+format-volume-prefix-foreground = ${colors.bblue}
+format-volume = <label-volume>
+
+label-volume = %percentage%%
+label-volume-foreground = ${colors.bblue}
+
+format-muted-prefix-foreground = ${colors.red}
+format-muted-prefix = " "
+label-muted-foreground = ${colors.red}
+label-muted =%percentage%%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout = %layout%
+label-layout-foreground = ${colors.primary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-foreground = ${colors.background}
+label-indicator-background = ${colors.secondary}
+
+[module/memory]
+type = internal/memory
+
+label-foreground = ${colors.bblue}
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.bblue}
+label = %percentage_used:2%%
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.green}
+label-foreground = ${colors.green}
+label = %percentage%%
+
+[network-base]
+type = internal/network
+interval = 5
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
+
+[module/date]
+type = internal/date
+interval = 1
+
+date =  %H:%M:%S
+date-alt =  %a, %d %B %Y
+
+label =  %date%
+label-foreground = ${colors.byellow}
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+
+
+[global/wm]
+margin-bottom = 0
+margin-top = 0
+; vim:ft=dosini
+
