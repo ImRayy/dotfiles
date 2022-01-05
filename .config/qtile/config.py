@@ -141,13 +141,13 @@ keys = [
 groups = []
 
 # FOR QWERTY KEYBOARDS
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
+group_names = ["1", "2", "3", "4", "5", "6"]
 
 # FOR AZERTY KEYBOARDS
 #group_names = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla", "agrave",]
 
 #group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
-group_labels = ["", "", "", "", "", "", "", "", "", "",]
+group_labels = ["", ">_", "", "", "", "",]
 #group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
 
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
@@ -220,6 +220,8 @@ def init_colors():
         ["#7a5ccc", "#7a5ccc"],  # cyan 14
         ["#78cd78","#78cd78"],   # green 15
         ["#ffc85a","#ffc85a"],   # yellow 16
+        ["#00000000","#00000000"], # Transparent 17
+        ["#2F343F","#2F343F"],     # Color 18
     ]
 
 
@@ -234,7 +236,7 @@ def base(fg="text", bg="dark"):
 
 
 def init_widgets_defaults():
-    return dict(font="Noto Sans", fontsize=9, padding=2, background=colors[1])
+    return dict(font="Noto Sans", fontsize=12, padding=2, background=colors[18])
 
 
 widget_defaults = init_widgets_defaults()
@@ -253,7 +255,7 @@ def init_widgets_list():
             background=colors[2],
             margin_x=5,
             padding_y=4,
-            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("jgmenu_run")},
+            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("xfce4-appfinder")},
         ),
         widget.Sep(linewidth=0, padding=11, foreground=colors[2], background="#ffffff"),
         widget.Sep(linewidth=0, padding=5, foreground=colors[4], background="#05AFF2"),
@@ -285,21 +287,21 @@ def init_widgets_list():
         widget.TaskList(
             font="FiraMono Nerd Font",
             highlight_method="block",  # or border
-            icon_size=20,
+            icon_size=0,
             max_title_width=250,
-            # rounded=True,
+            rounded=True,
             padding_x=10,
             padding_y=2,
             margin_y=0,
             fontsize=14,
-            border=colors[12],
+            border=colors[0],
             foreground=colors[2],
             margin=0,
             txt_floating="🗗",
             txt_minimized=">_ ",
             borderwidth=0,
             background=colors[0],
-            # unfocused_border="border",
+            unfocused_border="border",
         ),
         widget.Moc(
             font="CaskaydiaCove Nerd Font",
@@ -530,18 +532,18 @@ def init_screens():
         Screen(
             top=bar.Bar(
                 widgets=init_widgets_screen1(),
-                size=24,
+                size=26,
                 opacity=0.75,
-                background="000000",
+                background=colors[18],
                 margin=[9, 9, 0, 9],
             )
         ),
         Screen(
             top=bar.Bar(
                 widgets=init_widgets_screen2(),
-                size=24,
-                opacity=1.85,
-                background="000000",
+                size=26,
+                opacity=0.8,
+                background=colors[18],
             )
         ),
     ]

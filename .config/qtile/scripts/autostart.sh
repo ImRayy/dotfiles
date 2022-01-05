@@ -13,7 +13,7 @@ run nm-applet &
 
 #run variety &
 
-picom --experimental-backend &
+picom --experimental-backends --config ~/.config/qtile/picom/picom.conf  &
 
 nitrogen --restore &
 
