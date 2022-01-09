@@ -6,9 +6,9 @@
 # SUPER + FUNCTION KEYS
 #################################################################
 
-# Browser
+# Nightlight
 super + F1
-	firefox
+	pkill -USR1 redshift
 
 # Visual-studio-code-bin
 super + F2
@@ -36,11 +36,11 @@ super + F7
 
 #Thunar
 super + F8
-    thunar
+    dolphin
 
 #Reload Qtile
 super + F9
-    qtile cmd-obj -o cmd -f restart
+    qtile cmd-obj -o cmd -f shutdown
 
 #Spotify
 super + F10
@@ -58,9 +58,10 @@ super + F12
 # SUPER + ... KEYS
 #################################################################
 
+
 #VS code
 super + e
-    code
+    code 
 
 #Browser
 super + w
@@ -110,10 +111,14 @@ super + KP_Enter
 #################################################################
 # SUPER + SHIFT KEYS
 #################################################################
+#Lock screen 
+super + shift + l
+    betterlockscreen -l dimblur
+
 
 #File-Manager
 super + shift + Return
-	thunar
+	dolphin
 
 #Keyboard dependent
 #File-Manager
@@ -155,7 +160,7 @@ ctrl + alt + Prior
 
 #File-Manager
 ctrl + alt + b
-     thunar
+     dolphin
 
 #Catfish
 ctrl + alt + c
@@ -227,6 +232,15 @@ ctrl + alt + a
 #################################################################
 # ALT + ... KEYS
 #################################################################
+
+#Lock screen
+alt + l
+    betterlockscreen -l
+
+#Lock screen (dim with blur )
+alt + k
+    betterlockscreen -l blur
+
 
 #Wallpaper trash
 alt + t

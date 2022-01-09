@@ -141,13 +141,13 @@ keys = [
 groups = []
 
 # FOR QWERTY KEYBOARDS
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
+group_names = ["1", "2", "3", "4", "5", "6"]
 
 # FOR AZERTY KEYBOARDS
 #group_names = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla", "agrave",]
 
 #group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
-group_labels = ["", "", "", "", "", "", "", "", "", "",]
+group_labels = ["", ">_", "", "", "", "",]
 #group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
 
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
@@ -203,7 +203,7 @@ layouts = [
 
 def init_colors():
     return [
-        ["#282c34", "#282c34"],  # 0 panel background
+        ["#2F343F", "#2F343F"],  # panel background    
         ["#3d3f4b", "#434758"],  # 1 background for current screen tab
         ["#ffffff", "#ffffff"],  # 2 font color for group names
         ["#ff5555", "#ff5555"],  # 3 border line color for current tab
@@ -220,6 +220,9 @@ def init_colors():
         ["#7a5ccc", "#7a5ccc"],  # cyan 14
         ["#78cd78","#78cd78"],   # green 15
         ["#ffc85a","#ffc85a"],   # yellow 16
+        ["#2F343F","#2F343F"],   # Color 1
+        ["#282c34", "#282c34"],  # 18 panel background
+        ["#f3f4f5", "#f3f4f5"],  # white
     ]
 
 
@@ -234,7 +237,7 @@ def base(fg="text", bg="dark"):
 
 
 def init_widgets_defaults():
-    return dict(font="Noto Sans", fontsize=9, padding=2, background=colors[1])
+    return dict(font="FiraCode Nerd Font Medium", fontsize=12, padding=2, background=colors[18])
 
 
 widget_defaults = init_widgets_defaults()
@@ -253,7 +256,7 @@ def init_widgets_list():
             background=colors[2],
             margin_x=5,
             padding_y=4,
-            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("jgmenu_run")},
+            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("xfce4-appfinder")},
         ),
         widget.Sep(linewidth=0, padding=11, foreground=colors[2], background="#ffffff"),
         widget.Sep(linewidth=0, padding=5, foreground=colors[4], background="#05AFF2"),
@@ -283,23 +286,23 @@ def init_widgets_list():
         ),
         widget.Sep(linewidth=0, padding=5, foreground=colors[2], background=colors[0]),
         widget.TaskList(
-            font="FiraMono Nerd Font",
+            font="FiraMono Nerd Font Medium",
             highlight_method="block",  # or border
-            icon_size=20,
+            icon_size=0,
             max_title_width=250,
-            # rounded=True,
-            padding_x=10,
-            padding_y=2,
-            margin_y=0,
-            fontsize=14,
-            border=colors[12],
-            foreground=colors[2],
-            margin=0,
+            rounded=True,
+        #    padding_x=10,
+        #    padding_y=2,
+        #    margin_y=0,
+        #    fontsize=14,
+            border=colors[0],
+            foreground=colors[19],
+        #    margin=0,
             txt_floating="🗗",
             txt_minimized=">_ ",
             borderwidth=0,
-            background=colors[0],
-            # unfocused_border="border",
+            background=colors[18],
+        #    unfocused_border="border",
         ),
         widget.Moc(
             font="CaskaydiaCove Nerd Font",
@@ -324,27 +327,27 @@ def init_widgets_list():
             scale=0.7,
         ),
         widget.CurrentLayout(
-            font="FiraMono Nerd Font",
+            font="FiraMono Nerd Font Medium",
             fontsize=12,
             foreground=colors[2],
             background=colors[0],
         ),
         widget.Sep(linewidth=0, padding=5, foreground=colors[2], background=colors[0]),
         widget.Systray(background=colors[0], padding=9),
-        widget.Net(
-            font="Noto Sans",
-            fontsize=12,
+        #widget.Net(
+        #    font="Noto Sans",
+        #    fontsize=12,
             # Here enter your network name
-            interface=["wlp6s0"],
-            format="{down} ↓↑ {up}",
-            foreground=colors[5],
-            background=colors[3],
-            padding=0,
-        ),
-        # widget.Backlight(update_interval=1),
-        widget.Sep(linewidth=0, padding=10, foreground=colors[2], background=colors[0]),
+        #    interface=["enp1s0f0u10"],
+        #    format="{down} ↓↑ {up}",
+        #    foreground=colors[5],
+        #    background=colors[3],
+        #    padding=0,
+        #),
+        #widget.Backlight(update_interval=1),
+       # widget.Sep(linewidth=0, padding=10, foreground=colors[2], background=colors[0]),
         widget.CPU(
-            font="FiraMono Nerd Font",
+            font="FiraMono Nerd Font Medium",
             format=" CPU {load_percent}%",
             # format = '{MemUsed}M/{MemTotal}M',
             update_interval=1,
@@ -368,10 +371,10 @@ def init_widgets_list():
         ),
         widget.Sep(linewidth=0, padding=5, foreground=colors[2], background=colors[0]),
         widget.ThermalSensor(
-            font="FiraMono Nerd Font",
+            font="FiraMono Nerd Font Medium",
             update_interval=1,
             fontsize=12,
-            tag_sensor="Core 0",
+        #    tag_sensor="Core 8",
             background=colors[0],
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn(myTerm + " --hold -e sensors")
@@ -400,7 +403,7 @@ def init_widgets_list():
         ),
         widget.Memory(
             format="{MemUsed: .0f}/{MemTotal:.0f} GB ",
-            font="FiraMono Nerd Font",
+            font="FiraMono Nerd Font Medium",
             update_interval=1,
             fontsize=12,
             measure_mem="G",
@@ -442,19 +445,20 @@ def init_widgets_list():
         #     },
         # ),
         widget.Sep(linewidth=0, padding=8, foreground=colors[2], background=colors[8]),
-        widget.Pomodoro(
-            prefix_inactive="Pomodoro",
+        widget.Net(
+            prefix_inactive="Disconnected",
+            format='{interface}: {down} ↓',
             font="FiraMono Nerd Font",
-            prefix_paused="Paused",
-            fontsize=13,
+        #    prefix_paused="Paused",
+            fontsize=12,
             color_inactive=colors[2],
             background=colors[8],
             foreground=colors[2],
             opacity = 0.2
         ),
         widget.Sep(linewidth=0, padding=8, foreground=colors[2], background=colors[8]),
-        widget.Clipboard(padding=20),
-        # widget.Sep(linewidth=0, padding=8, foreground=colors[2], background=colors[0]),
+       # widget.Clipboard(padding=20),
+       #  widget.Sep(linewidth=0, padding=8, foreground=colors[2], background=colors[0]),
         widget.CheckUpdates(
             distro="Arch_checkupdates",
             font="FiraMono Nerd Font",
@@ -521,8 +525,8 @@ def init_widgets_screen2():
     return widgets_screen2
 
 
-widgets_screen1 = init_widgets_screen1()
-widgets_screen2 = init_widgets_screen2()
+#widgets_screen1 = init_widgets_screen1()
+#widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
@@ -530,18 +534,18 @@ def init_screens():
         Screen(
             top=bar.Bar(
                 widgets=init_widgets_screen1(),
-                size=24,
-                opacity=0.75,
-                background="000000",
+                size=28,
+                opacity=0.8,
+            #    background=colors[18],
                 margin=[9, 9, 0, 9],
             )
         ),
         Screen(
             top=bar.Bar(
                 widgets=init_widgets_screen2(),
-                size=24,
-                opacity=1.85,
-                background="000000",
+                size=28,
+                opacity=0.8,
+           #     background=colors[18],
             )
         ),
     ]
