@@ -57,7 +57,8 @@ super + F12
 #################################################################
 # SUPER + ... KEYS
 #################################################################
-
+super + a
+    ~/.config/rofi/launchers/colorful/launcher.sh
 
 #VS code
 super + e
@@ -78,7 +79,7 @@ super + c
 #arcolinux-logout
 super + x
 
-    arcolinux-logout	
+    ~/.config/rofi/powermenu/powermenu.sh	
 #Rofi theme selector
 super + r
     rofi-theme-selector
