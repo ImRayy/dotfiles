@@ -464,7 +464,10 @@ super + ctrl + space
 # SUPER + SHIFT KEYS
 #################################################################
 
-
+#Lock screen (betterlockscreen)
+super + shift + l
+    #betterlockscreen -l dimblur
+    alacritty
 #Reload bspwm
 super + shift + r
 	~/.config/bspwm/bspwmrc

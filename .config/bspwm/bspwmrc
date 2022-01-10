@@ -7,29 +7,33 @@ function run {
      fi
    }
 #LAUNCHERS
-#$HOME/.config/bspwm/autostart.sh
+~/.config/bspwm/scripts/autostart.sh
 
-nitrogen --restore &
-bash $HOME/.config/polybar/launch.sh & 
-picom --experimental-backend &
-run numlockx on &
 
-if [ $keybLayout = "be" ]; then
-    run sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc-azerty &
-else
-    run sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc &
-fi
+#nitrogen --restore &
+#bash $HOME/.config/polybar/launch.sh & 
+#picom --experimental-backend --config $HOME/.config/bspwm/picom/picom.conf &
+#run numlockx on &
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#/usr/lib/xfce4/notifyd/xfce4-notifyd &
+#xrandr -s 1920x1080 -r 75.00
+# run megasync &
+
+keybLayout=$(setxkbmap -v | awk -F "+" '/symbols/ {print $2}')
+run sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc &
+
+
 #fix for moving spotify to specific workspace
 #bspc config external_rules_command ~/.config/bspwm/scripts/external_rules_command
 
 #BSPWM configuration
 #bspc config border_radius        8
 bspc config border_width         2
-bspc config window_gap           8
-bspc config top_padding          20
+bspc config window_gap           10
+bspc config top_padding          10
 bspc config bottom_padding       4.5
 bspc config left_padding         4.5
-bspc config right_padding        10
+bspc config right_padding        4.5
 bspc config single_monocle       false
 #bspc config click_to_focus       true
 bspc config split_ratio          0.50
@@ -54,7 +58,7 @@ bspc config presel_feedback_color	"#5e81ac"
 
 
 #Single monitor
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+bspc monitor -d 1 2 3 4 5
 
 #Dual monitor
 #find out names with arandr or xrandr
@@ -70,10 +74,11 @@ bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 #bspc rule -a inkscape state=fullscreen
 bspc rule -a Spotify state=floating
 bspc rule -a Vlc state=fullscreen
-bapc rune -a xdman state=floating
+bapc rule -a xdman state=floating
+bapc rule -a virt-manager state=fullscreen
 #bspc rule -a VirtualBox Manager state=fullscreen
 #bspc rule -a VirtualBox Machine state=fullscreen
-#bspc rule -a Gimp state=fullscreen
+bspc rule -a Gimp state=fullscreen
 
 #Floating applications
 #bspc rule -a Arandr state=floating
