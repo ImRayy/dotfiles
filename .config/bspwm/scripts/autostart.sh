@@ -44,13 +44,5 @@ picom --experimental-backend --config ~/.config/bspwm/picom/picom.conf &
 /usr/lib/polkit-kde-authentication-agent-1 &
 #/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
-#run volumeicon &
-#run caffeine &
-#run vivaldi-stable &
-#run firefox &
-#run thunar &
-#run dropbox &
-#run insync start &
-#run discord &
-#run spotify &
-#run atom &
+run imwheel &
+

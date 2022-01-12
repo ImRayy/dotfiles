@@ -1,6 +1,12 @@
 #################################################################
 # KEYBOARD BINDINGS FOR ANY TWM
 #################################################################
+#Navigation
+
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+
+
 
 #################################################################
 # SUPER + FUNCTION KEYS
@@ -63,7 +69,12 @@ super + F12
 # SUPER + ... KEYS
 #################################################################
 
-#Atom
+
+# Apps
+super + a
+    ~/.config/rofi/launchers/colorful/launcher.sh
+
+#VS-Code
 super + e
     code
 
@@ -77,11 +88,11 @@ super + c
 
 #Htop
 super + h
-    alacritty 'htop task manager' -e gotop
+    alacritty -e gotop
 
 #arcolinux-logout
 super + x
-    arcolinux-logout
+    ~/.config/rofi/applets/applets/powermenu.sh
 
 #Rofi theme selector
 super + r
@@ -118,7 +129,7 @@ super + KP_Enter
 
 #File-Manager
 super + shift + Return
-	pcmanfm
+	dolphin
 
 #Keyboard dependent
 #File-Manager
@@ -206,13 +217,13 @@ ctrl + alt + r
 ctrl + alt + s
    spotify
 
-#urxvt
+#konsole
 ctrl + alt + Return
-    urxvt
+    konsole
 
-#urxvt
+#konsole
 ctrl + alt + t
-    urxvt
+    konsole
 
 #Vivaldi
 ctrl + alt + v
@@ -466,8 +477,7 @@ super + ctrl + space
 
 #Lock screen (betterlockscreen)
 super + shift + l
-    #betterlockscreen -l dimblur
-    alacritty
+    betterlockscreen -l dimblur
 #Reload bspwm
 super + shift + r
 	~/.config/bspwm/bspwmrc
