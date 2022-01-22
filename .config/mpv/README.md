@@ -1,4 +1,5 @@
-###### Scripts used in mpv.conf
+### Scripts used in mpv.conf
+---
 
 - [youtube-quality](https://github.com/jgreco/mpv-youtube-quality)
 - [mpv-thumbnail-script](https://github.com/marzzzello/mpv_thumbnail_script)
