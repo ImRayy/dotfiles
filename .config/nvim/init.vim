@@ -1,12 +1,14 @@
-" _ __   ___  _____   _(_)_ __ ___
-"| '_ \ / _ \/ _ \ \ / / | '_ ` _ \
-"| | | |  __/ (_) \ V /| | | | | | |
-"|_| |_|\___|\___/ \_/ |_|_| |_| |_|
-""""""""""""""""""""""""""""""""""""
+"    _   __         _    ___
+"   / | / /__  ____| |  / (_)___ ___
+"  /  |/ / _ \/ __ \ | / / / __ `__ \
+" / /|  /  __/ /_/ / |/ / / / / / / /
+"/_/ |_/\___/\____/|___/_/_/ /_/ /_/
+
+
 
 " Ｂａｓｉｃ  Ｃｏｎｆｉｇａｒａｔｉｏｎ
 " --------------------------------------
-
+set termguicolors
 set number			        " Set number row
 "set relativenumber
 set autoindent
@@ -25,32 +27,75 @@ set noswapfile
 
 syntax enable
 
-
 filetype on                 " Enable type file detection. Vim will be able to try to detect the 
                             " type of file in use
 filetype plugin on          " Enable plugins and load plugin for the detected file type
 filetype indent on          " Load an indent file for the detected file type
 
+
 " Ｐｌｕｇｉｎｓ
 " --------------
 
-call plug#begin()
+call plug#begin('~/.nvim')
 
-Plug 'https://github.com/vim-airline/vim-airline'       " Status bar
-Plug 'https://github.com/neoclide/coc.nvim'	            " Auto Completion
-Plug 'luukvbaal/nnn.nvim'			                    " nnn filemanager
+Plug 'feline-nvim/feline.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}	        " Auto Completion
 Plug 'https://github.com/terryma/vim-multiple-cursors'  " multiple cursors
 Plug 'https://github.com/preservim/tagbar'              " Tagbar for code navigation
 
-" neovim extra
+
+
+Plug 'kyazdani42/nvim-web-devicons'                     " for file icons
+Plug 'kyazdani42/nvim-tree.lua'                         " neovimtree (alternative of nerd-tree written in lua
+
+" markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " tabular plugin is used to format tables
 Plug 'godlygeek/tabular'
 " JSON front matter highlight plugin
 Plug 'elzr/vim-json'
-Plug 'plasticboy/vim-markdown'
+Plug 'dag/vim-fish'                                      " for config.fish
+Plug 'https://github.com/Raimondi/delimitMate'           " auto pair closing of quotes, parenthesis, brackets
 
 call plug#end()
+
+
+
+"ｆｉｓｈ  ｓｙｎｔａｘ  ｈｉｇｈｌｉｇｈｔｉｎｇ
+"-----------------------------------------------
+highlight LineNr ctermfg=grey
+
+
+"ｎｖｉｍ－ｔｒｅｅ
+"------------------
+
+lua << EOF
+require("nvim-tree").setup()
+require("feline").setup()
+EOF
+
+"key bindings
+nnoremap <C-c> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+
+"theming
+"highlight NvimTreeFolderIcon guibg=blue
+
+
+
+"Ａｕｔｏｃｏｍｐｌｅｔｅ  （ｃｏｃ．ｎｖｉｍ）
+"---------------------------------------------
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 
 
@@ -64,6 +109,8 @@ nnoremap <M-m> :MarkdownPreview<CR>
 
 let g:mkdp_refreash_slow=1
 let g:mkdp_markdown_css='~/.config/nvim/githumdformat/github-markdown.css'
+
+
 
 " Ｍａｒｋｄｏｗｎ  Ｓｙｎｔｅｘ  Ｈｉｇｈｌｉｇｈｔｉｎｇ
 " -------------------------------------------------------
@@ -82,20 +129,10 @@ let g:vim_markdown_toml_frontmatter = 1     " for TOML format
 let g:vim_markdown_json_frontmatter = 1     " for
 
 
-
-" ｎｎｎ  Ｆｉｌｅｍａｎａｇｅｒ  Ｐｌｕｇｉｎ
-" --------------------------------------------
-lua << EOF
-require("nnn").setup()
-EOF
-
-tnoremap <C-A-n> <cmd>NnnExplorer<CR>
-nnoremap <C-A-n> <cmd>NnnExplorer %:p:h<CR>
-tnoremap <C-A-p> <cmd>NnnPicker<CR>
-nnoremap <C-A-p> <cmd>NnnPicker<CR>
-
-
+"ｃｔａｇ
+"--------
 nmap <F8> :TagbarToggle<CR>
+
 
 " Ｍｏｕｓｅ  Ｃｏｎｆｉｇ
 " ------------------------
@@ -104,12 +141,7 @@ set mouse=a     " eneble mouse support
 set mouse=v     " middle-click to paste with
 
 
-" Markdown
-let g:mkdp_refreash_slow=1
-let g:mkdp_markdown_css='~/.config/nvim/githumdformat/github-markdown.css'
-
-
 " Ｎｅｏｖｉｄｅ
 " --------------
-
 let g:neovide_transparency=0.6
+
