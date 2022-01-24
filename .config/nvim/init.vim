@@ -37,13 +37,14 @@ filetype indent on          " Load an indent file for the detected file type
 " --------------
 
 call plug#begin('~/.nvim')
-
-Plug 'feline-nvim/feline.nvim'
+  
+Plug 'https://github.com/windwp/windline.nvim'          " Statusline
 Plug 'neoclide/coc.nvim', {'branch': 'release'}	        " Auto Completion
 Plug 'https://github.com/terryma/vim-multiple-cursors'  " multiple cursors
 Plug 'https://github.com/preservim/tagbar'              " Tagbar for code navigation
 
-
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'kyazdani42/nvim-web-devicons'                     " for file icons
 Plug 'kyazdani42/nvim-tree.lua'                         " neovimtree (alternative of nerd-tree written in lua
@@ -66,12 +67,12 @@ call plug#end()
 highlight LineNr ctermfg=grey
 
 
-"ｎｖｉｍ－ｔｒｅｅ
-"------------------
+"ｌｕａ  Ｃｏｍｍａｎｄｓ
+"-----------------------
 
 lua << EOF
 require("nvim-tree").setup()
-require("feline").setup()
+require("wlsample.airline_luffy")   
 EOF
 
 "key bindings
@@ -81,7 +82,6 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 
 "theming
 "highlight NvimTreeFolderIcon guibg=blue
-
 
 
 "Ａｕｔｏｃｏｍｐｌｅｔｅ  （ｃｏｃ．ｎｖｉｍ）
@@ -112,6 +112,8 @@ let g:mkdp_markdown_css='~/.config/nvim/githumdformat/github-markdown.css'
 
 
 
+
+
 " Ｍａｒｋｄｏｗｎ  Ｓｙｎｔｅｘ  Ｈｉｇｈｌｉｇｈｔｉｎｇ
 " -------------------------------------------------------
 
@@ -139,6 +141,15 @@ nmap <F8> :TagbarToggle<CR>
 set mouse=nicr
 set mouse=a     " eneble mouse support
 set mouse=v     " middle-click to paste with
+
+
+" Ｔｅｌｅｓｃｏｐｅ
+" ------------------
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 
 " Ｎｅｏｖｉｄｅ
