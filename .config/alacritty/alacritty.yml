@@ -38,6 +38,7 @@ window:
   # Number of lines/columns (not pixels) in the terminal. The number of columns
   # must be at least `2`, while using a value of `0` for columns and lines will
   # fall back to the window manager's recommended size.
+  opacity: 0.6
   dynamic_title: true
   dimensions:
     columns: 0
@@ -295,7 +296,7 @@ colors:
 
   # Bright colors
   bright:
-    black:   '#666666'
+    black:   '#000000'
     red:     '#d54e53'
     green:   '#9cf18f'
     yellow:  '#dfdb82'
@@ -373,8 +374,8 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.75
-background_blur: 5
+#background_opacity: 0.75
+#background_blur: 5
 
 selection:
   # This string contains all characters that are used as separators for
@@ -869,4 +870,4 @@ key_bindings:
   #log_level: Warn
 
   # Print all received window events.
-  #print_events: false
+  #print_events: false6
