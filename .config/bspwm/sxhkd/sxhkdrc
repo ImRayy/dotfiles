@@ -17,17 +17,20 @@ super + shift + {q,r}
 	bspc {quit,wm -r}
 
 
-# Vivaldi
+#  redshift
 super + F1
-	vivaldi-stable
+	 bash ~/.config/bspwm/scripts/redshift_toggle.sh
+#    bash -c 'if [ -z $(pgrep redshift) ]; then redshift ; else pkill -USR1 redshift ; fi'
 
-# Atom
+
+# Toggle redshift 
 super + F2
-	atom
+#	if ps aux | grep some_proces[s] > /tmp/test.txt; then echo 1; else echo 0; fi
+    flameshot gui
 
-#Inkscape
+# Flameshot
 super + F3
-    inkscape
+    nm-applet
 
 #Gimp
 super + F4
@@ -70,6 +73,10 @@ super + F12
 #################################################################
 
 
+# Screenshot
+super + s
+    cd ~/Pictures/ && ~/.config/rofi/applets/android/screenshot.sh 
+
 # Apps
 super + a
     ~/.config/rofi/launchers/colorful/launcher.sh
@@ -80,7 +87,7 @@ super + e
 
 #Browser
 super + w
-    firefox
+    brave
 
 #Conky-toggle
 super + c
@@ -112,7 +119,7 @@ super + m
 
 #urxvt
 super + Return
-    alacritty
+    kitty
 
 #Xkill
 super + Escape
@@ -126,6 +133,7 @@ super + KP_Enter
 #################################################################
 # SUPER + SHIFT KEYS
 #################################################################
+
 
 #File-Manager
 super + shift + Return
@@ -542,6 +550,9 @@ super + ctrl + {_,shift +}{1-9}
 #################################################################
 # ALT KEYS
 #################################################################
+# scrachpad
+alt + 1
+    tdrop -am -w 40% -y 30% -x 30% alacritty
 
 #Focus selected desktop
 alt + Tab
@@ -563,9 +574,11 @@ alt + space
 alt + shift + {h,j,k,l}
 	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
 
+
 #################################################################
 # CTRL + ALT KEYS
 #################################################################
+
 
 # Focus next/previous window
 ctrl + alt + Left

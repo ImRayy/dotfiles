@@ -49,6 +49,8 @@ bspc config pointer_action3 resize_corner
 bspc config remove_disabled_monitors true
 bspc config merge_overlapping_monitors true
 
+
+
 #BSPWM coloring
 bspc config normal_border_color		"#4c566a"
 bspc config active_border_color		"#1e1e1e"
@@ -79,6 +81,8 @@ bapc rule -a virt-manager state=fullscreen
 #bspc rule -a VirtualBox Manager state=fullscreen
 #bspc rule -a VirtualBox Machine state=fullscreen
 bspc rule -a Gimp state=fullscreen
+bspc rule -a pamac-manager state=fullscreen
+bspc rule -a mpv state=fullscreen
 
 #Floating applications
 #bspc rule -a Arandr state=floating
@@ -99,6 +103,7 @@ bspc rule -a Gimp state=fullscreen
 #bspc rule -a Stacer state=floating
 #bspc rule -a Xfce4-appfinder state=floating sticky=on
 #bspc rule -a Xfce4-terminal state=floating
+bspc config pointer_motion_interval 7       #makes mouse drag smooth
 
 #Tiled applications
 #bspc rule -a Gnome-disks state=tiled
