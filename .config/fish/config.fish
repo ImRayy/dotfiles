@@ -1,12 +1,9 @@
-#  __ _     _
-# / _(_)___| |__
-#| |_| / __| '_ \
-#|  _| \__ \ | | |
-#|_| |_|___/_| |_|
+#    _____      __
+#   / __(_)____/ /_
+#  / /_/ / ___/ __ \
+# / __/ (__  ) / / /
+#/_/ /_/____/_/ /_/
 
-
-cowsay -f eyes "U can't see me I see  U now"
-task
 ### ADDING TO THE PATH
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive and fish becomes very slow.
@@ -182,6 +179,7 @@ alias nvide=neovide
 # Paru
 alias pain="paru -S"
 alias parem="paru -Rns"
+alias psupd='paru -Qua'
 
 # youtube-dl
 alias ytaudio="python yt -x --audio-format mp3"
@@ -194,5 +192,30 @@ alias sync="bash /home/imray/sync.sh"
 alias cat=bat
 alias ka=killall
 alias aquarium=asciiquarium
+
+# Copy using rsync [ with progress bar ]
+alias rcp="rsync -r -avz --progress"
+alias rmv="rsync -r -avz --progress --remove-source-files"
+
+# Other programs
+alias csend='croc send --code'
+alias scrcpylbr='scrcpy --bit-rate 2M'
+alias rmmetad='exiftool -all= -overwrite_original'
+alias rmametad='exiftool -all= -overwrite_original -ext'
+alias won='nmcli radio wifi on'
+alias woff='nmcli radio wifi off'
+alias cdns='sudo nvim /etc/resolv.conf'
+alias matrix='unimatrix'
+alias na='nm-applet'
+alias anime='~/Downloads/GIT/ani-cli/ani-cli'
+alias g='greenclip'
+alias gp='greenclip print'
+alias music='nmpcpp'
+alias of='onefetch'
+#### Calling a exernal Alias file ####
+source ~/personalALias
+
 ### SETTING THE STARSHIP PROMPT ###
 starship init fish | source
+
+
