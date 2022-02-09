@@ -111,25 +111,12 @@ function take --argument number
     head -$number
 end
 
-# Function for org-agenda
-function org-search -d "send a search string to org-mode"
-    set -l output (/usr/bin/emacsclient -a "" -e "(message \"%s\" (mapconcat #'substring-no-properties \
-        (mapcar #'org-link-display-format \
-        (org-ql-query \
-        :select #'org-get-heading \
-        :from  (org-agenda-files) \
-        :where (org-ql--query-string-to-sexp \"$argv\"))) \
-        \"
-    \"))")
-    printf $output
-end
 
 ### END OF FUNCTIONS ###
 
-
 ### ALIASES ###
-# \x1b[2J   <- clears tty
-# \x1b[1;1H <- goes to (1, 1) (start)
+#\x1b[2J   <- clears tty
+#\x1b[1;1H <- goes to (1, 1) (start)
 
 
 # Basic
@@ -149,7 +136,6 @@ alias ls="lsd --group-dirs first"
 # Pacman
 alias pacq="pacman -Q | grep"
 alias pacorph="pacman -Qdt"
-alias pacqdtq="pacman -Qdtq"
 alias pacin="sudo pacman -S"
 alias pacrem= "sudo pacman -Rns"
 alias pacrem="sudo pacman -Runs"
@@ -157,15 +143,20 @@ alias pacreps="pacman -Ss"
 alias pacupd="sudo pacman -Sy"
 alias pacupg="sudo pacman -Syu"
 alias pacremorph="sudo pacman -Rns (pacman -Qdtq)"
+alias paccache="sudo pacman -Sc"
+alias allpaccache="sudo pacman -Scc"
 
 
 # yay
 alias yain="yay -S"
 alias yarem="yay -Rns"
 alias yaorph="yay -Qtd"
-alias yaupg="yay -Sya"
+alias yaupd="yay -Sy"
+alias yaupg="yay -Sua"
 alias yayupd="yay -Sy"
 alias yayreps="yay -Ss"
+alias yaycache="yay -Sc"
+alias yayremdep="yay -Yc"
 
 
 # Pamac
@@ -179,19 +170,21 @@ alias nvide=neovide
 # Paru
 alias pain="paru -S"
 alias parem="paru -Rns"
-alias psupd='paru -Qua'
+alias paupd='paru -Sy'
+alias paupg='paru -Sua'
+alias parem='paru -Rns'
+alias paorph='paru -Qtd'
 
-# youtube-dl
-alias ytaudio="python yt -x --audio-format mp3"
+# youtube-dlp
+alias ytaudio="yt-dlp -x --audio-format mp3"
 
 # Others
 alias py=python		
-alias gt=gotop		# gotop (system monitor)
+alias gt=gotop		
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias sync="bash /home/imray/sync.sh"
 alias cat=bat
 alias ka=killall
-alias aquarium=asciiquarium
 
 # Copy using rsync [ with progress bar ]
 alias rcp="rsync -r -avz --progress"
@@ -210,12 +203,23 @@ alias na='nm-applet'
 alias anime='~/Downloads/GIT/ani-cli/ani-cli'
 alias g='greenclip'
 alias gp='greenclip print'
-alias music='nmpcpp'
+alias music='ncmpcpp'
 alias of='onefetch'
-#### Calling a exernal Alias file ####
+alias pf='pfetch'
+alias nf='neofetch'
+alias aquarium=asciiquarium 
+alias lf='~/.config/lf/scripts/lfrun'
+alias updmirror="cp /etc/pacman.d/mirrorlist ~/backup && cd ~/backup && mv mirrorlist mirrorlist_(date "+%Y-%m-%d-%T").bak && cd $HOME && sudo reflector --latest 20 --age 1 --fastest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist && echo 'mirrorlist successfully updated'"
+
+# Clean-Up
+alias checkcache="du -sh .cache/"
+alias clearcache="rm -rf .cache/*"
+alias checkjournal="du -sh /var/log/journal"
+alias clearjournal="sudo journalctl --vacuum-time=2weeks"
+
+#### Calling a exernal scripts ####
 source ~/personalALias
+source ~/.config/lf/icons/icons
 
 ### SETTING THE STARSHIP PROMPT ###
 starship init fish | source
-
-
