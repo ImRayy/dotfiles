@@ -1,7 +1,6 @@
 # Ｓｅｔｔｉｎｇｓ
-
 set preview
-#set nodrawbox 
+set drawbox 
 set icons 
 set ignorecase
 set info size
@@ -78,7 +77,7 @@ cmd sudomkfile ${{
   sudo $EDITOR $ans
 }}
 
-cmd setwallpaper %cp "$f" ~/.config/wall.png && xwallpaper --zoom "$f"
+cmd setwallpaper %cp "$f" ~/.config/wall.png && feh --bg-fill "$f"
 
 cmd fzf_jump ${{
   res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
@@ -90,11 +89,24 @@ cmd fzf_jump ${{
   lf -remote "send $id $cmd \"$res\""
 }}
 
+#### For dynamic columns ####
+
+#${{
+#    w=$(tput cols)
+#    if [ $w -le 80 ]; then
+#        lf -remote "send $id set ratios 1:2"
+#    elif [ $w -le 160 ]; then
+#        lf -remote "send $id set ratios 1:2:3"
+#    else
+#        lf -remote "send $id set ratios 1:2:3:5"
+#    fi
+#}}
+
 # Ａｒｃｈｉｖｅ  ｂｉｎｄｉｎｇｓ
 
 cmd unarchive ${{
   case "$f" in
-      *.zip) unzip "$f" ;;
+      *.zip) 7z x "$f" ;;
       *.tar.gz) tar -xzvf "$f" ;;
       *.tar.bz2) tar -xjvf "$f" ;;
       *.tar) tar -xvf "$f" ;;
@@ -179,7 +191,7 @@ map mr sudomkfile
 map md mkdir
 map ms $mkscript
 map ch chmod
-map bg setwallpaper
+map ; setwallpaper
 map o open_config
 map br $vimv $fx
 map r rename
@@ -188,5 +200,20 @@ map L bottom
 map R reload
 map C clear
 map U unselect
+
+# Ｎａｖｉｇａｔｉｏｎ
+
+map gd     cd ~/Documents
+map gc     cd ~/.config
+map git    cd ~/Downloads/GIT
+map gn     cd /media/Documents/Notes
+map gmd    cd /media/Documents/Notes/Obsidian
+map gw     cd /media/Entertainment/Wallpapers
+map gs     cd ~/Pictures/Screenshots
+map gp     cd ~/Pictures
+map ge     cd /media/Entertainment
+map gm     cd /media/Entertainment/🎧Music
+map gmw    cd /media/MyWaifu
+
 
 
