@@ -94,14 +94,14 @@ bspc rule -a mpv state=fullscreen
 #bspc rule -a Font-manager state=floating
 #bspc rule -a Galculator state=floating
 #bspc rule -a Gpick state=floating sticky=on
-#bspc rule -a Nitrogen state=floating
+bspc rule -a Nitrogen state=floating sticky=on
 #bspc rule -a Oblogout state=floating
 #bspc rule -a Pavucontrol state=floating sticky=on
 #bspc rule -a Peek state=floating
 #bspc rule -a rofi state=floating sticky=on
 #bspc rule -a Skype state=floating
 #bspc rule -a Stacer state=floating
-#bspc rule -a Xfce4-appfinder state=floating sticky=on
+bspc rule -a Xfce4-appfinder state=floating sticky=on
 #bspc rule -a Xfce4-terminal state=floating
 bspc config pointer_motion_interval 7       #makes mouse drag smooth
 

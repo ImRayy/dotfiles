@@ -72,10 +72,14 @@ super + F12
 # SUPER + ... KEYS
 #################################################################
 
+# Clipboard (greenclip)
+super + c
+    rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -theme ~/.config/rofi/rofi-collection/murz/murz.rasi
 
 # Screenshot
 super + s
-    cd ~/Pictures/ && ~/.config/rofi/applets/android/screenshot.sh 
+    cd ~/Pictures/ && ~/Downloads/GIT/rofiadi/rofi/1080p/applets/android/screenshot.sh 
+
 
 # Apps
 super + a
@@ -83,15 +87,12 @@ super + a
 
 #VS-Code
 super + e
-    code
+    kitty --hold -e ~/.config/lf/scripts/lfrun
+#    kitty --hold -e ranger
 
 #Browser
 super + w
     brave
-
-#Conky-toggle
-super + c
-    conky-toggle
 
 #Htop
 super + h
@@ -113,9 +114,9 @@ super + t
 super + v
     pavucontrol
 
-#Pragha
+#Ncmpcpp
 super + m
-    pragha
+    kitty --hold -e ncmpcpp
 
 #urxvt
 super + Return
@@ -137,7 +138,7 @@ super + KP_Enter
 
 #File-Manager
 super + shift + Return
-	dolphin
+	pcmanfm-qt
 
 #Keyboard dependent
 #File-Manager
@@ -552,7 +553,7 @@ super + ctrl + {_,shift +}{1-9}
 #################################################################
 # scrachpad
 alt + 1
-    tdrop -am -w 40% -y 30% -x 30% alacritty
+    tdrop -am -w 40% -y 30% -x 30% konsole
 
 #Focus selected desktop
 alt + Tab
