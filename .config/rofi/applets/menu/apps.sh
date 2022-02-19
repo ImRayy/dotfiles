@@ -49,14 +49,14 @@ case $chosen in
 		if [[ -f /usr/bin/thunar ]]; then
 			thunar &
 		elif [[ -f /usr/bin/pcmanfm ]]; then
-			pcmanfm &
+			pcmanfm-qt &
 		else
 			msg "No suitable file manager found!"
 		fi
         ;;
     $editor)
 		if [[ -f /usr/bin/geany ]]; then
-			geany &
+			kate &
 		elif [[ -f /usr/bin/leafpad ]]; then
 			leafpad &
 		elif [[ -f /usr/bin/mousepad ]]; then
@@ -73,7 +73,7 @@ case $chosen in
 		elif [[ -f /usr/bin/chromium ]]; then
 			chromium &
 		elif [[ -f /usr/bin/midori ]]; then
-			midori &
+			brave &
 		else
 			msg "No suitable web browser found!"
 		fi
