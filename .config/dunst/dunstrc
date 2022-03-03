@@ -38,10 +38,10 @@
     outer_frame_width = 14
 
     # Round corners, that's it
-    corner_radius = 0
+    corner_radius = 8
 
     # From what Barbose implemented, the other frame
-    outer_frame_color = "#1b1b23"
+    # outer_frame_color = "#1b1b23"
 
     separator_color = auto
     sort = yes
