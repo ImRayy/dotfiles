@@ -18,7 +18,9 @@
         { "name": "Google Meet", "url": "https://meet.google.com/" }
       ]
     },
-    { "name": "social",
+    { 
+      "color": "#EFE76F",
+      "name": "social",
       "links": [
         { "name": "Reddit", "url": "https://reddit.com" },
         { "name": "Unixporn Love", "url": "https://deepjyoti30.github.io/unixporn-love/" },
@@ -27,6 +29,7 @@
       ]
     },
     {
+      "color": "#7CB473",
       "name": "Others",
       "links": [
         {"name": "Material Colors", "url": "http://materialuicolors.co/"},
