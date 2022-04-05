@@ -55,12 +55,12 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'elzr/vim-json'
 Plug 'dkarter/bullets.vim'
-
 Plug 'dag/vim-fish'                                      " for config.fish
-
 Plug 'https://github.com/Raimondi/delimitMate'           " auto pair closing of quotes, parenthesis, brackets
-
 Plug 'vimwiki/vimwiki'                                   " VimWiki
+
+Plug 'nvim-lua/plenary.nvim'                             " for github support
+Plug 'lewis6991/gitsigns.nvim'                           " for githubsupport
 call plug#end()
 
 
@@ -68,8 +68,12 @@ call plug#end()
 "--------------
 
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_list = [{'path': '~/Documents/Notes/vimwiki/',
+"let g:vimwiki_list = [{'path': '~/Documents/Notes/vimwiki/',
+"                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+let g:vimwiki_list = [{'path': '$HOME/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+
 
 
 "ｆｉｓｈ  ｓｙｎｔａｘ  ｈｉｇｈｌｉｇｈｔｉｎｇ
@@ -82,7 +86,7 @@ highlight LineNr ctermfg=grey
 
 lua << EOF
 require("nvim-tree").setup()
-require("wlsample.airline_luffy")   
+require("wlsample.airline")   
 EOF
 
 "key bindings
@@ -116,10 +120,13 @@ let g:mkdp_browser = 'surf'
 let g:mkdp_auto_close = 0
 nnoremap <M-m> :MarkdownPreview<CR>
 
+let g:mkdp_filetypes = ['markdown']
+
 " Custom CSS for Markdown Preview
 
-let g:mkdp_refreash_slow=1
-let g:mkdp_markdown_css='~/.config/nvim/githumdformat/github-markdown.css'
+let g:mkdp_refreash_slow = 1
+let g:mkdp_markdown_css = '~/.config/nvim/markdowncss/markdown6.css'
+
 
 
 " Ｍａｒｋｄｏｗｎ  Ｓｙｎｔｅｘ  Ｈｉｇｈｌｉｇｈｔｉｎｇ
@@ -164,8 +171,3 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-
-
-
-
