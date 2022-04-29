@@ -21,5 +21,5 @@
 - [polybar](https://github.com/ImRayy/dotfiles/blob/master/.config/polybar)
 - [rofi](https://github.com/ImRayy/dotfiles/blob/master/.config/rofi)
 - [dunst](https://github.com/ImRayy/dotfiles/blob/master/.config/dunst)
-- [neovim](https://github.com/ImRayy/dotfiles/blob/master/.config/neovim)
-- [startpage](https://github.com/ImRayy/dotfiles/blob/master/startpage)
+- [neovim](https://github.com/ImRayy/dotfiles/blob/master/.config/nvim)
+- [startpage](https://github.com/ImRayy/dotfiles/blob/master/Startpage)
