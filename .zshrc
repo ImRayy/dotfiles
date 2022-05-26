@@ -1,7 +1,3 @@
-
-cowsay -f eyes "U can't see me I see U now"
-task
-
 # Enable colors and change prompt:
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
@@ -134,6 +130,11 @@ alias aquarium=asciiquarium
 alias rcp="rsync -r -avz --progress"
 alias rmv="rsync -r -avz --progress --remove-source-files"
 
+# Other programs
+alias csend="croc send --code"
+alias nf=neofetch
+alias ms="tdrop -am -w 20% -y 5% -x 79% kitty"
+alias vw='nvim ~/Documents/Notes/vimwiki/index.md'
 
 #### STARSHIP ####
 eval "$(starship init zsh)"
@@ -146,7 +147,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # Auto suggestions
 source  /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
+source $HOME/personalALias
 
 #### Basic auto/tab complete ####
 autoload -U compinit
@@ -154,3 +155,4 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files
+
