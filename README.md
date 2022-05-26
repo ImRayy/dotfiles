@@ -4,6 +4,7 @@
 </div>
 
 ![bspwm](https://i.postimg.cc/MZrRqf6x/homescreen-bspwm.png)
+![neovim](https://i.postimg.cc/PfcQdwmw/neovim.png)
 
 ---
 ### Contents
