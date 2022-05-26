@@ -3,7 +3,7 @@
 <h4>bspwm</h4>
 </div>
 
-<img src="https://i.postimg.cc/MZrRqf6x/homescreen-bspwm.png">
+![bspwm](https://i.postimg.cc/MZrRqf6x/homescreen-bspwm.png)
 
 ---
 ### Contents
