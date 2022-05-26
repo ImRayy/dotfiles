@@ -38,8 +38,7 @@ filetype indent on          " Load an indent file for the detected file type
 call plug#begin('~/.nvim')
   
 Plug 'plasticboy/vim-markdown'
-"Plug 'https://github.com/windwp/windline.nvim'          " Statusline
-Plug 'nvim-lualine/lualine.nvim'                        " Statusline
+Plug 'https://github.com/windwp/windline.nvim'          " Statusline
 Plug 'neoclide/coc.nvim', {'branch': 'release'}	        " Auto Completion
 Plug 'https://github.com/terryma/vim-multiple-cursors'  " multiple cursors
 Plug 'https://github.com/preservim/tagbar'              " Tagbar for code navigation
@@ -76,12 +75,10 @@ call plug#end()
 "4) github_dark_colorblind, 5) github_light, 6) github_light_default,
 "7) github_light_colorblind 
 
-colorscheme github_dark
-
-let g:github_comment_style = "italic"
-let g:github_keyword_style = "italic"
-let g:github_function_style = "italic"
-let g:github_variable_style = "italic"
+"let g:github_comment_style = "italic"
+"let g:github_keyword_style = "italic"
+"let g:github_function_style = "italic"
+"let g:github_variable_style = "italic"
 
 "ｖｉｍｗｉｋｉ
 "--------------
@@ -147,7 +144,7 @@ endfunction
 "Ｍａｒｋｄｏｗｎ  Ｐｒｅｖｉｅｗ
 "--------------------------------
 
-let g:mkdp_browser = 'brave'
+let g:mkdp_browser = 'surf'
 let g:mkdp_auto_close = 0
 nnoremap <M-m> :MarkdownPreview<CR>
 
