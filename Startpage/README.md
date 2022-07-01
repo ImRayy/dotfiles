@@ -5,7 +5,7 @@
 
 <img src="https://i.postimg.cc/Z5fGDz28/startpage-minimal.png">
 
-credit: https://github.com/deepjyoti30/startpage
+source: https://github.com/deepjyoti30/startpage
 
 <div align="center">
 <br>
@@ -13,4 +13,18 @@ credit: https://github.com/deepjyoti30/startpage
 <a href="https://github.com/deepjyoti30/startpage/wiki/Installation">Installation</a> | <a href="https://github.com/deepjyoti30/startpage/wiki/Configuration">Configuration</a> | <a href="https://github.com/deepjyoti30/startpage/wiki">Wiki</a>
 </h3>
 </div>
+<br>
+<hr>
 
+<div align="center">
+<h4>Clean Midnight Fox</h4>
+</div>
+
+<img src="https://i.postimg.cc/9F4vm7YZ/clean-midnight-fox-startpage.png">
+
+
+gifs link: https://www.mediafire.com/folder/ss79v6nc318hm/clean-midnight-fox
+source: https://github.com/deepjyoti30/startpage
+
+<div align="center">
+<br>
