@@ -22,10 +22,8 @@ set nobackup                " No auto backup
 set clipboard=unnamedplus   " Copy/paste between vim and other programs
 set hidden                  " Needed to keep multiple buffers open
 set noswapfile
+set emoji
 set hidden
-
-
-
 filetype on                 " Enable type file detection. Vim will be able to try to detect the 
                             " type of file in use
 filetype plugin on          " Enable plugins and load plugin for the detected file type
@@ -37,41 +35,58 @@ filetype indent on          " Load an indent file for the detected file type
 
 call plug#begin('~/.nvim')
   
+" ==================== GUI Stuff ==================== "
+
 Plug 'plasticboy/vim-markdown'
-"Plug 'https://github.com/windwp/windline.nvim'          " Statusline
-Plug 'nvim-lualine/lualine.nvim'                        " Statusline
-Plug 'neoclide/coc.nvim', {'branch': 'release'}	        " Auto Completion
-Plug 'https://github.com/terryma/vim-multiple-cursors'  " multiple cursors
-Plug 'https://github.com/preservim/tagbar'              " Tagbar for code navigation
+Plug 'nvim-lualine/lualine.nvim'                            " Statusline
+Plug 'kyazdani42/nvim-web-devicons'                         " for file icons
+Plug 'junegunn/goyo.vim'                                    " goyo
+Plug 'projekt0n/github-nvim-theme'                          " github colorscheme
+Plug 'psliwka/vim-smoothie'                                 " smooth scrolling
+Plug 'startup-nvim/startup.nvim'
+" ================= Functionalities ================= "
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+"markdown
+Plug 'vimwiki/vimwiki'                                      
+Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
+Plug 'plasticboy/vim-markdown'                              
 
-Plug 'kyazdani42/nvim-web-devicons'                     " for file icons
-Plug 'kyazdani42/nvim-tree.lua'                         " neovimtree
-Plug 'akinsho/toggleterm.nvim'
-
-" markdown
+"autocompletion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}	            " Auto Completion
+Plug 'dkarter/bullets.vim'                                  " auto bullets for list
+Plug 'https://github.com/Raimondi/delimitMate'              " auto pair closing of quotes, parenthesis, brackets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'junegunn/goyo.vim'
-Plug 'elzr/vim-json'
-Plug 'dkarter/bullets.vim'
-Plug 'dag/vim-fish'                                      " for config.fish
-Plug 'https://github.com/Raimondi/delimitMate'           " auto pair closing of quotes, parenthesis, brackets
-Plug 'vimwiki/vimwiki'                                   " VimWiki
 
-Plug 'nvim-lua/plenary.nvim'                             " for github support
-Plug 'lewis6991/gitsigns.nvim'                           " for githubsupport
-Plug 'projekt0n/github-nvim-theme'                       " github colorscheme
+"search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+"visual
+Plug 'https://github.com/terryma/vim-multiple-cursors'      " multiple cursors
+Plug 'https://github.com/preservim/tagbar'                  " Tagbar for code navigation
+Plug 'dag/vim-fish'                                         " for config.fish
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'akinsho/toggleterm.nvim'
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }    " highlighting for python
+
+"github
+Plug 'nvim-lua/plenary.nvim'                                " for github support
+Plug 'lewis6991/gitsigns.nvim'                              " for githubsupport
+
+"others
+Plug 'godlygeek/tabular'
+Plug 'elzr/vim-json'
+
 call plug#end()
+
+
 
 "Ｃｏｌｏｒｓｃｈｅｍｅ
 "-----------------------
-""" Available Themes
+
+" ================= Available Themes ================ "
+
 "1) github_dark, 2) github_dimmed, 3) github_dark_default,
 "4) github_dark_colorblind, 5) github_light, 6) github_light_default,
 "7) github_light_colorblind 
@@ -83,16 +98,13 @@ let g:github_keyword_style = "italic"
 let g:github_function_style = "italic"
 let g:github_variable_style = "italic"
 
+
 "ｖｉｍｗｉｋｉ
 "--------------
 
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-"let g:vimwiki_list = [{'path': '~/Documents/Notes/vimwiki/',
-"                      \ 'syntax': 'markdown', 'ext': '.md'}]
-
 let g:vimwiki_list = [{'path': '~/MEGAsync/Notes/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
-
 
 
 
@@ -106,27 +118,18 @@ highlight LineNr ctermfg=grey
 
 lua << EOF
 
--- Nvim Tree --
----------------
-require("nvim-tree").setup()
-
 -- Status Line --
 -----------------
 -- require("wlsample.airline")
 require('lualine').setup()
 
+
 -- Terminal --
 --------------
 require("toggleterm").setup{shade_terminals = false}
+
+require("startup").setup{theme = "dashboard"}
 EOF
-
-
-"Ｎｖｉｍ  Ｔｒｅｅ
-"------------------
-nnoremap <C-c> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-lua require ('nvimtree')
 
 
 "Ａｕｔｏｃｏｍｐｌｅｔｅ  （ｃｏｃ．ｎｖｉｍ）
@@ -147,7 +150,7 @@ endfunction
 "Ｍａｒｋｄｏｗｎ  Ｐｒｅｖｉｅｗ
 "--------------------------------
 
-let g:mkdp_browser = 'brave'
+let g:mkdp_browser = "chromium"
 let g:mkdp_auto_close = 0
 nnoremap <M-m> :MarkdownPreview<CR>
 
@@ -157,6 +160,7 @@ let g:mkdp_filetypes = ['markdown']
 
 let g:mkdp_refreash_slow = 1
 let g:mkdp_markdown_css = '~/.config/nvim/markdowncss/markdown6.css'
+
 
 
 " Ｍａｒｋｄｏｗｎ  Ｓｙｎｔｅｘ  Ｈｉｇｈｌｉｇｈｔｉｎｇ
@@ -182,6 +186,7 @@ let g:UltiSnipsExpandTrigger="<c-p>"  " use <Tab> to trigger autocompletion
 "let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:vimwiki_global_ext = 0
 
+
 "ｃｔａｇ
 "--------
 nmap <F8> :TagbarToggle<CR>
@@ -205,5 +210,8 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "ＴｏｇｇｌｅＴｅｒｍ
 "--------------------
-
 nnoremap <M-t> :ToggleTerm<CR>
+nnoremap <leader>cc <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
