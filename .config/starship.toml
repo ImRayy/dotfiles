@@ -84,6 +84,26 @@ disabled = true
 format = "[$symbol$version](bold ) "
 symbol =  "  "
 
+
+[lua]
+format = "[$symbol($version )]($style)"
+detect_extensions = ["lua"]
+symbol =  "  "
+style = "bold red"
+
+
+[java]
+format = "[$symbol($version )]($style)"
+detect_extensions = ["java", "class", "gradle", "jar", "cljc"]
+symbol ="  "
+style = "white bold"
+
+[nodejs]
+format = "[$symbol($version )]($style)"
+detect_extensions = ["js", "mjs", "cjs", "ts", "mts", "cts"]
+symbol ="  "
+style = "bold green"
+
 [rust]
 format = "[$symbol$version]($style) "
 style = "bold green"
