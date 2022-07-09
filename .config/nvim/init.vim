@@ -36,14 +36,14 @@ filetype indent on          " Load an indent file for the detected file type
 call plug#begin('~/.nvim')
   
 " ==================== GUI Stuff ==================== "
-
 Plug 'plasticboy/vim-markdown'
 Plug 'nvim-lualine/lualine.nvim'                            " Statusline
 Plug 'kyazdani42/nvim-web-devicons'                         " for file icons
 Plug 'junegunn/goyo.vim'                                    " goyo
 Plug 'projekt0n/github-nvim-theme'                          " github colorscheme
 Plug 'psliwka/vim-smoothie'                                 " smooth scrolling
-Plug 'startup-nvim/startup.nvim'
+Plug 'kyazdani42/nvim-tree.lua'                             " file explorar
+Plug 'goolord/alpha-nvim'                                   " startup screen
 " ================= Functionalities ================= "
 
 "markdown
@@ -128,7 +128,17 @@ require('lualine').setup()
 --------------
 require("toggleterm").setup{shade_terminals = false}
 
-require("startup").setup{theme = "dashboard"}
+
+-- startup.nvim -- 
+------------------
+ -- require("plugins.config.alpha")
+require("plugins.config.alpha")
+require("nvim-tree").setup()
+require("plugins.config.nvimtree")
+require("core.utils")
+require("core.keybindings")
+require("plugins.config.others")
+
 EOF
 
 
@@ -146,7 +156,9 @@ function! s:check_back_space() abort
 endfunction
 
 
-
+nnoremap <C-c> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
 "Ｍａｒｋｄｏｗｎ  Ｐｒｅｖｉｅｗ
 "--------------------------------
 
