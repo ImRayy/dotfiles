@@ -23,8 +23,11 @@ source: https://github.com/deepjyoti30/startpage
 <img src="https://i.postimg.cc/9F4vm7YZ/clean-midnight-fox-startpage.png">
 
 
-gifs link: https://www.mediafire.com/folder/ss79v6nc318hm/clean-midnight-fox
-source: https://github.com/deepjyoti30/startpage
+<h4><b>Note:</b> Download gifs folder from given link and put it inside cleanMidnightFox</h4>
 
-<div align="center">
-<br>
+
+
+
+gifs   : https://www.mediafire.com/folder/ss79v6nc318hm/clean-midnight-fox
+source : https://github.com/deepjyoti30/startpage
+

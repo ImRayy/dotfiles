@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 * {
 	--bg-color: #151a1f;
 	--bg2-color: #1b2127;
@@ -22,6 +23,11 @@ body {
 	font-size: 1.2rem;
 	font-weight: 200;
 }
+
+a{
+	font-family: 'Josefin Sans', sans-serif;	
+}
+
 
 .weather-icon {
 	display: inline-block;
