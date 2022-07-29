@@ -135,9 +135,9 @@ require("toggleterm").setup{shade_terminals = false}
 require("plugins.config.alpha")
 require("nvim-tree").setup()
 require("plugins.config.nvimtree")
-require("core.utils")
+--require("core.utils")
 require("core.keybindings")
-require("plugins.config.others")
+--require("plugins.config.others")
 
 EOF
 

@@ -181,7 +181,7 @@ alias ytaudio="yt-dlp -x --audio-format mp3"
 # Others
 alias py=python		
 alias gt=gotop		
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sync="bash /home/imray/sync.sh"
 alias cat=bat
 alias ka=killall
@@ -218,8 +218,8 @@ alias checkjournal="du -sh /var/log/journal"
 alias clearjournal="sudo journalctl --vacuum-time=2weeks"
 
 #### Calling a exernal scripts ####
-source ~/personalALias
-source ~/.config/lf/icons/icons
+#source ~/personalALias
+#source ~/.config/lf/icons/icons
 
 ### SETTING THE STARSHIP PROMPT ###
 starship init fish | source
