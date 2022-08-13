@@ -1,0 +1,219 @@
+# Ｓｅｔｔｉｎｇｓ
+set preview
+set drawbox 
+set icons 
+set ignorecase
+set info size
+set ifs "\n"
+set filesep "\n"
+
+# Custom script for image preview
+set previewer ~/.config/lf/scripts/preview
+set cleaner ~/.config/lf/scripts/cleaner
+
+# uncomment for stpv preview
+#set previewer stpv
+#set cleaner stpvimgclr
+#&stpvimg --listen $id
+
+# Uncomment for kitty_preview 
+#set previewer ~/.config/lf/scripts/lf_kitty_preview
+#set cleaner ~/.config/lf/scripts/lf_kitty_clean
+
+# Ｋｅｙ  Ｂｉｎｄｉｎｇｓ
+
+map <esc> cmd-escape
+map e $$EDITOR $fx
+map D delete
+map <c-y> up
+map <c-e> down
+map <enter> open
+map gh cd ~
+map gr cd /
+map <m-up>    up
+map <m-down>  down
+map R bulk-rename
+map zp set preview!
+map t $tig -C $PWD
+map M push $mkdir<space>
+
+
+# Ｃｕｓｔｏｍ  Ｆｕｎｃｔｉｏｎｓ
+
+cmd open ${{
+    case $(file --mime-type "$f" -bL) in
+        text/*|application/json) $EDITOR "$f";;
+        *) xdg-open "$f" ;;
+    esac
+}}
+
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd chmod ${{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+
+  lf -remote 'send reload'
+}}
+
+cmd sudomkfile ${{
+  printf "File Name: "
+  read ans
+  sudo $EDITOR $ans
+}}
+
+cmd setwallpaper %cp "$f" ~/.config/wall.png && feh --bg-fill "$f"
+
+cmd fzf_jump ${{
+  res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
+  if [ -f "$res" ]; then
+    cmd="select"
+  elif [ -d "$res" ]; then
+    cmd="cd"
+  fi
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+#### For dynamic columns ####
+
+#${{
+#    w=$(tput cols)
+#    if [ $w -le 80 ]; then
+#        lf -remote "send $id set ratios 1:2"
+#    elif [ $w -le 160 ]; then
+#        lf -remote "send $id set ratios 1:2:3"
+#    else
+#        lf -remote "send $id set ratios 1:2:3:5"
+#    fi
+#}}
+
+# Ａｒｃｈｉｖｅ  ｂｉｎｄｉｎｇｓ
+
+cmd unarchive ${{
+  case "$f" in
+      *.zip) 7z x "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+cmd zip %zip -r "$f" "$f"
+cmd tar %tar cvf "$f.tar" "$f"
+cmd targz %tar cvzf "$f.tar.gz" "$f"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+
+
+# Ｔｒａｓｈ－ｃｌｉ  ｂｉｎｄｉｎｇｓ
+
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    # extract the substring from start of string up to delimiter.
+    # this is the first "element" of the string.
+    file=${files%%;*}
+
+    trash-put "$(basename "$file")"
+    # if there's only one element left, set `files` to an empty string.
+    # this causes us to exit this `while` loop.
+    # else, we delete the first "element" of the string from files, and move onto the next.
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+}}
+
+cmd clear_trash %trash-empty
+
+cmd restore_trash ${{
+  trash-restore
+}}
+
+cmd stripspace %stripspace "$f"
+
+# Ｂｉｎｄｉｎｇｓ
+# Remove some defaults
+map m
+map o
+map n
+map "'"
+map '"'
+map d
+map c
+map e
+map f
+
+
+# Ａｒｃｈｉｖｅ  Ｍａｐｐｉｎｇｓ
+
+map az zip
+map at tar
+map ag targz
+map ab targz
+map au unarchive
+
+
+# Ｔｒａｓｈ  Ｍａｐｐｉｎｇｓ
+
+map dd trash
+map tc clear_trash
+map tr restore_trash
+
+
+# Ｂａｓｉｃ  Ｆｕｎｃｔｉｏｎｓ
+
+map . set hidden!
+map DD delete
+map p paste
+map x cut
+map y copy
+map <enter> open
+map mf mkfile
+map mr sudomkfile
+map md mkdir
+map ms $mkscript
+map ch chmod
+map ; setwallpaper
+map o open_config
+map br $vimv $fx
+map r rename
+map H top
+map L bottom
+map R reload
+map C clear
+map U unselect
+
+# Ｎａｖｉｇａｔｉｏｎ
+
+map gd     cd ~/Documents
+map gc     cd ~/.config
+map git    cd ~/Downloads/GIT
+map gn     cd /media/Documents/Notes
+map gmd    cd /media/Documents/Notes/Obsidian
+map gw     cd /media/Entertainment/Wallpapers
+map gs     cd ~/Pictures/Screenshots
+map gp     cd ~/Pictures
+map ge     cd /media/Entertainment
+map gm     cd /media/Entertainment/🎧Music
+map gmw    cd /media/MyWaifu
+
+
+
