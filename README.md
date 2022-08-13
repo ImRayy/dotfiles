@@ -3,8 +3,8 @@
 <h4>bspwm</h4>
 </div>
 
-![code-size](https://img.shields.io/github/languages/code-size/ImRayy/dotfiles)
 ![repo-size](https://img.shields.io/github/repo-size/ImRayy/dotfiles?style=for-the-badge)
+![code-size](https://img.shields.io/github/languages/code-size/ImRayy/dotfiles?style=for-the-badge)
 
 
 ![bspwm](https://i.postimg.cc/MZrRqf6x/homescreen-bspwm.png)
