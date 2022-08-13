@@ -1,0 +1,120 @@
+add_newline = false
+[line_break]
+disabled = true
+
+[character]
+success_symbol = "[ ➜](bold green)"
+error_symbol = "[✖](bold red) "
+
+#cmd duration
+[cmd_duration]
+min_time = 10_000  # Show command duration over 10,000 milliseconds (=10 sec)
+format = " took [$duration]($style)"
+
+[directory]
+truncation_length = 5
+truncation_symbol = " "
+#format = "[$path]($style)[$lock_symbol]($lock_style) "
+format = "[$path]($style)[$read_only]($read_only_style)"
+home_symbol = " "
+read_only = "🔒"
+style = "bold cyan"
+
+#git
+
+[git_branch]
+format = " [$symbol$branch]($style) "
+symbol = " "
+style = "bold green"
+always_show_remote = false
+only_attached = false
+disabled = false
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+style = "bold yellow"
+
+
+[git_commit]
+commit_hash_length = 4
+style = "bold white"
+tag_symbol = " 🏷 "
+
+
+
+[git_metrics]
+added_style = "bold green"
+deleted_style = "bold red"
+only_nonzero_diffs = true
+format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+disabled = true
+
+[git_status]
+conflicted = "⚔️ "
+ahead = "[⇡${count}](bold dimmed green]"
+behind = "[⇣${count}](bold dimmed blue)"
+diverged = "⇕${ahead_count}⇣${behind_count}"
+untracked = "[?${count}](bold blue)"
+stashed = "$"
+modified ="[!${count}](bold yellow)"
+staged = "[+${count}](bold yellow)"
+renamed = "» ×${count}"
+deleted = "[✘ ×${count}](bold red)"
+format = "$all_status$ahead_behind"
+#format = '([\[$all_status$ahead_behind\]](bold white))'
+
+
+[hostname]
+ssh_only = false
+format = "<[$hostname]($style)>"
+trim_at = "-"
+style = "bold dimmed white"
+disabled = true
+
+[memory_usage]
+format = "$symbol[${ram}( | ${swap})]($style) "
+threshold = 70
+style = "bold dimmed white"
+disabled = false
+
+[package]
+disabled = true
+
+[python]
+format = "[$symbol$version](bold ) "
+symbol =  "  "
+
+
+[lua]
+format = "[$symbol($version )]($style)"
+detect_extensions = ["lua"]
+symbol =  "  "
+style = "bold red"
+
+
+[java]
+format = "[$symbol($version )]($style)"
+detect_extensions = ["java", "class", "gradle", "jar", "cljc"]
+symbol ="  "
+style = "white bold"
+
+[nodejs]
+format = "[$symbol($version )]($style)"
+detect_extensions = ["js", "mjs", "cjs", "ts", "mts", "cts"]
+symbol ="  "
+style = "bold green"
+
+[rust]
+format = "[$symbol$version]($style) "
+style = "bold green"
+
+#[time]
+#time_format = "%T"
+#format = "$time($style) "
+#style = "bright-white"
+#disabled = false
+
+[username]
+style_user = "bold dimmed blue"
+show_always = false
+
