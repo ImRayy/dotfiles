@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if ! pgrep spotify; then
+    playerctl $1
+else
+    playerctl --player=spotify $1
+fi
