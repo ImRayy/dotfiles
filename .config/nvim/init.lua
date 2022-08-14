@@ -1,13 +1,13 @@
 require('core.keybindings')
 require('core.settings')
-require('core.kittymargin')  -- won't work with other than kitty
+require('core.kittymargin') -- won't work with other than kitty
 require('plugins')
 
 
 function _G.dump(...)
     local objects = vim.tbl_map(vim.inspect, { ... })
     print(unpack(objects))
-end
+                end
 
 -- calling lsp-zero
 

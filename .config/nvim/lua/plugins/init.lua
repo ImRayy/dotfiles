@@ -7,27 +7,43 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 return require('packer').startup({
     function(use)
-        ---------------------
+
         -- Package Manager --
-        ---------------------
 
         use('wbthomason/packer.nvim')
 
-        ----------------------
         -- Required plugins --
-        ----------------------
 
         use('nvim-lua/plenary.nvim')
 
-        -----------------------------------
         -- Theams --
-        -----------------------------------
+
         use({
             'kyazdani42/nvim-web-devicons',
             config = function()
                 require('nvim-web-devicons').setup()
             end,
         })
+
+
+        use {
+            'navarasu/onedark.nvim',
+            config = function()
+                require('onedark').setup {
+                    style = 'darker'
+                }
+                require('onedark').load()
+            end
+        }
+
+        use {
+            'goolord/alpha-nvim',
+            requires = { 'kyazdani42/nvim-web-devicons' },
+            config = function()
+                -- require'alpha'.setup(require'alpha.themes.evil'.config)
+                require('plugins.configs.alpha')
+            end,
+        }
 
         use('psliwka/vim-smoothie')
 
@@ -48,48 +64,57 @@ return require('packer').startup({
             },
         })
 
+        -- Neotree: file manager --
+
         use {
-            'kyazdani42/nvim-tree.lua',
-            event = 'CursorHold',
-            --cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+            "nvim-neo-tree/neo-tree.nvim",
+            branch = "v2.x",
+            requires = {
+                "nvim-lua/plenary.nvim",
+                "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+                "MunifTanjim/nui.nvim",
+            }
+        }
+
+        -- WhichKey : Shows keybindings --
+
+        use {
+            "folke/which-key.nvim",
             config = function()
-                require('plugins.configs.nvimtree')
-            end,
+                require("which-key").setup()
+
+            end
+        }
+
+        -- Indent Blankline --
+
+        use {
+            'lukas-reineke/indent-blankline.nvim',
+            config = function()
+                require('indent_blankline').setup({
+                    show_current_context = true,
+                    show_current_context_start = true,
+                })
+            end
         }
 
         use {
-            'goolord/alpha-nvim',
-            requires = { 'kyazdani42/nvim-web-devicons' },
+            'numToStr/Comment.nvim',
             config = function()
-                -- require'alpha'.setup(require'alpha.themes.evil'.config)
-                require('plugins.configs.alpha')
-            end,
-        }
-
-        use {
-            'navarasu/onedark.nvim',
-            config = function()
-                require('onedark').setup {
-                    style = 'darker'
-                }
-                require('onedark').load()
+                require('Comment').setup()
             end
         }
 
 
 
-        -----------------------------------
         -- Nvim Autopairs: Autopair --
-        -----------------------------------
 
         use {
             "windwp/nvim-autopairs",
             config = function() require("nvim-autopairs").setup {} end
         }
 
-        -----------------------------------
         -- Treesitter: Better Highlights --
-        -----------------------------------
 
         use({
             {
@@ -110,10 +135,7 @@ return require('packer').startup({
             { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' },
         })
 
-
-        -----------------------------------
         -- Telescope: Fuzzy Finder --
-        -----------------------------------
 
         use {
             'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -123,9 +145,8 @@ return require('packer').startup({
             end,
         }
 
-        -----------------------------------
         -- Lsp Zero: LSP and CMP stuff --
-        -----------------------------------
+
         use {
             'VonHeikemen/lsp-zero.nvim',
             requires = {
@@ -146,6 +167,19 @@ return require('packer').startup({
                 { 'L3MON4D3/LuaSnip' },
                 { 'rafamadriz/friendly-snippets' },
             }
+        }
+
+        use {
+            'vimwiki/vimwiki',
+            config = function()
+                vim.g.vimwiki_list = {
+                    {
+                        path = '~/MEGAsync/Notes/vimwiki/',
+                        syntax = 'markdown',
+                        ext = '.md',
+                    }
+                }
+            end
         }
 
 

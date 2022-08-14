@@ -28,5 +28,5 @@ map ('n', '<leader>bf', ':Telescope live_grep<CR>')
 map ('n', '<leader>fb', ':Telescope buffers<CR>')
 map ('n', '<leader>fh', ':Telescope help_tags<CR>')
 
--- Nvim Tree
-map ('n', '<C-n>', ':NvimTreeToggle<CR>')
+-- Neotree
+map ('n', '<C-n>', ':Neotree toggle reveal_force_cwd<CR>')
