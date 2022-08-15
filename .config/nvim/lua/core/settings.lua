@@ -1,5 +1,6 @@
 local opt = vim.o
 local g = vim.g
+local cmd = vim.cmd
 
 -- cmd('syntax on')
 -- vim.api.nvim_command('filetype plugin indent on')
@@ -61,6 +62,8 @@ opt.history = 50
 -- Better buffer splitting
 opt.splitright = true
 opt.splitbelow = true
+opt.mouse = true
+cmd[[set mouse=a]]
 
 
 -- BUG: this won't update the search count after pressing `n` or `N`
@@ -74,6 +77,6 @@ opt.splitbelow = true
 -- o.foldminlines = 1
 
 -- Map <leader> to space
--- g.mapleader = ''
+-- g.mapleader = ' '
 
-g.maplocalleader = ' '
+-- g.maplocalleader = ' '

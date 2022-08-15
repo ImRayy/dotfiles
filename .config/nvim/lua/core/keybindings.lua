@@ -30,3 +30,8 @@ map ('n', '<leader>fh', ':Telescope help_tags<CR>')
 
 -- Neotree
 map ('n', '<C-n>', ':Neotree toggle reveal_force_cwd<CR>')
+
+-- Bufferline
+
+map ('n', '<C-l>',':BufferLineCycleNext<CR>')
+map ('n', '<C-h>',':BufferLineCyclePrev<CR>')

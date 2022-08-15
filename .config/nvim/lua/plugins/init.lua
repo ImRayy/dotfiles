@@ -52,7 +52,7 @@ return require('packer').startup({
                 'nvim-lualine/lualine.nvim',
                 event = 'BufEnter',
                 config = function()
-                    require('plugins.configs.lualine')
+                    require('plugins.configs.statusline')
                 end,
             },
             {
@@ -64,11 +64,24 @@ return require('packer').startup({
             },
         })
 
+        -- using packer.nvim
+        use { 'akinsho/bufferline.nvim',
+            -- tag = "v2.*",
+            config = function()
+                require('plugins.configs.bufferline')
+
+            end,
+            -- requires = 'kyazdani42/nvim-web-devicons',
+        }
+
         -- Neotree: file manager --
 
         use {
             "nvim-neo-tree/neo-tree.nvim",
             branch = "v2.x",
+            config = function ()
+                require('plugins.configs.neo-tree')
+            end,
             requires = {
                 "nvim-lua/plenary.nvim",
                 "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
@@ -168,6 +181,14 @@ return require('packer').startup({
                 { 'rafamadriz/friendly-snippets' },
             }
         }
+
+        use({
+            "jose-elias-alvarez/null-ls.nvim",
+            config = function()
+                require("plugins.configs.null-ls")
+            end,
+            requires = { "nvim-lua/plenary.nvim" },
+        })
 
         use {
             'vimwiki/vimwiki',
