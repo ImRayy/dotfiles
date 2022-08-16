@@ -4,6 +4,10 @@ vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = 'init.lua',
     command = 'source <afile> | PackerCompile',
 })
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+    return
+end
 
 return require('packer').startup({
     function(use)
@@ -68,10 +72,9 @@ return require('packer').startup({
         use { 'akinsho/bufferline.nvim',
             -- tag = "v2.*",
             config = function()
-                require('plugins.configs.bufferline')
+                require('plugins.configs.others').bufferline()
 
             end,
-            -- requires = 'kyazdani42/nvim-web-devicons',
         }
 
         -- Neotree: file manager --
@@ -79,7 +82,7 @@ return require('packer').startup({
         use {
             "nvim-neo-tree/neo-tree.nvim",
             branch = "v2.x",
-            config = function ()
+            config = function()
                 require('plugins.configs.neo-tree')
             end,
             requires = {
@@ -119,34 +122,20 @@ return require('packer').startup({
         }
 
 
-
-        -- Nvim Autopairs: Autopair --
-
-        use {
-            "windwp/nvim-autopairs",
-            config = function() require("nvim-autopairs").setup {} end
-        }
-
         -- Treesitter: Better Highlights --
 
-        use({
-            {
-                'nvim-treesitter/nvim-treesitter',
-                event = 'CursorHold',
-                run = ':TSUpdate',
-                setup = function()
-                    require("core.lazyload")
-                end,
-                config = function()
-                    require('plugins.configs.treesitter')
-                end,
-            },
-            { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
-            { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
-            { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
-            { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
-            { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' },
-        })
+        use {
+            'nvim-treesitter/nvim-treesitter',
+            module = "nvim-treesitter",
+            setup = function()
+                require('core.lazyload').on_file_open 'nvim-treesitter'
+            end,
+            cmd = require("core.lazyload").treesitter_cmds,
+            run = ":TSUpdate",
+            config = function()
+                require "plugins.configs.treesitter"
+            end,
+        }
 
         -- Telescope: Fuzzy Finder --
 
@@ -162,6 +151,11 @@ return require('packer').startup({
 
         use {
             'VonHeikemen/lsp-zero.nvim',
+            config = function()
+                local lsp = require("lsp-zero")
+                lsp.preset("recommended")
+                lsp.setup()
+            end,
             requires = {
                 -- LSP Support
                 { 'neovim/nvim-lspconfig' },
@@ -182,13 +176,24 @@ return require('packer').startup({
             }
         }
 
+
         use({
             "jose-elias-alvarez/null-ls.nvim",
             config = function()
-                require("plugins.configs.null-ls")
+                require("plugins.configs.others").null_ls()
             end,
             requires = { "nvim-lua/plenary.nvim" },
         })
+
+        -- Nvim Autopairs: Autopair --
+
+        use {
+            "windwp/nvim-autopairs",
+            config = function() require("nvim-autopairs").setup {}
+            end
+        }
+
+        -- vimwiki --
 
         use {
             'vimwiki/vimwiki',
@@ -203,12 +208,11 @@ return require('packer').startup({
             end
         }
 
-
     end,
     config = {
         display = {
             open_fn = function()
-                return require('packer.util').float({ border = 'single' })
+                return require('packer.util').float({ border = 'rounded' })
             end,
         },
     },

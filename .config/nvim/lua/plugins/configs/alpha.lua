@@ -1,6 +1,6 @@
-local present, alpha = pcall(require, "alpha")
+local status_ok, alpha = pcall(require, "alpha")
 
-if not present then
+if not status_ok then
    return
 end
 

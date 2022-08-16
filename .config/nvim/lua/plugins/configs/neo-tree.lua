@@ -1,5 +1,5 @@
-local present, neotree = pcall(require, "neo-tree")
-if not present then
+local status_ok, neotree = pcall(require, "neo-tree")
+if not status_ok then
     return
 end
 neotree.setup({
