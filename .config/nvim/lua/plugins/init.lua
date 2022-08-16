@@ -49,6 +49,13 @@ return require('packer').startup({
             end,
         }
 
+        use ({
+            'rcarriga/nvim-notify',
+            config = function ()
+                require('plugins.configs.others').notify()
+            end
+        })
+
         use('psliwka/vim-smoothie')
 
         use({
@@ -121,7 +128,6 @@ return require('packer').startup({
             end
         }
 
-
         -- Treesitter: Better Highlights --
 
         use {
@@ -152,9 +158,15 @@ return require('packer').startup({
         use {
             'VonHeikemen/lsp-zero.nvim',
             config = function()
-                local lsp = require("lsp-zero")
-                lsp.preset("recommended")
-                lsp.setup()
+                require('plugins.configs.lspzero')
+                -- local status_ok, lsp = pcall(require,'lsp-zero')
+                -- if not status_ok then
+                --     return
+                -- end
+                --
+                -- lsp.preset('recommended')
+                -- lsp.setup()
+                
             end,
             requires = {
                 -- LSP Support
@@ -210,7 +222,15 @@ return require('packer').startup({
 
     end,
     config = {
+        auto_clean = true,
+        compile_on_sync = true,
+        git = { clone_timeout = 6000 },
         display = {
+            working_sym = "ﲊ",
+            error_sym = "✗ ",
+            done_sym = " ",
+            removed_sym = " ",
+            moved_sym = "",
             open_fn = function()
                 return require('packer.util').float({ border = 'rounded' })
             end,

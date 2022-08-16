@@ -32,6 +32,9 @@ map ('n', '<leader>fh', ':Telescope help_tags<CR>')
 map ('n', '<C-n>', ':Neotree toggle reveal_force_cwd<CR>')
 
 -- Bufferline
+map ('n', '<S-l>',':BufferLineCycleNext<CR>')
+map ('n', '<S-h>',':BufferLineCyclePrev<CR>')
 
-map ('n', '<C-l>',':BufferLineCycleNext<CR>')
-map ('n', '<C-h>',':BufferLineCyclePrev<CR>')
+-- Code format with null-ls
+map ('n', '<C-f>', ':lua vim.lsp.buf.formatting()<CR>')
+

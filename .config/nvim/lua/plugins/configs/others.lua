@@ -1,5 +1,15 @@
 local M = {}
 
+M.notify = function ()
+    local status_ok, nvimnotify = pcall(require, 'notify')
+    if not status_ok then
+        return
+    end
+    
+    vim.notify = nvimnotify
+
+end
+
 M.null_ls = function()
     local status_ok, null_ls = pcall(require, 'null-ls')
 
@@ -36,13 +46,11 @@ M.bufferline = function()
                 { filetype = "Outline", text = "", padding = 1 },
             },
 
-            text = "File Explorer",
-            highlight = "Directory",
-            text_align = "center",
-            diagnostics = "nvim_lsp",
+            -- text = "File Explorer",
+            -- highlight = "Directory",
+            -- text_align = "center",
+            -- diagnostics = "nvim_lsp",
         }
     }
 end
-
 return M
-

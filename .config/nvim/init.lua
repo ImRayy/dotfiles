@@ -1,7 +1,7 @@
 require("core.keybindings")
 require("core.settings")
+require("core.kittymargin") -- won't work with other than kitty
 require("core.bootstrap")
-require("core.kittymargin") -- won't work with o             ther than kitty
 require("plugins")
 require("plugins.configs.others")
 
