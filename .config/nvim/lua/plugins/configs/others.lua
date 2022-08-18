@@ -1,11 +1,13 @@
 local M = {}
 
-M.notify = function ()
+M.notify = function()
     local status_ok, nvimnotify = pcall(require, 'notify')
     if not status_ok then
         return
     end
-    
+    nvimnotify.setup({
+        stages = 'fade'
+    })
     vim.notify = nvimnotify
 
 end
@@ -19,17 +21,28 @@ M.null_ls = function()
 
     local formatting = null_ls.builtins.formatting
     local diagnostics = null_ls.builtins.diagnostics
-
+    local completion = null_ls.builtins.completion
+    local code_actions = null_ls.builtins.code_actions
     null_ls.setup({
         debug = false,
         sources = {
-            formatting.yapf,
             formatting.prettier.with { extra_args = { '--no-semi', '--single-quote', '--jsx-single-quote' } },
-            -- formatting.black.with { extra_args = {'--fast'}},
+            formatting.black.with { extra_args = { '--fast' } },
             formatting.stylua,
-            -- diagnostics.flake8
+            diagnostics.flake8,
+            -- diagnostics.misspell,
+            completion.spell,
         }
     })
+end
+
+
+M.nulllf = function ()
+    local status_ok, nulllf = pcall(require, 'nulllf')
+
+    if not status_ok then 
+        return
+    end
 end
 
 M.bufferline = function()

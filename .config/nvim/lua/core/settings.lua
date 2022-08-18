@@ -4,7 +4,6 @@ local cmd = vim.cmd
 
 -- cmd('syntax on')
 -- vim.api.nvim_command('filetype plugin indent on')
-
 opt.termguicolors = true
 -- o.background = 'dark'
 
@@ -62,9 +61,9 @@ opt.history = 50
 -- Better buffer splitting
 opt.splitright = true
 opt.splitbelow = true
-opt.mouse = true
-cmd[[set mouse=a]]
-
+opt.mouse = 'a'
+-- opt.spelllang = 'en', 'cjk'
+-- opt.spellsuggest = 'best', '9'
 
 -- BUG: this won't update the search count after pressing `n` or `N`
 -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen
