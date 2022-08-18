@@ -14,7 +14,5 @@ require('mason').setup({
     }
 })
 
--- require('plugins.configs.cmp')
-
 lsp.preset('recommended')
 lsp.setup()

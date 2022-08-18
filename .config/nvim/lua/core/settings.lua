@@ -1,81 +1,34 @@
-local opt = vim.o
-local g = vim.g
-local cmd = vim.cmd
+local options = {
+    termguicolors = true,          -- set term gui colors (most terminals support this)
+    timeoutlen = 500,              -- time to wait for a mapped sequence to complete (in milliseconds) 
+    updatetime = 200,              -- faster completion (4000ms default)
+    scrolloff = 8,
+    number = true,                  -- set numbered lines
+    numberwidth = 6,                -- set number column width
+    cursorline = true,              -- highlight the current line
+    expandtab = true,               -- convert tabs to spaces
+    cindent = true,
+    wrap = true,                    -- display lines as one long line
+    textwidth = 300,
+    tabstop = 4,                    -- insert 2 spaces for a tab
+    shiftwidth = 0,                 -- the number of spaces inserted for each indentation
+    softtabstop = -1,               -- If negative, shiftwidth value is used
+    list = true,                    
+    clipboard = 'unnamedplus',      -- Makes neovim and host OS clipboard play nicely with each other
+    ignorecase = true,              -- Case insensitive searching UNLESS /C or capital in search
+    smartcase = true,               -- smart case
+    backup = false,                 -- Undo and backup options
+    writebackup = false,            -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+    undofile = true,                -- enable persistent undo
+    swapfile = false,               -- creates a swapfile
+    history = 50,                   -- Remember 50 items in commandline history
+    splitright = true,              -- Better buffer splitting
+    splitbelow = true,
+    mouse = 'a',
+    listchars = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂',
+}
 
--- cmd('syntax on')
--- vim.api.nvim_command('filetype plugin indent on')
-opt.termguicolors = true
--- o.background = 'dark'
 
--- Do not save when switching buffers
--- o.hidden = true
-
--- Decrease update time
-opt.timeoutlen = 500
-opt.updatetime = 200
-
--- Number of screen lines to keep above and below the cursor
-opt.scrolloff = 8
-
--- Better editor UI
-opt.number = true
-opt.numberwidth = 6
--- o.relativenumber = true
--- o.signcolumn = 'yes'
-opt.cursorline = true
-
--- Better editing experience
-opt.expandtab = true
--- o.smarttab = true
-opt.cindent = true
--- o.autoindent = true
-opt.wrap = true
-opt.textwidth = 300
-opt.tabstop = 4
-opt.shiftwidth = 0
-opt.softtabstop = -1 -- If negative, shiftwidth value is used
-opt.list = true
-opt.listchars = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂'
--- o.listchars = 'eol:¬,space:·,lead: ,trail:·,nbsp:◇,tab:→-,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:│   ,'
--- o.formatoptions = 'qrn1'
-
--- Makes neovim and host OS clipboard play nicely with each other
-opt.clipboard = 'unnamedplus'
-
--- Case insensitive searching UNLESS /C or capital in search
-opt.ignorecase = true
-opt.smartcase = true
-
--- Undo and backup options
-opt.backup = false
-opt.writebackup = false
-opt.undofile = true
-opt.swapfile = false
--- o.backupdir = '/tmp/'
--- o.directory = '/tmp/'
--- o.undodir = '/tmp/'
-
--- Remember 50 items in commandline history
-opt.history = 50
-
--- Better buffer splitting
-opt.splitright = true
-opt.splitbelow = true
-opt.mouse = 'a'
--- opt.spelllang = 'en', 'cjk'
--- opt.spellsuggest = 'best', '9'
-
--- BUG: this won't update the search count after pressing `n` or `N`
--- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen
--- o.lazyredraw = true
-
--- Better folds (don't fold by default)
--- o.foldmethod = 'indent'
--- o.foldlevelstart = 99
--- o.foldnestmax = 3
--- o.foldminlines = 1
-
--- Map <leader> to space
--- g.mapleader = ' '
-
--- g.maplocalleader = ' '
+for x,y in pairs(options) do
+    vim.opt[x] = y
+end
