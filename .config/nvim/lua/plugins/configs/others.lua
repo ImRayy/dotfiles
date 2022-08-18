@@ -36,15 +36,6 @@ M.null_ls = function()
     })
 end
 
-
-M.nulllf = function ()
-    local status_ok, nulllf = pcall(require, 'nulllf')
-
-    if not status_ok then 
-        return
-    end
-end
-
 M.bufferline = function()
     local status_ok, bufferline = pcall(require, "bufferline")
     if not status_ok then
@@ -59,10 +50,10 @@ M.bufferline = function()
                 { filetype = "Outline", text = "", padding = 1 },
             },
 
-            -- text = "File Explorer",
-            -- highlight = "Directory",
-            -- text_align = "center",
-            -- diagnostics = "nvim_lsp",
+            text = "File Explorer",
+            highlight = "Directory",
+            text_align = "center",
+            diagnostics = "nvim_lsp",
         }
     }
 end

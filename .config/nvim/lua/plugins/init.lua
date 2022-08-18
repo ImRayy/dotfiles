@@ -217,11 +217,14 @@ return require("packer").startup({
         use({
             "vimwiki/vimwiki",
             config = function()
+                vim.g.vimwiki_global_ext = 0
                 vim.g.vimwiki_list = {
                     {
                         path = "~/MEGAsync/Notes/vimwiki/",
                         syntax = "markdown",
                         ext = ".md",
+                        auto_generate_tags = 1,
+                        auto_generaed_links = 1
                     },
                 }
             end,
