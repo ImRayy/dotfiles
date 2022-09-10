@@ -87,7 +87,6 @@ alias tre="trash-empty"
 
 # Other programs
 alias driver='glxinfo | grep OpenGL'
-alias task='please'
 alias csend='croc send --code'
 alias scrcpylbr='scrcpy --bit-rate 2M'
 alias rmmetad='exiftool -all= -overwrite_original'
@@ -108,3 +107,5 @@ alias aquarium=asciiquarium
 alias lf='~/.config/lf/scripts/lfrun'
 alias updmirror="cp /etc/pacman.d/mirrorlist ~/backup && cd ~/backup && mv mirrorlist mirrorlist_(date "+%Y-%m-%d-%T").bak && cd $HOME && sudo reflector --latest 20 --age 1 --fastest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist && echo 'mirrorlist successfully updated'"
 
+# GRUB
+alias grubupd='sudo grub-mkconfig -o /boot/grub/grub.cfg '

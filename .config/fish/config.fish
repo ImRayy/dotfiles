@@ -33,6 +33,11 @@ set fish_color_param brcyan
 
 
 # Functions needed for !! and !$
+if type -q please
+    please
+else
+end
+
 function __history_previous_command
   switch (commandline -t)
   case "!"
