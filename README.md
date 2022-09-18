@@ -25,3 +25,4 @@
 ---
 #### All files I consider big will be uploaded in following drives
 [![MediaFire](https://img.shields.io/badge/MediaFire-9cf?style=for-the-badge&logo=Mediafire&?logoColor=violet)](https://www.mediafire.com/folder/ue70r5fnbyxp6/dotfiles)
+[![MEGA](https://img.shields.io/badge/MEGA-D9272E?logo=mega&style=for-the-badge)](https://mega.nz/folder/b4xzlJaA#7ThCdDHl5FgxrBs00MmcSQ)
