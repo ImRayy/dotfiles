@@ -78,12 +78,12 @@ super + c
 
 # Screenshot
 super + s
-    cd ~/Pictures/ && ~/Downloads/GIT/rofiadi/rofi/1080p/applets/android/screenshot.sh 
+    ~/.config/rofi/applets/bin/screenshot.sh 
 
 
 # Apps
 super + a
-    ~/.config/rofi/launchers/colorful/launcher.sh
+    ~/.config/rofi/launchers/type-5/launcher.sh
 
 #VS-Code
 super + e
@@ -100,7 +100,7 @@ super + h
 
 #arcolinux-logout
 super + x
-    ~/.config/rofi/applets/applets/powermenu.sh
+    ~/.config/rofi/powermenu/type-4/powermenu.sh
 
 #Rofi theme selector
 super + r

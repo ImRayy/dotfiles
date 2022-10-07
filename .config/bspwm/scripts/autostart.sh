@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 function run {
   if ! pgrep $1 ;
@@ -12,7 +12,7 @@ function run {
 
 
 # ｐｏｌｙｂａｒ
-~/.config/polybar/forest/launch.sh &
+~/.config/polybar/launch.sh --forest &
 
 
 # ｓｘｈｋｄ
@@ -41,7 +41,7 @@ numlockx on &               # enables numlock on system boot
 #run xfce4-clipman &         # clipboard manager
 #run nm-applet &             # network manager icon
 #run imwheel &               # for faster mouse scroll
-run greenclip daemon &      # CLI clipboard manager
+# run greenclip daemon &      # CLI clipboard manager
 run ~/.config/conky/launch.sh
 
 # ｐｉｃｏｍ
@@ -51,7 +51,7 @@ picom --experimental-backend --config ~/.config/bspwm/picom/picom.conf &
 
 # ｐｏｌｋｉｔ  ａｇｅｎｔ
 #run lxsession &
-/usr/lib/polkit-kde-authentication-agent-1 &
+# /usr/lib/polkit-kde-authentication-agent-1 &
 #/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 
@@ -63,8 +63,7 @@ run dunst &
 
 #Ｉｎｐｕｔ  Ｍｅｔｈｏｄ
 
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-ibus-daemon -drxR
-
+# export GTK_IM_MODULE=ibus
+# export XMODIFIERS=@im=ibus
+# export QT_IM_MODULE=ibus
+# ibus-daemon -drxR
