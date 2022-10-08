@@ -13,8 +13,7 @@
 ---
 ### Contents
 - [bspwm](https://github.com/ImRayy/dotfiles/tree/master/.config/bspwm)
-- [polybar](https://github.com/adi1090x/
-polybar-themes) 
+- [polybar](https://github.com/adi1090x/polybar-themes) 
 - [rofi](https://github.com/adi1090x/rofi) 
 - [Kitty](https://github.com/ImRayy/dotfiles/tree/master/.config/kitty)
 - [Fish](https://github.com/ImRayy/dotfiles/tree/master/.config/fish)
