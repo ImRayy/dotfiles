@@ -77,7 +77,15 @@ cmd sudomkfile ${{
   sudo $EDITOR $ans
 }}
 
-cmd setwallpaper %cp "$f" ~/.config/wall.png && feh --bg-fill "$f"
+# cmd setwallpaper %cp "$f" ~/.config/wall.png && feh --bg-fill "$f"
+cmd setwallpaper ${{
+    if [ $DESKTOP_SESSION == gnome ];then
+        gsettings set org.gnome.desktop.background picture-uri "$f"
+    else
+        cp "$f" ~/.config/wall.png && feh --bg-fill "$f"
+    fi
+
+}}
 
 cmd fzf_jump ${{
   res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
@@ -214,6 +222,3 @@ map gp     cd ~/Pictures
 map ge     cd /media/Entertainment
 map gm     cd /media/Entertainment/🎧Music
 map gmw    cd /media/MyWaifu
-
-
-
