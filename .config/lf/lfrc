@@ -1,6 +1,6 @@
 # Ｓｅｔｔｉｎｇｓ
 set preview
-set drawbox 
+# set drawbox 
 set icons 
 set ignorecase
 set info size
@@ -8,8 +8,8 @@ set ifs "\n"
 set filesep "\n"
 
 # Custom script for image preview
-set previewer ~/.config/lf/scripts/preview
-set cleaner ~/.config/lf/scripts/cleaner
+set previewer ~/.config/lf/scripts/lf_kitty_preview
+set cleaner ~/.config/lf/scripts/lf_kitty_clean
 
 # uncomment for stpv preview
 #set previewer stpv
@@ -81,8 +81,10 @@ cmd sudomkfile ${{
 cmd setwallpaper ${{
     if [ $DESKTOP_SESSION == gnome ];then
         gsettings set org.gnome.desktop.background picture-uri "$f"
+    elif [ $XDG_SESSION_TYPE == wayland ];then
+       cp "$f" ~/.config/wall.png && swww img "$f" 
     else
-        cp "$f" ~/.config/wall.png && feh --bg-fill "$f"
+        cp "$f" ~/.config/wall.png && feh --bg-fill ~/.config/wall.png
     fi
 
 }}
