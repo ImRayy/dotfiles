@@ -1,6 +1,6 @@
 # Ｓｅｔｔｉｎｇｓ
 set preview
-# set drawbox 
+set drawbox 
 set icons 
 set ignorecase
 set info size
@@ -8,8 +8,10 @@ set ifs "\n"
 set filesep "\n"
 
 # Custom script for image preview
-set previewer ~/.config/lf/scripts/lf_kitty_preview
-set cleaner ~/.config/lf/scripts/lf_kitty_clean
+# set previewer ~/.config/lf/scripts/lf_kitty_preview
+# set cleaner ~/.config/lf/scripts/lf_kitty_clean
+set previewer ~/.config/lf/scripts/preview
+set cleaner ~/.config/lf/scripts/cleaner
 
 # uncomment for stpv preview
 #set previewer stpv
@@ -80,13 +82,19 @@ cmd sudomkfile ${{
 # cmd setwallpaper %cp "$f" ~/.config/wall.png && feh --bg-fill "$f"
 cmd setwallpaper ${{
     if [ $DESKTOP_SESSION == gnome ];then
-        gsettings set org.gnome.desktop.background picture-uri "$f"
+        gsettings set org.gnome.desktop.background picture-uri-dark "$f"
     elif [ $XDG_SESSION_TYPE == wayland ];then
        cp "$f" ~/.config/wall.png && swww img "$f" 
     else
         cp "$f" ~/.config/wall.png && feh --bg-fill ~/.config/wall.png
     fi
 
+}}
+
+cmd setwallpaper-dark ${{
+    if [ $DESKTOP_SESSION == gnome ];then 
+        gsettings set org.gnome.desktop.background picture-uri-dark "$f"
+    fi
 }}
 
 cmd fzf_jump ${{
@@ -202,6 +210,7 @@ map md mkdir
 map ms $mkscript
 map ch chmod
 map ; setwallpaper
+map w setwallpaper-dark
 map o open_config
 map br $vimv $fx
 map r rename
