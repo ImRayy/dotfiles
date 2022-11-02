@@ -4,7 +4,6 @@ if not status_ok then
    return
 end
 
---require("base46").load_highlight "alpha"
 
 local function button(sc, txt, keybind)
    local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
@@ -66,7 +65,7 @@ options.buttons = {
       button("SPC f o", "  Recent File  ", ":Telescope oldfiles<CR>"),
       button("SPC f w", "  Find Word  ", ":Telescope live_grep<CR>"),
       button("SPC b m", "  Bookmarks  ", ":Telescope marks<CR>"),
-      button("SPC t h", "  Themes  ", ":Telescope themes<CR>"),
+      -- button("SPC t h", "  Themes  ", ":Telescope colorscheme<CR>"),
       button("SPC e s", "  Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
    },
    opts = {
@@ -74,7 +73,6 @@ options.buttons = {
    },
 }
 
--- options = require("core.utils").load_override(options, "goolord/alpha-nvim")
 
 -- dynamic header padding
 local fn = vim.fn

@@ -50,3 +50,7 @@ map('n', 'gcc', "v:count == 0 ? '<Plug>(comment_toggle_linewise_current)' : '<Pl
 
 -- Toggle in VISUAL mode
 map('x', '<C-/>', '<Plug>(comment_toggle_linewise_visual)')
+
+map('x', '<S-y>', ':w !wl-copy<CR><CR>')
+
+map('x', '<Leader>f', ':lua require"telescope.builtin".find_files(require("telescope.themes").get_dropdown({}))<CR>')
