@@ -22,7 +22,6 @@
 - [lf](https://github.com/ImRayy/dotfiles/blob/master/.config/lf)
 - [dunst](https://github.com/ImRayy/dotfiles/blob/master/.config/dunst)
 - [neovim](https://github.com/ImRayy/dotfiles/blob/master/.config/nvim)
-- [startpage](https://github.com/ImRayy/dotfiles/blob/master/Startpage)
 
 ---
 #### All files I consider big will be uploaded in following drives
