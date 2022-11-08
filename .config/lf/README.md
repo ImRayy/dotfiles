@@ -1,5 +1,4 @@
-![lf.png](https://i.postimg.cc/g0XRTtfv/lf.png)
-![lf-onedark](https://i.postimg.cc/xTDrjJKD/lf-onedark.png)
+![lf-onedark](https://www.dropbox.com/s/p5j52n67e3o2kfc/lf-onedark.webp?raw=1) 
 ---
 ###### Prerequesites:
 
