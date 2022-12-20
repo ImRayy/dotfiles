@@ -1,4 +1,4 @@
-![lf-onedark](https://www.dropbox.com/s/p5j52n67e3o2kfc/lf-onedark.webp?raw=1) 
+![lf-onedark](https://link.storjshare.io/raw/jvtcubdraokdl5e4wzz5j4fpihzq/dotfiles%2F.config%2Flf%2Flf-onedark.webp) 
 ---
 ###### Prerequesites:
 
