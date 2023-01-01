@@ -57,4 +57,20 @@ M.bufferline = function()
         }
     }
 end
+
+M.notify = function()
+    local status_ok, notify = pcall(require, "notify")
+    if not status_ok then
+        return 
+    end 
+    notify.setup{
+        fps = 60,
+        timeout = 1000,
+        level = 2,
+        minimum_width = 50,
+        render = "minimal",
+        stages = "fade_in_slide_out",
+    }
+end
+
 return M

@@ -1,254 +1,261 @@
 -- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
 vim.api.nvim_create_autocmd("BufWritePost", {
-    group = vim.api.nvim_create_augroup("PACKER", { clear = true }),
-    pattern = "init.lua",
-    command = "source <afile> | PackerCompile",
+	group = vim.api.nvim_create_augroup("PACKER", { clear = true }),
+	pattern = "init.lua",
+	command = "source <afile> | PackerCompile",
 })
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-    return
+	return
 end
 
 return require("packer").startup({
-    function(use)
-        -- Package Manager --
+	function(use)
+		-- Package Manager --
 
-        use("wbthomason/packer.nvim")
+		use("wbthomason/packer.nvim")
 
-        -- Required plugins --
+		-- Required plugins --
 
-        use("nvim-lua/plenary.nvim")
+		use("nvim-lua/plenary.nvim")
 
-        -- UI | Themes --
+		-- UI | Themes --
 
-        use({
-            "kyazdani42/nvim-web-devicons",
-            config = function()
-                require("nvim-web-devicons").setup()
-            end,
-        })
+		use({
+			"kyazdani42/nvim-web-devicons",
+			config = function()
+				require("nvim-web-devicons").setup()
+			end,
+		})
 
-        -- Onedark Colorscheme
-        use({
-            "navarasu/onedark.nvim",
-            config = function()
-                require("onedark").setup({
-                    style = "darker",
-                })
-                require("onedark").load()
-            end,
-        })
+		-- Onedark Colorscheme
+		use({
+			"navarasu/onedark.nvim",
+			config = function()
+				require("onedark").setup({
+					style = "darker",
+				})
+				require("onedark").load()
+			end,
+		})
 
-        -- Statrup Screen
-        use({
-            "goolord/alpha-nvim",
-            requires = { "kyazdani42/nvim-web-devicons" },
-            config = function()
-                require("plugins.configs.alpha")
-            end,
-        })
+		-- Statrup Screen
+		use({
+			"goolord/alpha-nvim",
+			requires = { "kyazdani42/nvim-web-devicons" },
+			config = function()
+				require("plugins.configs.alpha")
+			end,
+		})
 
-        use({
-            "folke/noice.nvim",
-            config = function()
-                require("noice").setup()
-            end,
-            requires = {
-                "MunifTanjim/nui.nvim",
-                "rcarriga/nvim-notify",
-            },
-        })
+		use({
+			"folke/noice.nvim",
+			config = function()
+				require("noice").setup()
+			end,
+			requires = {
+				"MunifTanjim/nui.nvim",
+			},
+		})
 
-        -- Smooth Scrolling
-        use("psliwka/vim-smoothie")
+		use({
+			"rcarriga/nvim-notify",
+			config = function()
+                require("plugins.configs.others").notify()
+			end,
+		})
 
-        -- Status Bar
-        use({
-            {
-                "nvim-lualine/lualine.nvim",
-                event = "BufEnter",
-                config = function()
-                    require("plugins.configs.statusline")
-                end,
-            },
-            {
-                "j-hui/fidget.nvim",
-                after = "lualine.nvim",
-                config = function()
-                    require("fidget").setup()
-                end,
-            },
-        })
+		-- Smooth Scrolling
+		use("psliwka/vim-smoothie")
 
-        -- Bufferline: elegant tabline
-        use({
-            "akinsho/bufferline.nvim",
-            -- tag = "v2.*",
-            config = function()
-                require("plugins.configs.others").bufferline()
-            end,
-        })
+		-- Status Bar
+		use({
+			{
+				"nvim-lualine/lualine.nvim",
+				event = "BufEnter",
+				config = function()
+					require("plugins.configs.statusline")
+				end,
+			},
+			{
+				"j-hui/fidget.nvim",
+				after = "lualine.nvim",
+				config = function()
+					require("fidget").setup()
+				end,
+			},
+		})
 
-        -- Neotree: file manager --
-        use({
-            "nvim-neo-tree/neo-tree.nvim",
-            branch = "v2.x",
-            config = function()
-                require("plugins.configs.neo-tree")
-            end,
-            requires = {
-                "nvim-lua/plenary.nvim",
-                "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-                "MunifTanjim/nui.nvim",
-            },
-        })
+		-- Bufferline: elegant tabline
+		use({
+			"akinsho/bufferline.nvim",
+			-- tag = "v2.*",
+			config = function()
+				require("plugins.configs.others").bufferline()
+			end,
+		})
 
-        -- WhichKey : Shows keybindings --
-        use({
-            "folke/which-key.nvim",
-            config = function()
-                require("which-key").setup()
-            end,
-        })
+		-- Neotree: file manager --
+		use({
+			"nvim-neo-tree/neo-tree.nvim",
+			branch = "v2.x",
+			config = function()
+				require("plugins.configs.neo-tree")
+			end,
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended "MunifTanjim/nui.nvim",
+			},
+		})
 
-        -- Indent Blankline --
-        use({
-            "lukas-reineke/indent-blankline.nvim",
-            config = function()
-                require("indent_blankline").setup({
-                    show_current_context = true,
-                    show_current_context_start = true,
-                })
-            end,
-        })
-        
-        -- Makes Commenting Easy
-        use({
-            "numToStr/Comment.nvim",
-            config = function()
-                require("Comment").setup()
-            end,
-        })
+		-- WhichKey : Shows keybindings --
+		use({
+			"folke/which-key.nvim",
+			config = function()
+				require("which-key").setup()
+			end,
+		})
 
-        -- Treesitter: Better Highlights --
-        use({
-            "nvim-treesitter/nvim-treesitter",
-            module = "nvim-treesitter",
-            setup = function()
-                require("core.lazyload").on_file_open("nvim-treesitter")
-            end,
-            cmd = require("core.lazyload").treesitter_cmds,
-            run = ":TSUpdate",
-            config = function()
-                require("plugins.configs.treesitter")
-            end,
-        })
+		-- Indent Blankline --
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			config = function()
+				require("indent_blankline").setup({
+					show_current_context = true,
+					show_current_context_start = true,
+				})
+			end,
+		})
 
-        -- Telescope: Fuzzy Finder --
-        use({
-            "nvim-telescope/telescope.nvim",
-            tag = "0.1.0",
-            requires = { { "nvim-lua/plenary.nvim" } },
-        })
+		-- Makes Commenting Easy
+		use({
+			"numToStr/Comment.nvim",
+			config = function()
+				require("Comment").setup()
+			end,
+		})
 
-        -- Markdown Preview
-        use({
-            "iamcco/markdown-preview.nvim",
-            run = "cd app && npm install",
-            setup = function()
-                vim.g.mkdp_filetypes = { "markdown" }
-            end,
-            ft = { "markdown" },
-        })
+		-- Treesitter: Better Highlights --
+		use({
+			"nvim-treesitter/nvim-treesitter",
+			module = "nvim-treesitter",
+			setup = function()
+				require("core.lazyload").on_file_open("nvim-treesitter")
+			end,
+			cmd = require("core.lazyload").treesitter_cmds,
+			run = ":TSUpdate",
+			config = function()
+				require("plugins.configs.treesitter")
+			end,
+		})
 
-        -- Lsp Zero: LSP and CMP stuff --
-        use({
-            "VonHeikemen/lsp-zero.nvim",
-            config = function()
-                require("plugins.configs.lspzero")
-                -- local status_ok, lsp = pcall(require,'lsp-zero')
-                -- if not status_ok then
-                --     return
-                -- end
-                --
-                -- lsp.preset('recommended')
-                -- lsp.setup()
-            end,
-            requires = {
-                -- LSP Support
-                { "neovim/nvim-lspconfig" },
-                { "williamboman/mason.nvim" },
-                { "williamboman/mason-lspconfig.nvim" },
+		-- Telescope: Fuzzy Finder --
+		use({
+			"nvim-telescope/telescope.nvim",
+			tag = "0.1.0",
+			requires = { { "nvim-lua/plenary.nvim" } },
+		})
 
-                -- Autocompletion
-                { "hrsh7th/nvim-cmp" },
-                { "hrsh7th/cmp-buffer" },
-                { "hrsh7th/cmp-path" },
-                { "saadparwaiz1/cmp_luasnip" },
-                { "hrsh7th/cmp-nvim-lsp" },
-                { "hrsh7th/cmp-nvim-lua" },
+		-- Markdown Preview
+		use({
+			"iamcco/markdown-preview.nvim",
+			run = "cd app && npm install",
+			setup = function()
+				vim.g.mkdp_filetypes = { "markdown" }
+			end,
+			ft = { "markdown" },
+		})
 
-                -- Snippets
-                { "L3MON4D3/LuaSnip" },
-                { "rafamadriz/friendly-snippets" },
-            },
-        })
+		-- Lsp Zero: LSP and CMP stuff --
+		use({
+			"VonHeikemen/lsp-zero.nvim",
+			config = function()
+				require("plugins.configs.lspzero")
+				-- local status_ok, lsp = pcall(require,'lsp-zero')
+				-- if not status_ok then
+				--     return
+				-- end
+				--
+				-- lsp.preset('recommended')
+				-- lsp.setup()
+			end,
+			requires = {
+				-- LSP Support
+				{ "neovim/nvim-lspconfig" },
+				{ "williamboman/mason.nvim" },
+				{ "williamboman/mason-lspconfig.nvim" },
 
-        use({
-            "jose-elias-alvarez/null-ls.nvim",
-            config = function()
-                require("plugins.configs.others").null_ls()
-            end,
-            requires = { "nvim-lua/plenary.nvim" },
-        })
+				-- Autocompletion
+				{ "hrsh7th/nvim-cmp" },
+				{ "hrsh7th/cmp-buffer" },
+				{ "hrsh7th/cmp-path" },
+				{ "saadparwaiz1/cmp_luasnip" },
+				{ "hrsh7th/cmp-nvim-lsp" },
+				{ "hrsh7th/cmp-nvim-lua" },
 
-        -- Nvim Autopairs: Autopair --
-        use({
-            "windwp/nvim-autopairs",
-            config = function()
-                require("nvim-autopairs").setup()
-            end,
-        })
+				-- Snippets
+				{ "L3MON4D3/LuaSnip" },
+				{ "rafamadriz/friendly-snippets" },
+			},
+		})
 
-        -- Autohighlight word under cursor
-        use({
-            "echasnovski/mini.cursorword",
-            branch = "stable",
-            config = function()
-                require("mini.cursorword").setup()
-            end,
-        })
+		use({
+			"jose-elias-alvarez/null-ls.nvim",
+			config = function()
+				require("plugins.configs.others").null_ls()
+			end,
+			requires = { "nvim-lua/plenary.nvim" },
+		})
 
-        -- vimwiki: Note Taking Env --
-        use({
-            "vimwiki/vimwiki",
-            config = function()
-                vim.g.vimwiki_global_ext = 0
-                vim.g.vimwiki_list = {
-                    {
-                        path = "~/MEGAsync/Notes/vimwiki/",
-                        syntax = "markdown",
-                        ext = ".md",
-                        auto_generate_tags = 1,
-                        auto_generaed_links = 1,
-                    },
-                }
-            end,
-        })
-    end,
-    config = {
-        auto_clean = true,
-        compile_on_sync = true,
-        git = { clone_timeout = 6000 },
-        display = {
-            working_sym = "ﲊ",
-            error_sym = "✗ ",
-            done_sym = " ",
-            removed_sym = " ",
-            moved_sym = "",
-            open_fn = function()
-                return require("packer.util").float({ border = "rounded" })
-            end,
-        },
-    },
+		-- Nvim Autopairs: Autopair --
+		use({
+			"windwp/nvim-autopairs",
+			config = function()
+				require("nvim-autopairs").setup()
+			end,
+		})
+
+		-- use("dkarter/bullets.vim")
+
+		-- Autohighlight word under cursor
+		use({
+			"echasnovski/mini.cursorword",
+			branch = "stable",
+			config = function()
+				require("mini.cursorword").setup()
+			end,
+		})
+
+		-- vimwiki: Note Taking Env --
+		use({
+			"vimwiki/vimwiki",
+			config = function()
+				vim.g.vimwiki_global_ext = 0
+				vim.g.vimwiki_list = {
+					{
+						path = "~/MEGAsync/Notes/vimwiki/",
+						syntax = "markdown",
+						ext = ".md",
+						auto_generate_tags = 1,
+						auto_generaed_links = 1,
+					},
+				}
+			end,
+		})
+	end,
+	config = {
+		auto_clean = true,
+		compile_on_sync = true,
+		git = { clone_timeout = 6000 },
+		display = {
+			working_sym = "ﲊ",
+			error_sym = "✗ ",
+			done_sym = " ",
+			removed_sym = " ",
+			moved_sym = "",
+			open_fn = function()
+				return require("packer.util").float({ border = "rounded" })
+			end,
+		},
+	},
 })
