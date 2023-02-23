@@ -7,16 +7,17 @@
 ![code-size](https://img.shields.io/github/languages/code-size/ImRayy/dotfiles?style=for-the-badge)
 
 
-![bspwm](https://i.postimg.cc/MZrRqf6x/homescreen-bspwm.png)
-![neovim](https://i.postimg.cc/PfcQdwmw/neovim.png)
+![bspwm](https://ik.imagekit.io/rayshold/dotfiles/homescreen-bspwm.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1677173057486)
+![neovim](https://ik.imagekit.io/rayshold/dotfiles/_config/nvim/neovim-01.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1671948950964) 
 
 ---
 ### Contents
 - [bspwm](https://github.com/ImRayy/dotfiles/tree/master/.config/bspwm)
 - [polybar](https://github.com/adi1090x/polybar-themes) 
 - [rofi](https://github.com/adi1090x/rofi) 
-- [Kitty](https://github.com/ImRayy/dotfiles/tree/master/.config/kitty)
-- [Fish](https://github.com/ImRayy/dotfiles/tree/master/.config/fish)
+- [kitty](https://github.com/ImRayy/dotfiles/tree/master/.config/kitty)
+- [wezterm](https://github.com/ImRayy/dotfiles/tree/master/.config/wezterm)
+- [fish](https://github.com/ImRayy/dotfiles/tree/master/.config/fish)
 - [starship](https://github.com/ImRayy/dotfiles/blob/master/.config/starship.toml)
 - [neofetch](https://github.com/ImRayy/dotfiles/blob/master/.config/neofetch)
 - [lf](https://github.com/ImRayy/dotfiles/blob/master/.config/lf)
