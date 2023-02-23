@@ -12,7 +12,7 @@ return {
 	-- GENERAL
 	window_background_opacity = 1,
 	default_cursor_style = "BlinkingUnderline",
-	font_end = "OpenGL",
+	front_end = "OpenGL",
 
 	-- TAB BAR
 	enable_tab_bar = true,
@@ -26,7 +26,7 @@ return {
 	font_rules = {
 		{
 			intensity = "Bold",
-			font = fallback_font("JetBrains Mono", { weight = "Bold" }),
+			font = fallback_font(font_family, { weight = "Regular" }),
 		},
 		{
 			italic = true,
@@ -44,10 +44,11 @@ return {
 	},
 	font_size = 12,
 	line_height = 1.1,
-	font_sharper = "Harfbuzz",
+	font_shaper = "Harfbuzz",
 
 	-- COLORSCHEME
-	color_scheme = "Colorful Colors (terminal.sexy)",
+	-- color_scheme = "Colorful Colors (terminal.sexy)",
+	color_scheme = "Dracula",
 	colors = {
 		background = "#1F2329",
 	},
