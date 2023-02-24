@@ -1,10 +1,13 @@
+alias cat=bat
+alias py=python3
 ### ALIASES ###
 # \x1b[2J   <- clears tty
 # \x1b[1;1H <- goes to (1, 1) (start)
 
-# Basic
+# General
 alias c=clear
 alias e=exit
+alias ka=killall
 
 # Navigation
 alias cd1="cd .."
@@ -13,7 +16,7 @@ alias cd3="cd ../../.."
 alias cd4="cd ../../../.."
 alias cd5="cd ../../../../.."
 
-#file managerment
+# File managerment
 alias ls="lsd --group-dirs first"
 alias lf='~/.config/lf/scripts/lfrun'
 
@@ -21,7 +24,7 @@ alias lf='~/.config/lf/scripts/lfrun'
 alias pacq="pacman -Q | grep"
 alias pacorph="pacman -Qdt"
 alias pacin="sudo pacman -S"
-alias pacrem= "sudo pacman -Rns"
+alias pacrem="sudo pacman -Rns"
 alias pacrem="sudo pacman -Runs"
 alias pacreps="pacman -Ss"
 alias pacupd="sudo pacman -Sy"
@@ -31,7 +34,7 @@ alias paccache="sudo pacman -Sc"
 alias allpaccache="sudo pacman -Scc"
 
 
-# yay
+# Yay
 alias yain="yay -S"
 alias yarem="yay -Rns"
 alias yaorph="yay -Qtd"
@@ -50,15 +53,10 @@ alias paupg='paru -Sua'
 alias parem='paru -Rns'
 alias paorph='paru -Qtd'
 
-# Pamac
-alias pin="pamac build"
-alias prem="pamac remove"
-alias psearch="pamac search"
-
 # NoteEditor
 alias nvide=neovide
 
-#grub
+# grub
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # youtube-dlp
@@ -74,7 +72,7 @@ alias clearcache="rm -rf .cache/*"
 alias checkjournal="du -sh /var/log/journal"
 alias clearjournal="sudo journalctl --vacuum-time=2weeks"
 
-# Trash-cli
+# trash-cli
 alias trp="trash-put"
 alias trl="trash-list"
 alias trr="trash-restore"
@@ -86,6 +84,7 @@ alias pf='pfetch'
 alias nf='neofetch'
 
 # Exif cleaner 
+# Arch Linux: perl-image-exiftool
 alias rmmetad='exiftool -all= -overwrite_original'
 alias rmametad='exiftool -all= -overwrite_original -ext'
 
@@ -93,19 +92,20 @@ alias rmametad='exiftool -all= -overwrite_original -ext'
 alias won='nmcli radio wifi on'
 alias woff='nmcli radio wifi off'
 
-# Other programs
-alias driver='glxinfo | grep OpenGL'
-alias csend='croc send --code'
-alias scrcpylbr='scrcpy --bit-rate 2M'
-alias cdns='sudo nvim /etc/resolv.conf'
-alias na='nm-applet'
-alias anime='~/Downloads/GIT/ani-cli/ani-cli'
-alias g='greenclip'
-alias gp='greenclip print'
-alias music='ncmpcpp'
-alias updmirror="cp /etc/pacman.d/mirrorlist ~/backup && cd ~/backup && mv mirrorlist mirrorlist_(date "+%Y-%m-%d-%T").bak && cd $HOME && sudo reflector --latest 20 --age 1 --fastest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist && echo 'mirrorlist successfully updated'"
-alias py=python3
+# Applications
+alias audiorelay='~/Applications/audiorelay/bin/AudioRelay'
+alias nitch='~/Applications/git/nitchNerd'
+
+# custom scripts 
+alias printc='python3 ~/Github/mini-projects/Scripts/easy_print/evenodd_typer.py'
+alias wallrename='bash ~/Github/mini-projects/Scripts/rename.sh'
+
+# dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias cat=bat
-alias ka=killall
-alias printc='python3 ~/Mini-Projects/Scripts/easy_print/evenodd_typer.py'
+
+# Other programs
+alias na='nm-applet'
+alias scrcpylbr='scrcpy --bit-rate 2M'
+alias drivers='glxinfo | grep OpenGL'
+alias csend='croc send --code'
+alias updmirror="cp /etc/pacman.d/mirrorlist ~/backup && cd ~/backup && mv mirrorlist mirrorlist_(date "+%Y-%m-%d-%T").bak && cd $HOME && sudo reflector --latest 20 --age 1 --fastest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist && echo 'mirrorlist successfully updated'"
