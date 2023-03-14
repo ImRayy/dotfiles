@@ -1,10 +1,24 @@
 add_newline = false
 [line_break]
-disabled = true
+disabled = false
+
+[username]
+style_root = "red bold"
+format = "[$user](bold green) "
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = 'on [$hostname](bold yellow) '
+trim_at = "."
+disabled = false
 
 [character]
-success_symbol = "[ ➜](bold green)"
-error_symbol = "[✖](bold red) "
+success_symbol = " [>](bold green)"
+error_symbol = " [x](bold red)"
+vimcmd_symbol = " [<](bold green)"
+
 
 #cmd duration
 [cmd_duration]
@@ -14,9 +28,9 @@ format = " took [$duration]($style)"
 [directory]
 truncation_length = 5
 truncation_symbol = " "
-#format = "[$path]($style)[$lock_symbol]($lock_style) "
 format = "[$path]($style)[$read_only]($read_only_style)"
-home_symbol = " "
+# home_symbol = " "
+# home_symbol = " "
 read_only = "🔒"
 style = "bold cyan"
 
@@ -51,25 +65,15 @@ disabled = true
 
 [git_status]
 conflicted = "⚔️ "
-ahead = "[⇡${count}](bold dimmed green]"
+ahead = "⇡"
 behind = "[⇣${count}](bold dimmed blue)"
 diverged = "⇕${ahead_count}⇣${behind_count}"
 untracked = "[?${count}](bold blue)"
-stashed = "$"
 modified ="[!${count}](bold yellow)"
 staged = "[+${count}](bold yellow)"
 renamed = "» ×${count}"
 deleted = "[✘ ×${count}](bold red)"
 format = "$all_status$ahead_behind"
-#format = '([\[$all_status$ahead_behind\]](bold white))'
-
-
-[hostname]
-ssh_only = false
-format = "<[$hostname]($style)>"
-trim_at = "-"
-style = "bold dimmed white"
-disabled = true
 
 [memory_usage]
 format = "$symbol[${ram}( | ${swap})]($style) "
@@ -113,8 +117,3 @@ style = "bold green"
 #format = "$time($style) "
 #style = "bright-white"
 #disabled = false
-
-[username]
-style_user = "bold dimmed blue"
-show_always = false
-
