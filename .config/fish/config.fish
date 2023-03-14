@@ -9,7 +9,7 @@
 # your path gets massive and fish becomes very slow.
 set -e fish_user_paths
 set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_paths
-
+set fish_vi_key_bindings                          # Enables vim keyhbinding
 ### EXPORT ###
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
@@ -33,10 +33,10 @@ set fish_color_param brcyan
 
 
 # Functions needed for !! and !$
-if type -q please
-    please
-else
-end
+# if type -q please
+#     please
+# else
+# end
 
 function __history_previous_command
   switch (commandline -t)
@@ -116,16 +116,29 @@ function take --argument number
     head -$number
 end
 
+### End of functions ###
 
-### END OF FUNCTIONS ###
 
-
-#### Calling a exernal scripts ####
+#### Calling exernal scripts ####
 
 source ~/.config/fish/completions/alias.fish
-#source ~/personalALias
 source ~/.config/lf/icons/icons
 
-### SETTING THE STARSHIP PROMPT ###
-starship init fish | source
+### Setting up zoxide, z alternative
+if type -q zoxide 
+    zoxide init fish | source
+else 
+end
+
+### Setting the starship prompt ###
+if type -q starship
+    starship init fish | source
+else
+end
+
+# export  QT_QPA_PLATFORM=wayland
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
+
+source ~/secret.fish
 
