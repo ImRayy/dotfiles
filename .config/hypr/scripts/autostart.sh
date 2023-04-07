@@ -16,6 +16,7 @@ run megasync &
 run dunst &
 # numlockx on &
 run copyq &
+run syncthing &
 
 # Authentication Agent
 # /usr/lib/polkit-kde-authentication-agent-1 &
