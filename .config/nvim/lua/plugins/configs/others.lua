@@ -74,18 +74,19 @@ M.notify = function()
 	})
 end
 
-M.project_nvim = function()
-	local status_ok, project = pcall(require, "project_nvim")
+M.tabnine = function()
+	local status_ok, tabnine = pcall(require, "tabnine")
 	if not status_ok then
 		return
 	end
-	project.setup({
-		sync_root_with_cwd = true,
-		respect_buf_cwd = true,
-		update_focused_file = {
-			enable = true,
-			update_root = true,
-		},
+
+	tabnine.setup({
+		disable_auto_comment = true,
+		accept_keymap = "<Tab>",
+		dismiss_keymap = "<C-]>",
+		debounce_ms = 800,
+		suggestion_color = { gui = "#808080", cterm = 244 },
+		exclude_filetypes = { "TelescopePrompt" },
 	})
 end
 

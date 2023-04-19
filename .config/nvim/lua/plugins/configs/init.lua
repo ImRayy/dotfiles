@@ -176,52 +176,39 @@ return require("packer").startup({
 			ft = { "markdown" },
 		})
 
-		-- mason
+		-- Lsp Zero: LSP and CMP stuff --
 		use({
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"neovim/nvim-lspconfig",
-		})
-
-		-- Nvim cmp and snippet stuff
-		use({
-			{
-				"hrsh7th/nvim-cmp",
-				event = "InsertEnter",
-				config = function()
-					require("plugins.configs.nvim-cmp")
-				end,
-				requires = {
-					{
-						"L3MON4D3/LuaSnip",
-						event = "InsertEnter",
-						config = function()
-							require("plugins.configs.luasnip")
-						end,
-						requires = {
-							{
-								"rafamadriz/friendly-snippets",
-								event = "CursorHold",
-							},
-						},
-					},
-				},
-			},
-			{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-		})
-        
-        -- tabnine 
-		use({
-			"codota/tabnine-nvim",
+			"VonHeikemen/lsp-zero.nvim",
 			config = function()
-               require('plugins.configs.others').tabnine() 
+				require("plugins.configs.lspzero")
+				-- local status_ok, lsp = pcall(require,'lsp-zero')
+				-- if not status_ok then
+				--     return
+				-- end
+				--
+				-- lsp.preset('recommended')
+				-- lsp.setup()
 			end,
-			run = "./dl_binaries.sh",
+			requires = {
+				-- LSP Support
+				{ "neovim/nvim-lspconfig" },
+				{ "williamboman/mason.nvim" },
+				{ "williamboman/mason-lspconfig.nvim" },
+
+				-- Autocompletion
+				{ "hrsh7th/nvim-cmp" },
+				{ "hrsh7th/cmp-buffer" },
+				{ "hrsh7th/cmp-path" },
+				{ "saadparwaiz1/cmp_luasnip" },
+				{ "hrsh7th/cmp-nvim-lsp" },
+				{ "hrsh7th/cmp-nvim-lua" },
+
+				-- Snippets
+				{ "L3MON4D3/LuaSnip" },
+				{ "rafamadriz/friendly-snippets" },
+			},
 		})
 
-		-- null.ls
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
 			config = function()
