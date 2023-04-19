@@ -1,76 +1,77 @@
 local M = {}
 
 M.notify = function()
-    local status_ok, nvimnotify = pcall(require, 'notify')
-    if not status_ok then
-        return
-    end
-    nvimnotify.setup({
-        stages = 'fade'
-    })
-    vim.notify = nvimnotify
-
+	local status_ok, nvimnotify = pcall(require, "notify")
+	if not status_ok then
+		return
+	end
+    -- polish = function()
+	nvimnotify.setup({
+        background_colour = "#1a1b26",
+		stages = "fade",
+	})
+	vim.notify = nvimnotify
 end
 
 M.null_ls = function()
-    local status_ok, null_ls = pcall(require, 'null-ls')
+	local status_ok, null_ls = pcall(require, "null-ls")
 
-    if not status_ok then
-        return
-    end
+	if not status_ok then
+		return
+	end
 
-    local formatting = null_ls.builtins.formatting
-    local diagnostics = null_ls.builtins.diagnostics
-    local completion = null_ls.builtins.completion
-    local code_actions = null_ls.builtins.code_actions
-    null_ls.setup({
-        debug = false,
-        sources = {
-            formatting.prettier.with { extra_args = { '--no-semi', '--single-quote', '--jsx-single-quote' } },
-            formatting.black.with { extra_args = { '--fast' } },
-            formatting.stylua,
-            diagnostics.flake8,
-            -- diagnostics.misspell,
-            completion.spell,
-        }
-    })
+	local formatting = null_ls.builtins.formatting
+	local diagnostics = null_ls.builtins.diagnostics
+	local completion = null_ls.builtins.completion
+	local code_actions = null_ls.builtins.code_actions
+	null_ls.setup({
+		debug = false,
+		sources = {
+			formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
+			formatting.black.with({ extra_args = { "--fast" } }),
+			formatting.stylua,
+			diagnostics.flake8,
+			-- diagnostics.misspell,
+			completion.spell,
+		},
+	})
 end
 
 M.bufferline = function()
-    local status_ok, bufferline = pcall(require, "bufferline")
-    if not status_ok then
-        return
-    end
+	local status_ok, bufferline = pcall(require, "bufferline")
+	if not status_ok then
+		return
+	end
 
-    bufferline.setup {
-        options = {
-            offsets = {
-                { filetype = "NvimTree", text = "", padding = 1 },
-                { filetype = "neo-tree", text = "", padding = 1 },
-                { filetype = "Outline", text = "", padding = 1 },
-            },
+	bufferline.setup({
+		options = {
+			offsets = {
+				{ filetype = "NvimTree", text = "", padding = 1 },
+				{ filetype = "neo-tree", text = "", padding = 1 },
+				{ filetype = "Outline", text = "", padding = 1 },
+			},
 
-            text = "File Explorer",
-            highlight = "Directory",
-            text_align = "center",
-            diagnostics = "nvim_lsp",
-        }
-    }
+			text = "File Explorer",
+			highlight = "Directory",
+			text_align = "center",
+			diagnostics = "nvim_lsp",
+		},
+	})
 end
 
 M.notify = function()
-    local status_ok, notify = pcall(require, "notify")
-    if not status_ok then
-        return 
-    end 
-    notify.setup{
-        fps = 60,
-        timeout = 1000,
-        level = 2,
-        minimum_width = 50,
-        render = "minimal",
-        stages = "fade_in_slide_out",
-    }
+	local status_ok, notify = pcall(require, "notify")
+	if not status_ok then
+		return
+	end
+	notify.setup({
+		fps = 60,
+		timeout = 1000,
+		level = 2,
+		minimum_width = 50,
+		render = "minimal",
+		stages = "fade_in_slide_out",
+	})
 end
 
 return M

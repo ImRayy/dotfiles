@@ -1,5 +1,5 @@
 local function map(m, k, v)
-    vim.keymap.set(m, k, v, { silent = true })
+    vim.api.nvim_set_keymap(m, k, v, { silent = true })
 end
 
 -- Fix * (Keep the cursor position, don't move to next match)
@@ -52,5 +52,3 @@ map('n', 'gcc', "v:count == 0 ? '<Plug>(comment_toggle_linewise_current)' : '<Pl
 map('x', '<C-/>', '<Plug>(comment_toggle_linewise_visual)')
 
 map('x', '<S-y>', ':w !wl-copy<CR><CR>')
-
-map('x', '<Leader>f', ':lua require"telescope.builtin".find_files(require("telescope.themes").get_dropdown({}))<CR>')

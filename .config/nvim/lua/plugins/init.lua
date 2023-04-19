@@ -29,15 +29,22 @@ return require("packer").startup({
 		})
 
 		-- Onedark Colorscheme
-		use({
-			"navarasu/onedark.nvim",
-			config = function()
-				require("onedark").setup({
-					style = "darker",
-				})
-				require("onedark").load()
-			end,
-		})
+		-- use({
+		-- 	"navarasu/onedark.nvim",
+		-- 	config = function()
+		-- 		require("onedark").setup({
+		-- 			style = "darker",
+		-- 		})
+		-- 		require("onedark").load()
+		-- 	end,
+		-- })
+
+		-- Catppuccin
+		use({ "catppuccin/nvim", name = "catppuccin",
+            config = function()
+                require('plugins.configs.catppuccin')
+            end
+        })
 
 		-- Statrup Screen
 		use({
@@ -61,7 +68,7 @@ return require("packer").startup({
 		use({
 			"rcarriga/nvim-notify",
 			config = function()
-                require("plugins.configs.others").notify()
+				require("plugins.configs.others").notify()
 			end,
 		})
 
@@ -139,10 +146,6 @@ return require("packer").startup({
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			module = "nvim-treesitter",
-			setup = function()
-				require("core.lazyload").on_file_open("nvim-treesitter")
-			end,
-			cmd = require("core.lazyload").treesitter_cmds,
 			run = ":TSUpdate",
 			config = function()
 				require("plugins.configs.treesitter")
