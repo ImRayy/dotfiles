@@ -66,8 +66,6 @@ return require("packer").startup({
 			requires = { "nvim-tree/nvim-web-devicons" },
 		})
 
-		-- use({ "Shatur/neovim-session-manager" })
-
 		use({
 			"folke/noice.nvim",
 			config = function()
