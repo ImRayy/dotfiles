@@ -49,13 +49,24 @@ return require("packer").startup({
 		})
 
 		-- Statrup Screen
+		-- use({
+		-- 	"goolord/alpha-nvim",
+		-- 	requires = { "kyazdani42/nvim-web-devicons" },
+		-- 	config = function()
+		-- 		require("plugins.configs.alpha")
+		-- 	end,
+		-- })
+
 		use({
-			"goolord/alpha-nvim",
-			requires = { "kyazdani42/nvim-web-devicons" },
+			"glepnir/dashboard-nvim",
+			event = "VimEnter",
 			config = function()
-				require("plugins.configs.alpha")
+				require("plugins.configs.dashboard")
 			end,
+			requires = { "nvim-tree/nvim-web-devicons" },
 		})
+
+		-- use({ "Shatur/neovim-session-manager" })
 
 		use({
 			"folke/noice.nvim",
@@ -162,8 +173,19 @@ return require("packer").startup({
 		-- Telescope: Fuzzy Finder --
 		use({
 			"nvim-telescope/telescope.nvim",
-			tag = "0.1.0",
-			requires = { { "nvim-lua/plenary.nvim" } },
+			config = function()
+				-- require("telescope").load_extension("projects")
+				require("telescope").load_extension("projects")
+			end,
+			requires = {
+				{ "nvim-lua/plenary.nvim" },
+				{
+					"ahmedkhalf/project.nvim",
+					config = function()
+						require("project_nvim").setup()
+					end,
+				},
+			},
 		})
 
 		-- Markdown Preview
@@ -211,12 +233,12 @@ return require("packer").startup({
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 		})
-        
-        -- tabnine 
+
+		-- tabnine
 		use({
 			"codota/tabnine-nvim",
 			config = function()
-               require('plugins.configs.others').tabnine() 
+				require("plugins.configs.others").tabnine()
 			end,
 			run = "./dl_binaries.sh",
 		})
