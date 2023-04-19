@@ -40,11 +40,13 @@ return require("packer").startup({
 		-- })
 
 		-- Catppuccin
-		use({ "catppuccin/nvim", name = "catppuccin",
-            config = function()
-                require('plugins.configs.catppuccin')
-            end
-        })
+		use({
+			"catppuccin/nvim",
+			name = "catppuccin",
+			config = function()
+				require("plugins.configs.catppuccin")
+			end,
+		})
 
 		-- Statrup Screen
 		use({
@@ -218,8 +220,6 @@ return require("packer").startup({
 			end,
 		})
 
-		-- use("dkarter/bullets.vim")
-
 		-- Autohighlight word under cursor
 		use({
 			"echasnovski/mini.cursorword",
@@ -229,11 +229,11 @@ return require("packer").startup({
 			end,
 		})
 
-		-- vimwiki: Note Taking Env --
+		-- vimwiki: Note taking env
 		use({
 			"vimwiki/vimwiki",
 			config = function()
-				vim.g.vimwiki_global_ext = 0
+				vim.g.vimwiki_global_ex= 0
 				vim.g.vimwiki_list = {
 					{
 						path = "~/MEGAsync/Notes/vimwiki/",
@@ -245,7 +245,15 @@ return require("packer").startup({
 				}
 			end,
 		})
+        -- project.nvim: Project management
+        use({"ahmedkhalf/project.nvim",
+            config = function() 
+				require("plugins.configs.others").project_nvim()
+            end,
+        })
+
 	end,
+
 	config = {
 		auto_clean = true,
 		compile_on_sync = true,

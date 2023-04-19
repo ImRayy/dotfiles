@@ -5,9 +5,9 @@ M.notify = function()
 	if not status_ok then
 		return
 	end
-    -- polish = function()
+	-- polish = function()
 	nvimnotify.setup({
-        background_colour = "#1a1b26",
+		background_colour = "#1a1b26",
 		stages = "fade",
 	})
 	vim.notify = nvimnotify
@@ -71,6 +71,21 @@ M.notify = function()
 		minimum_width = 50,
 		render = "minimal",
 		stages = "fade_in_slide_out",
+	})
+end
+
+M.project_nvim = function()
+	local status_ok, project = pcall(require, "project_nvim")
+	if not status_ok then
+		return
+	end
+	project.setup({
+		sync_root_with_cwd = true,
+		respect_buf_cwd = true,
+		update_focused_file = {
+			enable = true,
+			update_root = true,
+		},
 	})
 end
 
