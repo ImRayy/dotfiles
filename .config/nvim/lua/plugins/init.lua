@@ -201,6 +201,7 @@ return require("packer").startup({
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
+			"hrsh7th/cmp-nvim-lsp",
 		})
 
 		-- Nvim cmp and snippet stuff
@@ -233,13 +234,13 @@ return require("packer").startup({
 		})
 
 		-- tabnine
-		use({
-			"codota/tabnine-nvim",
-			config = function()
-				require("plugins.configs.others").tabnine()
-			end,
-			run = "./dl_binaries.sh",
-		})
+		-- use({
+		-- 	"codota/tabnine-nvim",
+		-- 	config = function()
+		-- 		require("plugins.configs.others").tabnine()
+		-- 	end,
+		-- 	run = "./dl_binaries.sh",
+		-- })
 
 		-- null.ls
 		use({
