@@ -52,3 +52,7 @@ map('n', 'gcc', "v:count == 0 ? '<Plug>(comment_toggle_linewise_current)' : '<Pl
 map('x', '<C-/>', '<Plug>(comment_toggle_linewise_visual)')
 
 map('x', '<S-y>', ':w !wl-copy<CR><CR>')
+
+-- Spell check
+
+map ('n', '<leader>s', ':setlocal spell spelllang=en_us<CR>')

@@ -1,5 +1,6 @@
 require("core.keybindings")
 require("core.settings")
+require("core.autocmd")
 require("core.bootstrap")
 -- require("core.kittymargin") -- won't work with other than kitty
 require("plugins")
