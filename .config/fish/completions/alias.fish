@@ -8,75 +8,78 @@ alias py=python3
 alias c=clear
 alias e=exit
 alias ka=killall
+alias reloadfishconf='source ~/.config/fish/config.fish'
 
-# Navigation
-alias cd1="cd .."
-alias cd2="cd ../.."
-alias cd3="cd ../../.."
-alias cd4="cd ../../../.."
-alias cd5="cd ../../../../.."
+# Navigation alias cd1='cd ..' alias cd2="cd ../.."
+alias cd3='cd ../../..'
+alias cd4='cd ../../../..'
+alias cd5='cd ../../../../..'
 
 # File managerment
-alias ls="lsd --group-dirs first"
+alias ls='lsd --group-dirs first'
 alias lf='~/.config/lf/scripts/lfrun'
+alias r=ranger
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard'
+alias copydir='pwd | tr -d "\r\n" | pbcopy'
+alias cv='rsync -poghb --backup-dir=/tmp/rsync -e -r /dev/null --progress --'
 
 # Pacman
-alias pacq="pacman -Q | grep"
-alias pacorph="pacman -Qdt"
-alias pacin="sudo pacman -S"
-alias pacrem="sudo pacman -Rns"
-alias pacrem="sudo pacman -Runs"
-alias pacreps="pacman -Ss"
-alias pacupd="sudo pacman -Sy"
-alias pacupg="sudo pacman -Syu"
-alias pacremorph="sudo pacman -Rns (pacman -Qdtq)"
-alias paccache="sudo pacman -Sc"
-alias allpaccache="sudo pacman -Scc"
-
+alias pacq='pacman -Q | grep'
+alias pacorph='pacman -Qdt'
+alias pacin='sudo pacman -S'
+alias pacrem='sudo pacman -Rns'
+alias pacrem='sudo pacman -Runs'
+alias pacreps='pacman -Ss'
+alias pacupd='sudo pacman -Sy'
+alias pacupg='sudo pacman -Syu'
+alias pacremorph='sudo pacman -Rns (pacman -Qdtq)'
+alias paccache='sudo pacman -Sc'
+alias allpaccache='sudo pacman -Scc'
 
 # Yay
-alias yain="yay -S"
-alias yarem="yay -Rns"
-alias yaorph="yay -Qtd"
-alias yaupd="yay -Sy"
-alias yaupg="yay -Sua"
-alias yayupd="yay -Sy"
-alias yayreps="yay -Ss"
-alias yaycache="yay -Sc"
-alias yayremdep="yay -Yc"
+alias yain='yay -S'
+alias yarem='yay -Rns'
+alias yaorph='yay -Qtd'
+alias yaupd='yay -Sy'
+alias yaupg='yay -Sua'
+alias yayupd='yay -Sy'
+alias yayreps='yay -Ss'
+alias yaycache='yay -Sc'
+alias yayremdep='yay -Yc'
 
 # Paru
-alias pain="paru -S"
-alias parem="paru -Rns"
+alias pain='paru -S'
+alias parem='paru -Rns'
 alias paupd='paru -Sy'
 alias paupg='paru -Sua'
 alias parem='paru -Rns'
 alias paorph='paru -Qtd'
 
 # NoteEditor
-alias nvide=neovide
+alias nvide='neovide'
 
 # grub
-alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 
 # youtube-dlp
-alias ytaudio="yt-dlp -x --audio-format mp3"
+alias ytaudio='yt-dlp -x --audio-format mp3'
 
 # Copy using rsync [ with progress bar ]
-alias rcp="rsync -r -avz --progress"
-alias rmv="rsync -r -avz --progress --remove-source-files"
+alias rcp='rsync -r -avz --progress'
+alias rmv='rsync -r -avz --progress --remove-source-files'
 
 # Clean-Up
-alias checkcache="du -sh .cache/"
-alias clearcache="rm -rf .cache/*"
-alias checkjournal="du -sh /var/log/journal"
-alias clearjournal="sudo journalctl --vacuum-time=2weeks"
+alias checkcache='du -sh .cache/'
+alias clearcache='rm -rf .cache/*'
+alias checkjournal='du -sh /var/log/journal'
+alias clearjournal='sudo journalctl --vacuum-time=2weeks'
 
 # trash-cli
-alias trp="trash-put"
-alias trl="trash-list"
-alias trr="trash-restore"
-alias tre="trash-empty"
+alias trp='trash-put'
+alias trl='trash-list'
+alias trr='trash-restore'
+alias tre='trash-empty'
 
 # Fetch 
 alias of='onefetch'
@@ -103,9 +106,34 @@ alias wallrename='bash ~/Github/mini-projects/Scripts/rename.sh'
 # dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# npm 
+alias nrd='npm run dev'
+alias nrb='npm run build'
+alias nrs='npm run start'
+alias ni='npm install --save'
+alias nun='npm uninstall'
+alias nisd='npm install --save-dev'
+alias nip='npm install -P'
+
+# gtk
+alias gtkdark='gsettings set org.gnome.desktop.interface color-scheme prefer-dark'
+alias gtklight='gsettings set org.gnome.desktop.interface color-scheme prefer-light'
+
+# Grim/slurp
+alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
+
+# Tmux
+alias tls='tmux ls'
+alias ta='tmux attach'
+alias tat='tmux attach -t'
+alias tns='tmux new -s'
+alias tks='tmux kill-session -t'
+alias tkas='tmux list-sessions | grep -v attached | awk "BEGIN{FS=\":\"}{print $1}" | xargs -n 1 tmux kill-session -t || echo "No sessions to kill"'
+
 # Other programs
+alias ngrok='~/Applications/ngrok/ngrok'
 alias na='nm-applet'
+alias hyp=hyprpicker
 alias scrcpylbr='scrcpy --bit-rate 2M'
 alias drivers='glxinfo | grep OpenGL'
 alias csend='croc send --code'
-alias updmirror="cp /etc/pacman.d/mirrorlist ~/backup && cd ~/backup && mv mirrorlist mirrorlist_(date "+%Y-%m-%d-%T").bak && cd $HOME && sudo reflector --latest 20 --age 1 --fastest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist && echo 'mirrorlist successfully updated'"

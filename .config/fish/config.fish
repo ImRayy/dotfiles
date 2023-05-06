@@ -10,33 +10,24 @@
 set -e fish_user_paths
 set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_paths
 set fish_vi_key_bindings                          # Enables vim keyhbinding
-### EXPORT ###
+
+### EXPORT
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
 
 
 ### SET MANPAGER
-### Uncomment only one of these!
 
 ### "bat" as manpager
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
-### END OF VI MODE ###
 
 ### AUTOCOMPLETE AND HIGHLIGHT COLORS ###
-set fish_color_normal '#32CD32'
-set fish_color_autosuggestion '#7d7d7d'
-set fish_color_command '#32CD32'
-set fish_color_error '#dc1a1a'
-set fish_color_param brcyan
-
-
-
-# Functions needed for !! and !$
-# if type -q please
-#     please
-# else
-# end
+# set fish_color_normal '#32CD32'
+# set fish_color_autosuggestion '#7d7d7d'
+# set fish_color_command '#32CD32'
+# set fish_color_error '#dc1a1a'
+# set fish_color_param brcyan
 
 function __history_previous_command
   switch (commandline -t)
@@ -72,20 +63,6 @@ function backup --argument filename
     cp $filename $filename.bak
 end
 
-# Function for copying files and directories, even recursively.
-# ex: copy DIRNAME LOCATIONS
-# result: copies the directory and all of its contents.
-function copy
-    set count (count $argv | tr -d \n)
-    if test "$count" = 2; and test -d "$argv[1]"
-	set from (echo $argv[1] | trim-right /)
-	set to (echo $argv[2])
-        command cp -r $from $to
-    else
-        command cp $argv
-    end
-end
-
 # Function for printing a column (splits input on whitespace)
 # ex: echo 1 2 3 | coln 3
 # output: 3
@@ -116,29 +93,29 @@ function take --argument number
     head -$number
 end
 
-### End of functions ###
-
-
-#### Calling exernal scripts ####
-
-source ~/.config/fish/completions/alias.fish
-source ~/.config/lf/icons/icons
-
 ### Setting up zoxide, z alternative
 if type -q zoxide 
     zoxide init fish | source
 else 
 end
 
-### Setting the starship prompt ###
+### Setting the starship prompt
 if type -q starship
     starship init fish | source
 else
 end
 
-# export  QT_QPA_PLATFORM=wayland
+### Environment Variables
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 
-source ~/secret.fish
+if type -q kitty
+    set -gx TERM 'xterm-kitty'
+else 
+end
+
+#### Calling exernal scripts ####
+source ~/.secret.fish
+source ~/.config/fish/completions/alias.fish
+source ~/.config/lf/icons/icons
 
