@@ -154,9 +154,9 @@ return require("packer").startup({
 		})
 
 		-- nvim-ts-autotag
-		-- use({
-		-- 	"windwp/nvim-ts-autotag",
-		-- })
+		use({
+			"windwp/nvim-ts-autotag",
+		})
 
 		-- Treesitter: Better Highlights --
 		use({
@@ -203,6 +203,9 @@ return require("packer").startup({
 			"neovim/nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",
 		})
+        
+        -- Neoformat for formating code
+        use ({'sbdchd/neoformat'})
 
 		-- Nvim cmp and snippet stuff
 		use({

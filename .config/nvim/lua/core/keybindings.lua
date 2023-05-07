@@ -36,7 +36,8 @@ map ('n', '<S-l>',':BufferLineCycleNext<CR>')
 map ('n', '<S-h>',':BufferLineCyclePrev<CR>')
 
 -- Code format with null-ls
-map ('n', '<C-f>', ':lua vim.lsp.buf.format{async = true}<CR>')
+-- map ('n', '<C-f>', ':lua vim.lsp.buf.format{async = true}<CR>')
+map('n', '<c-f>', ':Neoformat<CR>')
 
 -- Markdown Previews
 map ('n', '<C-m>', ':MarkdownPreview<CR>')
