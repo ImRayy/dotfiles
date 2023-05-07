@@ -28,7 +28,6 @@ local options = {
     listchars = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂',
 }
 
-
 for x,y in pairs(options) do
     vim.opt[x] = y
 end

@@ -154,9 +154,9 @@ return require("packer").startup({
 		})
 
 		-- nvim-ts-autotag
-		use({
-			"windwp/nvim-ts-autotag",
-		})
+		-- use({
+		-- 	"windwp/nvim-ts-autotag",
+		-- })
 
 		-- Treesitter: Better Highlights --
 		use({
