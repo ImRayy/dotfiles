@@ -13,8 +13,8 @@ function _G.dump(...)
 	print(unpack(objects))
 end
 
-vim.g['prettier#config#singleQuote'] = 0
 
+vim.g.neoformat_js_prettier_single_quote = 0
 -- This fixes annoying notification of transparent background reminder
 require("notify").setup({
 	background_colour = "#1a1b26",

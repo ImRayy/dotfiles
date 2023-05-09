@@ -113,7 +113,7 @@ return require("packer").startup({
 			end,
 		})
 
-		-- Neotree: file manager --
+		-- Neotree: file picker --
 		use({
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v2.x",
@@ -172,17 +172,10 @@ return require("packer").startup({
 		use({
 			"nvim-telescope/telescope.nvim",
 			config = function()
-				-- require("telescope").load_extension("projects")
-				require("telescope").load_extension("projects")
+				require("telescope").load_extension("session-lens")
 			end,
 			requires = {
 				{ "nvim-lua/plenary.nvim" },
-				{
-					"ahmedkhalf/project.nvim",
-					config = function()
-						require("project_nvim").setup()
-					end,
-				},
 			},
 		})
 
@@ -203,9 +196,9 @@ return require("packer").startup({
 			"neovim/nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",
 		})
-        
-        -- Neoformat for formating code
-        use ({'sbdchd/neoformat'})
+
+		-- Neoformat for formating code
+		use({ "sbdchd/neoformat" })
 
 		-- Nvim cmp and snippet stuff
 		use({
@@ -271,24 +264,47 @@ return require("packer").startup({
 			end,
 		})
 
-		-- vimwiki: Note taking env
 		use({
-			"vimwiki/vimwiki",
+			"rmagatti/auto-session",
 			config = function()
-				vim.g.vimwiki_global_ex = 0
-				vim.g.vimwiki_list = {
-					{
-						path = "~/MEGAsync/Notes/vimwiki/",
-						syntax = "markdown",
-						ext = ".md",
-						auto_generate_tags = 1,
-						auto_generaed_links = 1,
-					},
-				}
+				require("auto-session").setup({
+					auto_session_root_dir = "~/.neovim_sessions/",
+					auto_session_enable_last_session = true,
+					auto_session_create_enabled = false,
+					auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
+				})
 			end,
 		})
-	end,
 
+		use({
+			"rmagatti/session-lens",
+			requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
+			config = function()
+				require("session-lens").setup({
+					path_display = { "shorten" },
+					theme_conf = { border = true },
+					prompt_title = "RAY SESSIONS",
+				})
+			end,
+		})
+
+		-- vimwiki: Note taking env
+		-- use({
+		-- 	"vimwiki/vimwiki",
+		-- 	config = function()
+		-- 		vim.g.vimwiki_global_ex = 0
+		-- 		vim.g.vimwiki_list = {
+		-- 			{
+		-- 				path = "~/MEGAsync/Notes/vimwiki/",
+		-- 				syntax = "markdown",
+		-- 				ext = ".md",
+		-- 				auto_generate_tags = 1,
+		-- 				auto_generaed_links = 1,
+		-- 			},
+		-- 		}
+		-- 	end,
+		-- })
+	end,
 	config = {
 		auto_clean = true,
 		compile_on_sync = true,
