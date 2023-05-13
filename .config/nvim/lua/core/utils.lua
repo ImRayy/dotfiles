@@ -8,7 +8,7 @@ M.format_on_save = function()
 	else
 		vim.api.nvim_command("autocmd BufWritePre * Neoformat")
 		neoformat_enabled = true
-		print("Format on save disabled")
+		print("Format on save enabled")
 	end
 end
 
