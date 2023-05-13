@@ -47,7 +47,7 @@ dashboard.setup({
 			{
 				desc = " Projects",
 				group = "Number",
-				action = "Telescope session-lens search_session",
+				action = "SearchSession",
 				key = "p",
 			},
 		},

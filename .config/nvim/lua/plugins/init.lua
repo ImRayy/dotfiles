@@ -149,7 +149,9 @@ return require("packer").startup({
 		use({
 			"numToStr/Comment.nvim",
 			config = function()
-				require("Comment").setup()
+				require("Comment").setup({
+					pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+				})
 			end,
 		})
 
@@ -166,6 +168,9 @@ return require("packer").startup({
 			config = function()
 				require("plugins.configs.treesitter")
 			end,
+			requires = {
+				"JoosepAlviste/nvim-ts-context-commentstring",
+			},
 		})
 
 		-- Telescope: Fuzzy Finder --
@@ -289,21 +294,21 @@ return require("packer").startup({
 		})
 
 		-- vimwiki: Note taking env
-		-- use({
-		-- 	"vimwiki/vimwiki",
-		-- 	config = function()
-		-- 		vim.g.vimwiki_global_ex = 0
-		-- 		vim.g.vimwiki_list = {
-		-- 			{
-		-- 				path = "~/MEGAsync/Notes/vimwiki/",
-		-- 				syntax = "markdown",
-		-- 				ext = ".md",
-		-- 				auto_generate_tags = 1,
-		-- 				auto_generaed_links = 1,
-		-- 			},
-		-- 		}
-		-- 	end,
-		-- })
+		use({
+			"vimwiki/vimwiki",
+			config = function()
+				vim.g.vimwiki_global_ex = 0
+				vim.g.vimwiki_list = {
+					{
+						path = "~/MEGAsync/Notes/vimwiki/",
+						syntax = "markdown",
+						ext = ".md",
+						auto_generate_tags = 1,
+						auto_generaed_links = 1,
+					},
+				}
+			end,
+		})
 	end,
 	config = {
 		auto_clean = true,

@@ -34,10 +34,12 @@ map("n", "<C-n>", ":Neotree toggle reveal_force_cwd<CR>")
 -- Bufferline
 map("n", "<S-l>", ":BufferLineCycleNext<CR>")
 map("n", "<S-h>", ":BufferLineCyclePrev<CR>")
+map("n", "<leader>c", ":bdelete<CR>")
 
 -- Code format with null-ls
 -- map ('n', '<C-f>', ':lua vim.lsp.buf.format{async = true}<CR>')
-map("n", "<c-f>", ":Neoformat<CR>")
+-- map("n", "<c-f>", ":Neoformat<CR>")
+map("n", "<C-f>", ":lua require('core.utils').format_on_save()<CR>")
 
 -- Markdown Previews
 map("n", "<C-m>", ":MarkdownPreview<CR>")
@@ -59,6 +61,7 @@ map("x", "<C-/>", "<Plug>(comment_toggle_linewise_visual)")
 
 map("x", "<S-y>", ":w !wl-copy<CR><CR>")
 
--- Spell check
+map("i", "<C-h>", "<Esc>caw", { noremap = true })
 
+-- Spell check
 map("n", "<leader>s", ":setlocal spell spelllang=en_us<CR>")
