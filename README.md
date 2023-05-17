@@ -1,6 +1,7 @@
 ![repo-size](https://img.shields.io/github/repo-size/ImRayy/dotfiles?style=for-the-badge)
 ![code-size](https://img.shields.io/github/languages/code-size/ImRayy/dotfiles?style=for-the-badge)
-___
+
+---
 
 <div align="center">
 <h4>Bspwm</h4>
@@ -37,5 +38,4 @@ ___
 
 #### I will upload all large files to the following drives
 
-[![MediaFire](https://img.shields.io/badge/MediaFire-9cf?style=for-the-badge&logo=Mediafire&?logoColor=violet)](https://www.mediafire.com/folder/ue70r5fnbyxp6/dotfiles)
 [![MEGA](https://img.shields.io/badge/MEGA-D9272E?logo=mega&style=for-the-badge)](https://mega.nz/folder/b4xzlJaA#7ThCdDHl5FgxrBs00MmcSQ)
