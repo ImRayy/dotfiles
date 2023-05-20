@@ -281,17 +281,6 @@ return require("packer").startup({
 			end,
 		})
 
-		use({
-			"rmagatti/session-lens",
-			requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
-			config = function()
-				require("session-lens").setup({
-					path_display = { "shorten" },
-					theme_conf = { border = true },
-					prompt_title = "RAY SESSIONS",
-				})
-			end,
-		})
 	end,
 
 	config = {
