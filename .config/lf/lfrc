@@ -1,4 +1,5 @@
-# Ｓｅｔｔｉｎｇｓ
+# ＳＥＴＴＩＮＧＳ
+
 set preview
 set drawbox 
 set icons 
@@ -7,40 +8,22 @@ set info size
 set ifs "\n"
 set filesep "\n"
 
-# Custom script for image preview
-# set previewer ~/.config/lf/scripts/lf_kitty_preview
-# set cleaner ~/.config/lf/scripts/lf_kitty_clean
-set previewer ~/.config/lf/scripts/preview
-set cleaner ~/.config/lf/scripts/cleaner
+# ctpv image preview
+# set previewer ctpv
+# set cleaner ctpvclear
+# &ctpv -s $id
+# &ctpvquit $id
 
-# uncomment for stpv preview
-#set previewer stpv
-#set cleaner stpvimgclr
-#&stpvimg --listen $id
+# Custom script for image preview
+# set previewer ~/.config/lf/scripts/preview
+# set cleaner ~/.config/lf/scripts/cleaner
 
 # Uncomment for kitty_preview 
-#set previewer ~/.config/lf/scripts/lf_kitty_preview
-#set cleaner ~/.config/lf/scripts/lf_kitty_clean
-
-# Ｋｅｙ  Ｂｉｎｄｉｎｇｓ
-
-map <esc> cmd-escape
-map e $$EDITOR $fx
-map D delete
-map <c-y> up
-map <c-e> down
-map <enter> open
-map gh cd ~
-map gr cd /
-map <m-up>    up
-map <m-down>  down
-map R bulk-rename
-map zp set preview!
-map t $tig -C $PWD
-map M push $mkdir<space>
+set previewer ~/.config/lf/scripts/lf_kitty_preview
+set cleaner ~/.config/lf/scripts/lf_kitty_clean
 
 
-# Ｃｕｓｔｏｍ  Ｆｕｎｃｔｉｏｎｓ
+# ＣＵＳＴＯＭ  ＦＵＮＣＴＩＯＮＳ
 
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
@@ -81,18 +64,20 @@ cmd sudomkfile ${{
 
 # cmd setwallpaper %cp "$f" ~/.config/wall.png && feh --bg-fill "$f"
 cmd setwallpaper ${{
-    if [ $DESKTOP_SESSION == gnome ];then
+    if [ $DESKTOP_SESSION == gnome-xorg ];then
         gsettings set org.gnome.desktop.background picture-uri "$f"
-    elif [ $XDG_SESSION_TYPE == wayland ];then
-       cp "$f" ~/.config/wall.png && swww img "$f" 
+    # elif [ $DESKTOP_SESSION == hyprland ];then
+    #    cp "$f" ~/.config/wall.jpg && swww img "$f" 
+    elif [ $DESKTOP_SESSION == hyprland ];then
+       echo "$f" >>  ~/.config/wall.txt && ~/.config/lf/scripts/set_wall.sh
     else
-        cp "$f" ~/.config/wall.png && feh --bg-fill ~/.config/wall.png
+        cp "$f" ~/.config/ && feh --bg-fill ~/.config/wall.png
     fi
 
 }}
 
 cmd setwallpaper-dark ${{
-    if [ $DESKTOP_SESSION == gnome ];then 
+    if [ $DESKTOP_SESSION == gnome-xorg ];then 
         gsettings set org.gnome.desktop.background picture-uri-dark "$f"
     fi
 }}
@@ -109,18 +94,18 @@ cmd fzf_jump ${{
 
 #### For dynamic columns ####
 
-#${{
-#    w=$(tput cols)
-#    if [ $w -le 80 ]; then
-#        lf -remote "send $id set ratios 1:2"
-#    elif [ $w -le 160 ]; then
-#        lf -remote "send $id set ratios 1:2:3"
-#    else
-#        lf -remote "send $id set ratios 1:2:3:5"
-#    fi
-#}}
+${{
+   w=$(tput cols)
+   if [ $w -le 80 ]; then
+       lf -remote "send $id set ratios 1:2"
+   elif [ $w -le 160 ]; then
+       lf -remote "send $id set ratios 1:2:3"
+   else
+       lf -remote "send $id set ratios 1:2:3:5"
+   fi
+}}
 
-# Ａｒｃｈｉｖｅ  ｂｉｎｄｉｎｇｓ
+# ＡＲＣＨＩＶＥ
 
 cmd unarchive ${{
   case "$f" in
@@ -138,7 +123,7 @@ cmd targz %tar cvzf "$f.tar.gz" "$f"
 cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
 
 
-# Ｔｒａｓｈ－ｃｌｉ  ｂｉｎｄｉｎｇｓ
+# ＴＲＡＳＨ－ＣＬＩ
 
 cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
@@ -167,8 +152,30 @@ cmd restore_trash ${{
 
 cmd stripspace %stripspace "$f"
 
-# Ｂｉｎｄｉｎｇｓ
-# Remove some defaults
+
+cmd open-with-gui &$@ $fx ## opens with a gui application outside lf client
+cmd open-with-cli $$@ $fx ## opens with a cli application inside lf client
+
+
+# ------------------------
+# ＫＥＹ  ＢＩＮＤＩＮＧＳ
+# ------------------------
+
+map <esc> cmd-escape
+map e $$EDITOR $fx
+map D delete
+map <c-y> up
+map <c-e> down
+map <enter> open
+map gh cd ~
+map gr cd /
+map <m-up>    up
+map <m-down>  down
+map R bulk-rename
+map zp set preview!
+map t $tig -C $PWD
+map M push $mkdir<space>
+
 map m
 map o
 map n
@@ -180,7 +187,7 @@ map e
 map f
 
 
-# Ａｒｃｈｉｖｅ  Ｍａｐｐｉｎｇｓ
+# ＡＲＣＨＩＶＥ  ＭＡＰＰＩＮＧＳ
 
 map az zip
 map at tar
@@ -189,14 +196,14 @@ map ab targz
 map au unarchive
 
 
-# Ｔｒａｓｈ  Ｍａｐｐｉｎｇｓ
+# ＴＲＡＳＨ  ＭＡＰＰＩＮＧＳ
 
 map dd trash
 map tc clear_trash
 map tr restore_trash
 
 
-# Ｂａｓｉｃ  Ｆｕｎｃｔｉｏｎｓ
+# ＢＡＳＩＣ  ＦＵＮＣＴＩＯＮＳ
 
 map . set hidden!
 map DD delete
@@ -209,9 +216,6 @@ map mr sudomkfile
 map md mkdir
 map ms $mkscript
 map ch chmod
-map ; setwallpaper
-map w setwallpaper-dark
-map o open_config
 map br $vimv $fx
 map r rename
 map H top
@@ -219,17 +223,26 @@ map L bottom
 map R reload
 map C clear
 map U unselect
+map O push :open-with-gui<space> 
+map o push :open-with-cli<space> 
 
-# Ｎａｖｉｇａｔｉｏｎ
+# WALLPAPER
+
+map ; setwallpaper
+map w setwallpaper-dark
+
+# NAVIGATION
 
 map gd     cd ~/Documents
 map gc     cd ~/.config
 map git    cd ~/Downloads/GIT
 map gn     cd /media/Documents/Notes
-map gmd    cd /media/Documents/Notes/Obsidian
+map gmd    cd /media/MEGAsync/Notes/Obsidian
 map gw     cd /media/Entertainment/Wallpapers
 map gs     cd ~/Pictures/Screenshots
 map gp     cd ~/Pictures
-map ge     cd /media/Entertainment
-map gm     cd /media/Entertainment/🎧Music
-map gmw    cd /media/MyWaifu
+map gmu    cd /media/MyWaifu/Music/
+map gmo    cd /media/MyWaifu/Movies/
+map gmw    cd /media/MyWaifu/
+map ga     cd /media/MyWaifu/anime
+
