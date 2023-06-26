@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# COPY FILE CONTENT
+function copyfile {
+    emulate -L zsh
+    xclip -sel clip $1
+}
+
+function plugin_name() {
+    awk -F '/' '{print $NF}' <<<$1
+}
+
+function source_file() {
+    [ -f "$ZDOTDIR/plugins/$1" ] && source "$ZDOTDIR/plugins/$1"
+}
+
+# TO CHECK WEATHER PLUGIN FILE OR DIR EXISTS, IF NOT IT WILL AUTOMATICALLY DOWNLOAD AND ENABLE THEM. IN SHORT IT'S A MINIMAL PLUGIN MANAGER
+function add_plugin() {
+
+    local PLUGIN_DIR="${ZDOTDIR}/plugins"
+
+    if [ $1 = "--singlefile" ]; then
+
+        if [[ -f "$PLUGIN_DIR/$(plugin_name $2)" ]]; then
+            source_file "$(plugin_name $2)" ||
+                source_file "$(plugin_name $2)"
+        else
+            wget -P $PLUGIN_DIR "https://raw.githubusercontent.com/${2}"
+        fi
+    else
+        if [[ -d "${PLUGIN_DIR}/$(plugin_name $1)" ]]; then
+            source_file "$(plugin_name $1)/$(plugin_name $1).zsh" ||
+                source_file "$(plugin_name $1)/$(plugin_name $1).plugin.zsh"
+        else
+            git clone "https://github.com/${1}" "${PLUGIN_DIR}/$(plugin_name $1)"
+        fi
+    fi
+}
+
+# SAME AS PLUGIN MANAGER BUT YOU CAN PASS A PLUGINS ARRAY TO THIS FUNCTION
+function add_plugins() {
+    local singlefile_enabled=false
+    if [ $1 = "--singlefile" ]; then
+        singlefile_enabled=true
+        shift
+    fi
+    for file in "${@}"; do
+        if [ $singlefile_enabled = true ]; then
+            add_plugin --singlefile $file
+        else
+            add_plugin $file
+        fi
+    done
+}
