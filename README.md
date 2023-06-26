@@ -20,12 +20,13 @@
 ### Contents
 
 - [bspwm](https://github.com/ImRayy/dotfiles/tree/master/.config/bspwm)
-- [Hyprland](https://github.com/ImRayy/dotfiles/tree/master/.config/hypr)
+- [hyprland](https://github.com/ImRayy/dotfiles/tree/master/.config/hypr)
 - [polybar](https://github.com/adi1090x/polybar-themes)
-- [Waybar](https://github.com/ImRayy/dotfiles/tree/master/.config/waybar)
+- [waybar](https://github.com/ImRayy/dotfiles/tree/master/.config/waybar)
 - [rofi](https://github.com/adi1090x/rofi)
 - [kitty](https://github.com/ImRayy/dotfiles/tree/master/.config/kitty)
 - [wezterm](https://github.com/ImRayy/dotfiles/tree/master/.config/wezterm)
+- [zsh](https://github.com/ImRayy/dotfiles/tree/master/.config/zsh)
 - [fish](https://github.com/ImRayy/dotfiles/tree/master/.config/fish)
 - [starship](https://github.com/ImRayy/dotfiles/blob/master/.config/starship.toml)
 - [neofetch](https://github.com/ImRayy/dotfiles/blob/master/.config/neofetch)
