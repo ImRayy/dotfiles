@@ -1,7 +1,6 @@
-![repo-size](https://img.shields.io/github/repo-size/ImRayy/dotfiles?style=for-the-badge)
-![code-size](https://img.shields.io/github/languages/code-size/ImRayy/dotfiles?style=for-the-badge)
-
----
+![repo-size](https://img.shields.io/github/repo-size/ImRayy/dotfiles?style=for-the-badge&logo=github&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41)
+![size](https://img.shields.io/github/languages/code-size/ImRayy/dotfiles?style=for-the-badge&logo=gnu-bash&color=ee999f&logoColor=D9E0EE&labelColor=302D41)
+![last-commit](https://img.shields.io/github/last-commit/ImRayy/dotfiles?style=for-the-badge&logo=git&color=8bd5ca&logoColor=D9E0EE&labelColor=302D41)
 
 <div align="center">
 <h4>Bspwm</h4>
