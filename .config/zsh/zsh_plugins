@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source /home/$USER/.config/zsh/zsh_functions
-
 plugins=(
     zsh-users/zsh-syntax-highlighting
     zsh-users/zsh-autosuggestions
@@ -14,7 +12,6 @@ single_file_plugins=(
     ohmyzsh/ohmyzsh/master/plugins/history-substring-search/history-substring-search.zsh
     zap-zsh/vim/master/vim.plugin.zsh
 )
-
 
 add_plugins "${plugins[@]}"
 add_plugins --singlefile "${single_file_plugins[@]}"

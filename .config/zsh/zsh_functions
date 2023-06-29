@@ -11,7 +11,7 @@ function plugin_name() {
 }
 
 function source_file() {
-    [ -f "$ZDOTDIR/plugins/$1" ] && source "$ZDOTDIR/plugins/$1"
+    [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
 }
 
 # TO CHECK WEATHER PLUGIN FILE OR DIR EXISTS, IF NOT IT WILL AUTOMATICALLY DOWNLOAD AND ENABLE THEM. IN SHORT IT'S A MINIMAL PLUGIN MANAGER
@@ -21,16 +21,21 @@ function add_plugin() {
 
     if [ $1 = "--singlefile" ]; then
 
+        local PLUGIN_PATH="plugins/$(plugin_name $2)"
+
         if [[ -f "$PLUGIN_DIR/$(plugin_name $2)" ]]; then
-            source_file "$(plugin_name $2)" ||
-                source_file "$(plugin_name $2)"
+            source_file "$PLUGIN_PATH" || \ 
+            source_file "$PLUGIN_PATH"
         else
             wget -P $PLUGIN_DIR "https://raw.githubusercontent.com/${2}"
         fi
     else
+
+        local PLUGIN_PATH="plugins/$(plugin_name $1)/$(plugin_name $1)"
+
         if [[ -d "${PLUGIN_DIR}/$(plugin_name $1)" ]]; then
-            source_file "$(plugin_name $1)/$(plugin_name $1).zsh" ||
-                source_file "$(plugin_name $1)/$(plugin_name $1).plugin.zsh"
+            source_file "$PLUGIN_PATH.zsh" ||
+                source_file "$PLUGIN_PATH.plugin.zsh"
         else
             git clone "https://github.com/${1}" "${PLUGIN_DIR}/$(plugin_name $1)"
         fi
