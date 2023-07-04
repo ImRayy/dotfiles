@@ -13,5 +13,9 @@ single_file_plugins=(
     zap-zsh/vim/master/vim.plugin.zsh
 )
 
-add_plugins "${plugins[@]}"
-add_plugins --singlefile "${single_file_plugins[@]}"
+if ! command -v wget &>/dev/null || ! command -v git &>/dev/null; then
+    echo "Make sure wget & git properly installed"
+else
+    add_plugins "${plugins[@]}"
+    add_plugins --singlefile "${single_file_plugins[@]}"
+fi

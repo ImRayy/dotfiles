@@ -27,7 +27,7 @@ local zsh_scripts=(
     ~/.config/zsh/zsh_plugins
 
     # Using aliases same as fish
-    ~/.config/fish/completions/alias.fish
+    ~/.config/fish/completions/aliases.fish
 
     # Icons for lf file manager
     ~/.config/lf/icons/icons
@@ -38,11 +38,11 @@ local zsh_scripts=(
 
 source_files "${zsh_scripts[@]}"
 
-# zoxide
-! command -v z &>/dev/null && eval "$(zoxide init zsh)"
-
 # Extra paths
 export PATH="/home/${USER}/.local/bin:$PATH"
 
+# zoxide
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
+
 # Starship prompt
-eval "$(starship init zsh)" || echo "Starship not found"
+command -v starship &>/dev/null && eval "$(starship init zsh)"
