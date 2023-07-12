@@ -17,6 +17,9 @@ zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit
 compinit
 
+# This will prevent the typed characters from being displayed on the terminal before loading zsh, followed by the % prompt.
+unsetopt PROMPT_SP
+
 # Set case sensitive to false like Fish shell
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
