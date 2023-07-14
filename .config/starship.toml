@@ -1,10 +1,11 @@
 add_newline = false
+
 [line_break]
-disabled = false
+disabled = true
 
 [username]
 style_root = "red bold"
-format = "[$user](bold green) "
+format = "🦊 [$user](bold green) "
 disabled = false
 show_always = true
 
@@ -29,16 +30,21 @@ format = " took [$duration]($style)"
 truncation_length = 5
 truncation_symbol = " "
 format = "[$path]($style)[$read_only]($read_only_style)"
-# home_symbol = " "
-# home_symbol = " "
 read_only = "🔒"
 style = "bold cyan"
 
-#git
+[directory.substitutions]
+Applications = " "
+Documents = "󰈔 "
+Downloads = " "
+Music = "󰎈 "
+Pictures = "󰋩 "
+Videos = " "
 
+#git
 [git_branch]
 format = " [$symbol$branch]($style) "
-symbol = " "
+symbol = "🍣 "
 style = "bold green"
 always_show_remote = false
 only_attached = false
