@@ -6,7 +6,7 @@ function copyfile {
     xclip -sel clip $1
 }
 
-function plugin_name() {
+function filter_file_name() {
     awk -F '/' '{print $NF}' <<<$1
 }
 
@@ -21,9 +21,9 @@ function add_plugin() {
 
     if [ $1 = "--singlefile" ]; then
 
-        local PLUGIN_PATH="plugins/$(plugin_name $2)"
+        local PLUGIN_PATH="plugins/$(filter_file_name $2)"
 
-        if [[ -f "$PLUGIN_DIR/$(plugin_name $2)" ]]; then
+        if [[ -f "$PLUGIN_DIR/$(filter_file_name $2)" ]]; then
             source_file "$PLUGIN_PATH" || \ 
             source_file "$PLUGIN_PATH"
         else
@@ -31,13 +31,13 @@ function add_plugin() {
         fi
     else
 
-        local PLUGIN_PATH="plugins/$(plugin_name $1)/$(plugin_name $1)"
+        local PLUGIN_PATH="plugins/$(filter_file_name $1)/$(filter_file_name $1)"
 
-        if [[ -d "${PLUGIN_DIR}/$(plugin_name $1)" ]]; then
+        if [[ -d "${PLUGIN_DIR}/$(filter_file_name $1)" ]]; then
             source_file "$PLUGIN_PATH.zsh" ||
                 source_file "$PLUGIN_PATH.plugin.zsh"
         else
-            git clone "https://github.com/${1}" "${PLUGIN_DIR}/$(plugin_name $1)"
+            git clone "https://github.com/${1}" "${PLUGIN_DIR}/$(filter_file_name $1)"
         fi
     fi
 }
@@ -55,5 +55,15 @@ function add_plugins() {
         else
             add_plugin $file
         fi
+    done
+}
+
+function beautify-files() {
+    vared -p "enter range -> " -c range
+    vared -p "enter prefix -> " -c prefix
+    for file in $1/*; do
+        local extension=$(filter_file_name $file | cut -d '.' -f 2)
+        mv $file $1/${prefix}-${range}.${extension}
+        ((range = range + 1))
     done
 }
