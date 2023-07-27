@@ -1,11 +1,8 @@
+require("core.lazy")
 require("core.keybindings")
 require("core.settings")
 require("core.autocmd")
-require("core.bootstrap")
--- require("core.kittymargin") -- won't work with other than kitty
-require("plugins")
-require("plugins.configs.others")
-require("plugins.configs.lsp_config")
+-- require("core.kittymargin") -- won't work with any terminal other than kitty
 
 -- neovide configuration
 if vim.g.neovide then

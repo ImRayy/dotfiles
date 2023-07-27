@@ -90,4 +90,34 @@ M.tabnine = function()
 	})
 end
 
+M.blankline = {
+	indentLine_enabled = 1,
+	filetype_exclude = {
+		"help",
+		"terminal",
+		"lazy",
+		"lspinfo",
+		"TelescopePrompt",
+		"TelescopeResults",
+		"mason",
+		"nvdash",
+		"nvcheatsheet",
+		"dashboard",
+	},
+	buftype_exclude = { "terminal" },
+	show_trailing_blankline_indent = false,
+	show_first_indent_level = true,
+	show_current_context = true,
+	show_current_context_start = true,
+}
+
+M.autosession = {
+	auto_session_root_dir = "~/.neovim_sessions/",
+	auto_session_enable_last_session = true,
+	auto_session_create_enabled = false,
+	auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
+}
+
+M.mason = {}
+
 return M

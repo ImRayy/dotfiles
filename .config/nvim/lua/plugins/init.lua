@@ -1,301 +1,207 @@
--- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
-vim.api.nvim_create_autocmd("BufWritePost", {
-	group = vim.api.nvim_create_augroup("PACKER", { clear = true }),
-	pattern = "init.lua",
-	command = "source <afile> | PackerCompile",
-})
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-	return
-end
+return {
 
-return require("packer").startup({
-	function(use)
-		-- Package Manager --
+	-- Colorscheme
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		opts = function()
+			return require("plugins.configs.catppuccin")
+		end,
+	},
 
-		use("wbthomason/packer.nvim")
+	-- Dashboard
+	{
+		"glepnir/dashboard-nvim",
+		event = "VimEnter",
+		config = function()
+			require("plugins.configs.dashboard")
+		end,
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 
-		-- Required plugins --
+	-- Indent blankline
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		version = "2.20.7",
+		opts = function()
+			return require("plugins.configs.others").blankline
+		end,
+	},
 
-		use("nvim-lua/plenary.nvim")
+	-- Treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		module = "nvim-treesitter",
+		run = ":TSUpdate",
+		opts = function()
+			return require("plugins.configs.treesitter")
+		end,
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
+	},
 
-		-- UI | Themes --
+	-- Autohighlight word under cursor
+	{
+		"echasnovski/mini.cursorword",
+		branch = "stable",
+		opts = {},
+	},
 
-		use({
-			"kyazdani42/nvim-web-devicons",
-			config = function()
-				require("nvim-web-devicons").setup()
-			end,
-		})
+	-- nvim.notify
+	{
+		"rcarriga/nvim-notify",
+		config = function()
+			require("plugins.configs.others").notify()
+		end,
+	},
 
-		-- Onedark Colorscheme
-		-- use({
-		-- 	"navarasu/onedark.nvim",
-		-- 	config = function()
-		-- 		require("onedark").setup({
-		-- 			style = "darker",
-		-- 		})
-		-- 		require("onedark").load()
-		-- 	end,
-		-- })
+	-- Noice: Command UI
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		opts = {},
+	},
 
-		-- Catppuccin
-		use({
-			"catppuccin/nvim",
-			name = "catppuccin",
-			config = function()
-				require("plugins.configs.catppuccin")
-			end,
-		})
+	-- WhichKey : Shows keybindings
+	{
 
-		-- Statrup Screen
-		-- use({
-		-- 	"goolord/alpha-nvim",
-		-- 	requires = { "kyazdani42/nvim-web-devicons" },
-		-- 	config = function()
-		-- 		require("plugins.configs.alpha")
-		-- 	end,
-		-- })
+		"folke/which-key.nvim",
+		opts = {},
+	},
 
-		use({
-			"glepnir/dashboard-nvim",
-			event = "VimEnter",
-			config = function()
-				require("plugins.configs.dashboard")
-			end,
-			requires = { "nvim-tree/nvim-web-devicons" },
-		})
+	-- Smooth Scrolling
+	{ "psliwka/vim-smoothie" },
 
-		use({
-			"folke/noice.nvim",
-			config = function()
-				require("noice").setup()
-			end,
-			requires = {
-				"MunifTanjim/nui.nvim",
-			},
-		})
+	-- Status Bar
+	{
+		"nvim-lualine/lualine.nvim",
+		event = "BufEnter",
+		opts = function()
+			return require("plugins.configs.statusline")
+		end,
+	},
 
-		use({
-			"rcarriga/nvim-notify",
-			config = function()
-				require("plugins.configs.others").notify()
-			end,
-		})
+	-- Buffer
+	{
+		"akinsho/bufferline.nvim",
+		opts = function()
+			return require("plugins.configs.bufferline")
+		end,
+	},
 
-		-- Smooth Scrolling
-		use("psliwka/vim-smoothie")
+	{
+		"j-hui/fidget.nvim",
+		tag = "legacy",
+		after = "lualine.nvim",
+		opts = {},
+	},
 
-		-- Status Bar
-		use({
+	-- Neo-tree
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		opts = function()
+			return require("plugins.configs.neo-tree")
+		end,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+	},
+
+	-- Telescope
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.2",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
+
+	-- Markdown Preview
+	{
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	},
+
+	-- Autocompletion stuff
+	{
+		"williamboman/mason.nvim",
+		opts = function()
+			return require("plugins.configs.mason")
+		end,
+	},
+
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		config = function()
+			require("plugins.configs.nvim-cmp")
+		end,
+		dependencies = {
 			{
-				"nvim-lualine/lualine.nvim",
-				event = "BufEnter",
-				config = function()
-					require("plugins.configs.statusline")
-				end,
-			},
-			{
-				"j-hui/fidget.nvim",
-				after = "lualine.nvim",
-				config = function()
-					require("fidget").setup()
-				end,
-			},
-		})
-
-		-- Bufferline: elegant tabline
-		use({
-			"akinsho/bufferline.nvim",
-			-- tag = "v2.*",
-			config = function()
-				require("plugins.configs.others").bufferline()
-			end,
-		})
-
-		-- Neotree: file picker --
-		use({
-			"nvim-neo-tree/neo-tree.nvim",
-			branch = "v2.x",
-			config = function()
-				require("plugins.configs.neo-tree")
-			end,
-			requires = {
-				"nvim-lua/plenary.nvim",
-				"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended "MunifTanjim/nui.nvim",
-			},
-		})
-
-		-- WhichKey : Shows keybindings --
-		use({
-			"folke/which-key.nvim",
-			config = function()
-				require("which-key").setup()
-			end,
-		})
-
-		-- Indent Blankline --
-		use({
-			"lukas-reineke/indent-blankline.nvim",
-			config = function()
-				require("indent_blankline").setup({
-					show_current_context = true,
-					show_current_context_start = true,
-				})
-			end,
-		})
-
-		-- Makes Commenting Easy
-		use({
-			"numToStr/Comment.nvim",
-			config = function()
-				require("Comment").setup({
-					pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-				})
-			end,
-		})
-
-		-- nvim-ts-autotag
-		use({
-			"windwp/nvim-ts-autotag",
-		})
-
-		-- Treesitter: Better Highlights --
-		use({
-			"nvim-treesitter/nvim-treesitter",
-			module = "nvim-treesitter",
-			run = ":TSUpdate",
-			config = function()
-				require("plugins.configs.treesitter")
-			end,
-			requires = {
-				"JoosepAlviste/nvim-ts-context-commentstring",
-			},
-		})
-
-		-- Telescope: Fuzzy Finder --
-		use({
-			"nvim-telescope/telescope.nvim",
-			config = function()
-				require("telescope").load_extension("session-lens")
-			end,
-			requires = {
-				{ "nvim-lua/plenary.nvim" },
-			},
-		})
-
-		-- Markdown Preview
-		use({
-			"iamcco/markdown-preview.nvim",
-			run = "cd app && npm install",
-			setup = function()
-				vim.g.mkdp_filetypes = { "markdown" }
-			end,
-			ft = { "markdown" },
-		})
-
-		-- mason
-		use({
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"neovim/nvim-lspconfig",
-			"hrsh7th/cmp-nvim-lsp",
-		})
-
-		-- Neoformat for formating code
-		use({ "sbdchd/neoformat" })
-
-		-- Nvim cmp and snippet stuff
-		use({
-			{
-				"hrsh7th/nvim-cmp",
+				"L3MON4D3/LuaSnip",
 				event = "InsertEnter",
-				config = function()
-					require("plugins.configs.nvim-cmp")
+				opts = function()
+					return require("plugins.configs.luasnip")
 				end,
-				requires = {
+				dependencies = {
 					{
-						"L3MON4D3/LuaSnip",
-						event = "InsertEnter",
-						config = function()
-							require("plugins.configs.luasnip")
-						end,
-						requires = {
-							{
-								"rafamadriz/friendly-snippets",
-								event = "CursorHold",
-							},
-						},
+						"rafamadriz/friendly-snippets",
+						event = "CursorHold",
 					},
 				},
 			},
-			{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-		})
-
-		-- tabnine
-		-- use({
-		-- 	"codota/tabnine-nvim",
-		-- 	config = function()
-		-- 		require("plugins.configs.others").tabnine()
-		-- 	end,
-		-- 	run = "./dl_binaries.sh",
-		-- })
-
-		-- null.ls
-		use({
-			"jose-elias-alvarez/null-ls.nvim",
-			config = function()
-				require("plugins.configs.others").null_ls()
-			end,
-			requires = { "nvim-lua/plenary.nvim" },
-		})
-
-		-- Nvim Autopairs: Autopair --
-		use({
-			"windwp/nvim-autopairs",
-			config = function()
-				require("nvim-autopairs").setup()
-			end,
-		})
-
-		-- Autohighlight word under cursor
-		use({
-			"echasnovski/mini.cursorword",
-			branch = "stable",
-			config = function()
-				require("mini.cursorword").setup()
-			end,
-		})
-
-		use({
-			"rmagatti/auto-session",
-			config = function()
-				require("auto-session").setup({
-					auto_session_root_dir = "~/.neovim_sessions/",
-					auto_session_enable_last_session = true,
-					auto_session_create_enabled = false,
-					auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
-				})
-			end,
-		})
-
-	end,
-
-	config = {
-		auto_clean = true,
-		compile_on_sync = true,
-		git = { clone_timeout = 6000 },
-		display = {
-			working_sym = "ﲊ",
-			error_sym = "✗ ",
-			done_sym = " ",
-			removed_sym = " ",
-			moved_sym = "",
-			open_fn = function()
-				return require("packer.util").float({ border = "rounded" })
-			end,
 		},
 	},
-})
+
+	{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-path", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+
+	-- Null.ls
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		config = function()
+			require("plugins.configs.others").null_ls()
+		end,
+		requires = { "nvim-lua/plenary.nvim" },
+	},
+
+	-- Code Format
+	{
+		"sbdchd/neoformat",
+	},
+
+	-- Session Manager
+	{
+		"rmagatti/auto-session",
+		opts = function()
+			return require("plugins.configs.others").autosession
+		end,
+	},
+
+	{ "codota/tabnine-nvim", build = "./dl_binaries.sh" },
+
+	-- Makes Commenting Easy
+	{
+		"numToStr/Comment.nvim",
+		opts = {},
+	},
+
+	-- Autopairs
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {},
+	},
+}

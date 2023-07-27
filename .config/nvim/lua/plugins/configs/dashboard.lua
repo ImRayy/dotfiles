@@ -7,6 +7,9 @@ local ascii = {
 	"",
 	"",
 	"",
+	"",
+	"",
+	"",
 	"          ▀████▀▄▄              ▄█ ",
 	"            █▀    ▀▀▄▄▄▄▄    ▄▄▀▀█ ",
 	"    ▄        █          ▀▀▀▀▄  ▄▀  ",
@@ -18,8 +21,7 @@ local ascii = {
 	"   █   █  █      ▄▄           ▄▀   ",
 	"",
 	"",
-	" [ TIP: To exit NeoVim, switch off MCB of your house. ] ",
-	"",
+	-- " [ TIP: To exit NeoVim, switch off MCB of your house. ] ",
 	"",
 }
 
@@ -27,8 +29,8 @@ local footer_text = {
 	"",
 }
 
-vim.g.indent_blankline_filetype_exclude = { "dashboard" }
-vim.g.indent_blankline_buftype_exclude = { "dashboard" }
+-- vim.g.indent_blankline_filetype_exclude = { "dashboard" }
+-- vim.g.indent_blankline_buftype_exclude = { "dashboard" }
 
 dashboard.setup({
 	theme = "doom",
@@ -38,8 +40,9 @@ dashboard.setup({
 			{
 				icon = "  ",
 				icon_hl = "Title",
-				desc = "Update Plugins                                       ",
+				desc = "Update Plugins                  ",
 				key = "u",
+				keymap = "SPC u u",
 				action = "PackerUpdate",
 			},
 			{
