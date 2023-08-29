@@ -48,14 +48,6 @@ map("n", "<C-m>", ":MarkdownPreview<CR>")
 
 local opt = { expr = true, remap = true, replace_keycodes = false }
 
--- Toggle using count
-map(
-	"n",
-	"gcc",
-	"v:count == 0 ? '<Plug>(comment_toggle_linewise_current)' : '<Plug>(comment_toggle_linewise_count)'",
-	opt
-)
-
 -- Toggle in VISUAL mode
 map("x", "<C-/>", "<Plug>(comment_toggle_linewise_visual)")
 
