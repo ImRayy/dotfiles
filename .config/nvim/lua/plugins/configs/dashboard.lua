@@ -43,7 +43,7 @@ dashboard.setup({
 				desc = "Update Plugins                  ",
 				key = "u",
 				keymap = "SPC u u",
-				action = "PackerUpdate",
+				action = "Lazy update",
 			},
 			{
 				icon = "  ",
