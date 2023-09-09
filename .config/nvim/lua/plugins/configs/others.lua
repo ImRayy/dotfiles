@@ -112,12 +112,10 @@ M.blankline = {
 }
 
 M.autosession = {
-	auto_session_root_dir = "~/.neovim_sessions/",
+    auto_session_root_dir = os.getenv("HOME") .. "/" .. ".neovim_sessions/",
 	auto_session_enable_last_session = true,
 	auto_session_create_enabled = false,
-	auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
+	auto_session_suppress_dirs = { "~/", "~/Downloads/", "/" },
 }
-
-M.mason = {}
 
 return M
