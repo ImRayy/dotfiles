@@ -64,7 +64,7 @@
     },
     "network": {
         "format": "{ifname}",
-        "format-wifi": "  {essid} ({signalStrength}%)",
+        "format-wifi": "   {essid} ({signalStrength}%)",
         "format-ethernet": " Enternet",
         "format-disconnected": "", //An empty format will hide the module.
         "tooltip-format": "{ifname} via {gwaddr} ",
@@ -75,7 +75,7 @@
         "max-length": 50
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}  {volume}%",
         "tooltip": false,
         "format-muted": " Muted",
         "on-click": "pamixer -t",
@@ -94,7 +94,7 @@
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "tooltip": false,
-        "format-source": " {volume}%",
+        "format-source": "  {volume}%",
         "format-source-muted": " Muted",
         "on-click": "pamixer --default-source -t",
         "on-scroll-up": "pamixer --default-source -i 5",
