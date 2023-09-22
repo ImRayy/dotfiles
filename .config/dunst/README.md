@@ -6,4 +6,7 @@ ___
 
 ___
 
-credits: https://github.com/FrenzyExists/dotfiles/tree/master/config/dunst
+**Credits**
+https://github.com/FrenzyExists/dotfiles/tree/master/config/dunst
+https://gitlab.com/Nmoleo/i3-volume-brightness-indicator
+
