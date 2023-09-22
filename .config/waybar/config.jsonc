@@ -32,13 +32,9 @@
         "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
+            "default": "󰊠",
+            "active": "󰮯",
             "urgent": "",
-            // "active": "",
-            "default": ""
         }
     },
     "cpu": {
