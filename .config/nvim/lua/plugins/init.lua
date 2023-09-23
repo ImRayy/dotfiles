@@ -5,8 +5,8 @@ return {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
-		opts = function()
-			return require("plugins.configs.catppuccin")
+		config = function()
+			require("plugins.configs.catppuccin")
 		end,
 	},
 
