@@ -1,4 +1,4 @@
-# ＳＥＴＴＩＮＧＳ
+# SETTINGS
 
 set preview
 set drawbox 
@@ -22,8 +22,9 @@ set filesep "\n"
 set previewer ~/.config/lf/scripts/lf_kitty_preview
 set cleaner ~/.config/lf/scripts/lf_kitty_clean
 
-
-# ＣＵＳＴＯＭ  ＦＵＮＣＴＩＯＮＳ
+# ----------------
+# CUSTOM FUNCTIONS
+# ----------------
 
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
@@ -92,6 +93,10 @@ cmd fzf_jump ${{
   lf -remote "send $id $cmd \"$res\""
 }}
 
+cmd mpv-pl ${{
+    mpv --playlist="$f"
+}}
+
 #### For dynamic columns ####
 
 ${{
@@ -105,7 +110,7 @@ ${{
    fi
 }}
 
-# ＡＲＣＨＩＶＥ
+# ARCHIVE
 
 cmd unarchive ${{
   case "$f" in
@@ -123,7 +128,7 @@ cmd targz %tar cvzf "$f.tar.gz" "$f"
 cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
 
 
-# ＴＲＡＳＨ－ＣＬＩ
+# TRASH CLI
 
 cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
@@ -158,7 +163,7 @@ cmd open-with-cli $$@ $fx ## opens with a cli application inside lf client
 
 
 # ------------------------
-# ＫＥＹ  ＢＩＮＤＩＮＧＳ
+# KEY BINDINGS
 # ------------------------
 
 map <esc> cmd-escape
@@ -186,8 +191,7 @@ map c
 map e
 map f
 
-
-# ＡＲＣＨＩＶＥ  ＭＡＰＰＩＮＧＳ
+# ARCHIVE MAPPING
 
 map az zip
 map at tar
@@ -195,15 +199,13 @@ map ag targz
 map ab targz
 map au unarchive
 
-
-# ＴＲＡＳＨ  ＭＡＰＰＩＮＧＳ
+# TRASH MAPPINGS
 
 map dd trash
 map tc clear_trash
 map tr restore_trash
 
-
-# ＢＡＳＩＣ  ＦＵＮＣＴＩＯＮＳ
+# BASIC FUNCTIONS
 
 map . set hidden!
 map DD delete
