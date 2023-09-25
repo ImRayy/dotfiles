@@ -31,6 +31,7 @@
 - [neofetch](https://github.com/ImRayy/dotfiles/blob/master/.config/neofetch)
 - [lf](https://github.com/ImRayy/dotfiles/blob/master/.config/lf)
 - [dunst](https://github.com/ImRayy/dotfiles/blob/master/.config/dunst)
+- [swaync](https://github.com/ImRayy/dotfiles/tree/master/.config/swaync)
 - [neovim](https://github.com/ImRayy/dotfiles/blob/master/.config/nvim)
 - [mpv](https://github.com/ImRayy/dotfiles/tree/master/.config/mpv)
 
