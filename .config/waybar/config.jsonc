@@ -10,7 +10,7 @@
         "cpu",
         "memory",
         "hyprland/workspaces"
-        // "hyprland/window",
+        // "hyprland/window"
     ],
     "modules-center": [
         "clock"
@@ -19,7 +19,8 @@
         "tray",
         "network",
         "pulseaudio",
-        "pulseaudio#microphone"
+        "pulseaudio#microphone",
+        "custom/swaync"
     ],
     "hyprland/window": {
         "format": "{}",
@@ -58,6 +59,26 @@
         "format": "{:%R  |  %A %d  %B %Y}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
+    "custom/swaync": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂚",
+      "dnd-notification": "󱏧<span foreground='red'><sup></sup></span>",
+      "dnd-none": "󱏧",
+      "inhibited-notification": "󰂚<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "󰂚",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": "󱏧"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "~/.config/swaync/scripts/open-tray.sh",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+     },
     "network": {
         "format": "{ifname}",
         "format-wifi": "   {essid} ({signalStrength}%)",
@@ -87,6 +108,7 @@
             ]
         }
     },
+
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "tooltip": false,
