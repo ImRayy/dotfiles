@@ -1,4 +1,6 @@
-# SETTINGS
+# ----------------
+# GENERAL SETTINGS
+# ----------------
 
 set preview
 set drawbox 
@@ -7,18 +9,20 @@ set ignorecase
 set info size
 set ifs "\n"
 set filesep "\n"
+set dircounts
+set period 1
 
-# ctpv image preview
+# CTPV IMAGE PREVIEW
 # set previewer ctpv
 # set cleaner ctpvclear
 # &ctpv -s $id
 # &ctpvquit $id
 
-# Custom script for image preview
+# CUSTOM SCRIPT FOR IMAGE PREVIEW
 # set previewer ~/.config/lf/scripts/preview
 # set cleaner ~/.config/lf/scripts/cleaner
 
-# Uncomment for kitty_preview 
+# KITTY IMAGE PREVIEW
 set previewer ~/.config/lf/scripts/lf_kitty_preview
 set cleaner ~/.config/lf/scripts/lf_kitty_clean
 
@@ -31,6 +35,11 @@ cmd open ${{
         text/*|application/json) $EDITOR "$f";;
         *) xdg-open "$f" ;;
     esac
+}}
+
+cmd edit-config ${{
+    $EDITOR ~/.config/lf/lfrc
+    lf -remote "send $id source ~/.config/lf/lfrc"
 }}
 
 cmd mkdir ${{
@@ -63,12 +72,10 @@ cmd sudomkfile ${{
   sudo $EDITOR $ans
 }}
 
-# cmd setwallpaper %cp "$f" ~/.config/wall.png && feh --bg-fill "$f"
+# WALLPAPER
 cmd setwallpaper ${{
     if [ $DESKTOP_SESSION == gnome-xorg ];then
         gsettings set org.gnome.desktop.background picture-uri "$f"
-    # elif [ $DESKTOP_SESSION == hyprland ];then
-    #    cp "$f" ~/.config/wall.jpg && swww img "$f" 
     elif [ $DESKTOP_SESSION == hyprland ];then
        echo "$f" >>  ~/.config/wall.txt && ~/.config/lf/scripts/set_wall.sh
     else
@@ -77,12 +84,14 @@ cmd setwallpaper ${{
 
 }}
 
+# SET WALLPAPER ON GNOME DARK MODE
 cmd setwallpaper-dark ${{
     if [ $DESKTOP_SESSION == gnome-xorg ];then 
         gsettings set org.gnome.desktop.background picture-uri-dark "$f"
     fi
 }}
 
+# FZF JUMP
 cmd fzf_jump ${{
   res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
   if [ -f "$res" ]; then
@@ -93,12 +102,7 @@ cmd fzf_jump ${{
   lf -remote "send $id $cmd \"$res\""
 }}
 
-cmd mpv-pl ${{
-    mpv --playlist="$f"
-}}
-
-#### For dynamic columns ####
-
+# DYNAMIC COLUMNS
 ${{
    w=$(tput cols)
    if [ $w -le 80 ]; then
@@ -111,7 +115,6 @@ ${{
 }}
 
 # ARCHIVE
-
 cmd unarchive ${{
   case "$f" in
       *.zip) 7z x "$f" ;;
@@ -129,18 +132,11 @@ cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
 
 
 # TRASH CLI
-
 cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
   while [ "$files" ]; do
-    # extract the substring from start of string up to delimiter.
-    # this is the first "element" of the string.
     file=${files%%;*}
-
     trash-put "$(basename "$file")"
-    # if there's only one element left, set `files` to an empty string.
-    # this causes us to exit this `while` loop.
-    # else, we delete the first "element" of the string from files, and move onto the next.
     if [ "$files" = "$file" ]; then
       files=''
     else
@@ -157,14 +153,50 @@ cmd restore_trash ${{
 
 cmd stripspace %stripspace "$f"
 
-
 cmd open-with-gui &$@ $fx ## opens with a gui application outside lf client
 cmd open-with-cli $$@ $fx ## opens with a cli application inside lf client
 
+# SELECT FILES & DIRS
 
-# ------------------------
+cmd select-files &{{
+    get_files() {
+        if [ "$lf_hidden" = 'false' ]; then
+            find "$PWD" -mindepth 1 -maxdepth 1 -type f -not -name '.*' -print0
+        else
+            find "$PWD" -mindepth 1 -maxdepth 1 -type f -print0
+        fi |
+        xargs -0 printf ' %q'
+    }
+
+    lf -remote "send $id :unselect; toggle $(get_files)"
+}}
+
+cmd select-dirs &{{
+    get_dirs() {
+        if [ "$lf_hidden" = 'false' ]; then
+            find "$PWD" -mindepth 1 -maxdepth 1 -type d -not -name '.*' -print0
+        else
+            find "$PWD" -mindepth 1 -maxdepth 1 -type d -print0
+        fi |
+        xargs -0 printf ' %q'
+    }
+
+    lf -remote "send $id :unselect; toggle $(get_dirs)"
+}}
+
+cmd bookmark_jump ${{
+    res="$(cat $LF_BOOKMARK_PATH/$(ls $LF_BOOKMARK_PATH | fzf))"
+    lf -remote "send $id cd \"$res\""
+}}
+
+cmd bookmark_create ${{
+    read ans
+    echo $PWD > $LF_BOOKMARK_PATH/$ans
+}}
+
+# -------------
 # KEY BINDINGS
-# ------------------------
+# -------------
 
 map <esc> cmd-escape
 map e $$EDITOR $fx
@@ -180,9 +212,7 @@ map R bulk-rename
 map zp set preview!
 map t $tig -C $PWD
 map M push $mkdir<space>
-
 map m
-map o
 map n
 map "'"
 map '"'
@@ -191,22 +221,24 @@ map c
 map e
 map f
 
-# ARCHIVE MAPPING
+# BOOKMARK
+map bc bookmark_create
+map bj bookmark_jump
 
+# ARCHIVE MAPPING
 map az zip
 map at tar
 map ag targz
 map ab targz
 map au unarchive
 
-# TRASH MAPPINGS
 
+# TRASH MAPPINGS
 map dd trash
 map tc clear_trash
 map tr restore_trash
 
 # BASIC FUNCTIONS
-
 map . set hidden!
 map DD delete
 map p paste
@@ -214,14 +246,10 @@ map x cut
 map y copy
 map <enter> open
 map mf mkfile
-map mr sudomkfile
 map md mkdir
-map ms $mkscript
 map ch chmod
-map br $vimv $fx
 map r rename
-map H top
-map L bottom
+map R $vimv $fx
 map R reload
 map C clear
 map U unselect
@@ -229,12 +257,10 @@ map O push :open-with-gui<space>
 map o push :open-with-cli<space> 
 
 # WALLPAPER
-
 map ; setwallpaper
 map w setwallpaper-dark
 
 # NAVIGATION
-
 map gd     cd ~/Documents
 map gc     cd ~/.config
 map git    cd ~/Downloads/GIT
@@ -247,4 +273,3 @@ map gmu    cd /media/MyWaifu/Music/
 map gmo    cd /media/MyWaifu/Movies/
 map gmw    cd /media/MyWaifu/
 map ga     cd /media/MyWaifu/anime
-
