@@ -3,7 +3,7 @@
 # ----------------
 
 set preview
-set drawbox 
+# set drawbox 
 set icons 
 set ignorecase
 set info size
@@ -74,12 +74,18 @@ cmd sudomkfile ${{
 
 # WALLPAPER
 cmd setwallpaper ${{
-    if [ $DESKTOP_SESSION == gnome-xorg ];then
-        gsettings set org.gnome.desktop.background picture-uri "$f"
-    elif [ $DESKTOP_SESSION == hyprland ];then
-       echo "$f" >>  ~/.config/wall.txt && ~/.config/lf/scripts/set_wall.sh
+    img_extensions=("jpg" "jpeg" "png" "gif")
+    extension="${f##*.}"
+    if [[ " ${img_extensions[@]} " == *" $extension "* ]]; then
+        if [ $DESKTOP_SESSION == gnome-xorg ];then
+            gsettings set org.gnome.desktop.background picture-uri "$f"
+        elif [ $DESKTOP_SESSION == hyprland ];then
+            echo "$f" >>  ~/.config/wall.txt && ~/.config/lf/scripts/set_wall.sh
+        else
+            cp "$f" ~/.config/ && feh --bg-fill ~/.config/wall.png
+        fi
     else
-        cp "$f" ~/.config/ && feh --bg-fill ~/.config/wall.png
+        echo "Selected file isn't a image file!"
     fi
 
 }}
@@ -103,16 +109,16 @@ cmd fzf_jump ${{
 }}
 
 # DYNAMIC COLUMNS
-${{
-   w=$(tput cols)
-   if [ $w -le 80 ]; then
-       lf -remote "send $id set ratios 1:2"
-   elif [ $w -le 160 ]; then
-       lf -remote "send $id set ratios 1:2:3"
-   else
-       lf -remote "send $id set ratios 1:2:3:5"
-   fi
-}}
+# ${{
+#    w=$(tput cols)
+#    if [ $w -le 80 ]; then
+#        lf -remote "send $id set ratios 1:2"
+#    elif [ $w -le 160 ]; then
+#        lf -remote "send $id set ratios 1:2:3"
+#    else
+#        lf -remote "send $id set ratios 1:2:3:5"
+#    fi
+# }}
 
 # ARCHIVE
 cmd unarchive ${{
@@ -249,7 +255,7 @@ map mf mkfile
 map md mkdir
 map ch chmod
 map r rename
-map R $vimv $fx
+map br $vimv $fx
 map R reload
 map C clear
 map U unselect
