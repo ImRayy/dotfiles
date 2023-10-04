@@ -1,0 +1,62 @@
+(defwidget powermenu-button [onclick label ?class]
+    (button :class "powermenu-button ${class}"
+            :onclick onclick         
+            label
+    )
+)
+
+(defwidget poweroff-button []
+    (powermenu-button :class "poweroff-button"
+                      :onclick "systemctl poweroff"
+                      :label ""
+    )
+)
+
+(defwidget reboot-button []
+    (powermenu-button :class "reboot-button"
+                      :onclick "systemctl reboot"
+                      :label ""
+    )
+)
+
+(defwidget lock-button []
+    (powermenu-button :class "lock-button"
+                      :onclick "~/.config/swaylock/lock.sh"
+                      :label ""
+    )
+)
+
+(defwidget logout-button []
+    (powermenu-button :class "logout-button"
+                      :onclick "hyprctl dispatch exit 0"
+                      :label "󰍃"
+    )
+)
+
+(defwidget powermenu-window []
+    (box    
+            :orientation "v"
+            :space-evenly true 
+            (box    :class "power-menu"
+                    :space-evenly true
+                    :orientation 'h'
+                    (lock-button)
+                    (poweroff-button)
+                    (reboot-button)
+                    (logout-button)
+            )
+    )
+)
+
+(defwindow powermenu
+    :monitor 0
+    :geometry (geometry :x "10px"
+                        :y "10px"
+                        :width "20%"
+                        :height "10%"
+                        :anchor "top center")
+    :stacking "fg"
+    :reserve (struts :distance "40px" :side "top")
+    :windowtype "dock"
+  (powermenu-window)
+)

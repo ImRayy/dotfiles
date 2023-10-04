@@ -1,0 +1,42 @@
+$primary: #18181b;
+$secondary: #212127;
+$text-active: #a6adc8;
+$text-inactive: #535764;
+$hover: #27272a;
+
+* {
+  border-radius: 10px;
+}
+
+.power-menu {
+  background: $primary;
+  padding: 1rem;
+  padding-right: 0;
+}
+
+.powermenu-button {
+  background: $secondary;
+  margin-right: 1rem;
+  color: $text-active;
+  font-size: 18px;
+}
+
+.powermenu-button:hover {
+  background: $hover;
+}
+
+.poweroff-button:hover {
+  color: #e05f65;
+}
+
+.reboot-button:hover {
+  color: #70a5eb;
+}
+
+.logout-button:hover {
+  color: #e5c76b;
+}
+
+.lock-button:hover {
+  color: #78dba9;
+}
