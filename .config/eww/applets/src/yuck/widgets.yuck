@@ -1,6 +1,7 @@
+;; POWERMENU
 (defwidget powermenu-button [onclick label ?class]
     (button :class "powermenu-button ${class}"
-            :onclick onclick         
+            :onclick onclick
             label
     )
 )
@@ -34,7 +35,7 @@
 )
 
 (defwidget powermenu-window []
-    (box    
+    (box
             :orientation "v"
             :space-evenly true 
             (box    :class "power-menu"
@@ -45,18 +46,5 @@
                     (reboot-button)
                     (logout-button)
             )
-    )
-)
+    ))
 
-(defwindow powermenu
-    :monitor 0
-    :geometry (geometry :x "10px"
-                        :y "10px"
-                        :width "20%"
-                        :height "10%"
-                        :anchor "top center")
-    :stacking "fg"
-    :reserve (struts :distance "40px" :side "top")
-    :windowtype "dock"
-  (powermenu-window)
-)
