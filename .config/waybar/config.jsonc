@@ -1,65 +1,58 @@
 {
-    "layer": "top",
-    "position": "top",
-    "mod": "dock",
-    "exclusive": true,
-    "passtrough": false,
-    "gtk-layer-shell": true,
-    "height": 0,
-    "modules-left": [
-        "cpu",
-        "memory",
-        "hyprland/workspaces"
-        // "hyprland/window"
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "tray",
-        "network",
-        "pulseaudio",
-        "pulseaudio#microphone",
-        "custom/swaync"
-    ],
-    "hyprland/window": {
-        "format": "{}",
-        "max-length": 50
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passtrough": false,
+  "gtk-layer-shell": true,
+  "height": 0,
+  "modules-left": ["cpu", "memory", "hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    // "tray",
+    "network",
+    "pulseaudio",
+    "pulseaudio#microphone",
+    "custom/swaync"
+  ],
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 50
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "active": "󰮯",
+      "urgent": "󰊠"
     },
-    "hyprland/workspaces": {
-        "on-scroll-up": "hyprctl dispatch workspace e+1",
-        "on-scroll-down": "hyprctl dispatch workspace e-1",
-        "all-outputs": true,
-        "on-click": "activate",
-        "format": "{icon}",
-        "format-icons": {
-            "default": "󰊠",
-            "active": "󰮯",
-            "urgent": "",
-        }
-    },
-    "cpu": {
-        "interval": 10,
-        "format": "  {usage}%",
-        "max-length": 10,
-        "on-click": ""
-    },
-    "memory": {
-        "interval": 30,
-        "format": "  {}%",
-        "format-alt": " {used:0.1f}G",
-        "max-length": 10
-    },
-    "tray": {
-        "icon-size": 13,
-        "tooltip": false,
-        "spacing": 10
-    },
-    "clock": {
-        "format": "{:%R  |  %A %d  %B %Y}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "custom/swaync": {
+    "persistent_workspaces": {
+      "*": 5
+    }
+  },
+  "cpu": {
+    "interval": 10,
+    "format": "  {usage}%",
+    "max-length": 10,
+    "on-click": ""
+  },
+  "memory": {
+    "interval": 30,
+    "format": "  {}%",
+    "format-alt": " {used:0.1f}G",
+    "max-length": 10
+  },
+  "tray": {
+    "icon-size": 18,
+    "tooltip": false,
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{:%R  |  %A %d  %B %Y}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "custom/swaync": {
     "tooltip": false,
     "format": "{icon}",
     "format-icons": {
@@ -78,45 +71,41 @@
     "on-click": "~/.config/swaync/scripts/open-tray.sh",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
-     },
-    "network": {
-        "format": "{ifname}",
-        "format-wifi": "   {essid} ({signalStrength}%)",
-        "format-ethernet": " Enternet",
-        "format-disconnected": "", //An empty format will hide the module.
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-        "tooltip-format-ethernet": "{ifname} ",
-        "on-click": "~/.config/waybar/scripts/rofi-wifi-menu.sh",
-        "tooltip-format-disconnected": "Disconnected",
-        "max-length": 50
-    },
-    "pulseaudio": {
-        "format": "{icon}  {volume}%",
-        "tooltip": false,
-        "format-muted": " Muted",
-        "on-click": "pamixer -t",
-        "on-scroll-up": "pamixer -i 5",
-        "on-scroll-down": "pamixer -d 5",
-        "scroll-step": 5,
-        "format-icons": {
-            "default": [
-                "",
-                "",
-                "",
-                ""
-            ]
-        }
-    },
-
-    "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "tooltip": false,
-        "format-source": "  {volume}%",
-        "format-source-muted": " Muted",
-        "on-click": "pamixer --default-source -t",
-        "on-scroll-up": "pamixer --default-source -i 5",
-        "on-scroll-down": "pamixer --default-source -d 5",
-        "scroll-step": 5
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "󰤨   {essid} {bandwidthTotalBytes}",
+    "format-ethernet": "󰊗  Enternet",
+    "format-disconnected": "󰤭 ",
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "󰤢   Signal Strength:  {signalStrength}%",
+    "tooltip-format-ethernet": "󰊗   Signal Strength:  {signalStrength}%",
+    "on-click": "~/.config/waybar/scripts/rofi-wifi-menu.sh",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "interval": 5
+  },
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "tooltip": false,
+    "format-muted": " Muted",
+    "on-click": "pamixer -t",
+    "on-scroll-up": "pamixer -i 5",
+    "on-scroll-down": "pamixer -d 5",
+    "scroll-step": 5,
+    "format-icons": {
+      "default": ["", "", "", ""]
     }
+  },
+
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "tooltip": false,
+    "format-source": "  {volume}%",
+    "format-source-muted": " Muted",
+    "on-click": "pamixer --default-source -t",
+    "on-scroll-up": "pamixer --default-source -i 5",
+    "on-scroll-down": "pamixer --default-source -d 5",
+    "scroll-step": 5
+  }
 }

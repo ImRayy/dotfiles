@@ -8,7 +8,7 @@
 }
 
 window#waybar {
-  background: rgba(21, 18, 27, 0);
+  /* background: rgba(21, 18, 27, 0.4); */
   color: #cdd6f4;
   background: #18181b;
 }
@@ -19,6 +19,37 @@ tooltip {
   border-width: 2px;
   border-style: solid;
   border-color: #393939;
+}
+
+#window,
+#pulseaudio,
+#network,
+#workspaces,
+#cpu,
+#memory,
+#tray,
+#backlight,
+#custom-swaync {
+  background: #212127;
+  padding: 2px 16px;
+  margin: 6px 0 6px 0;
+  border: 1px solid #181825;
+  font-weight: 600;
+}
+
+#tray {
+  border-radius: 10rem;
+  margin-right: 10px;
+}
+
+#workspaces {
+  background: #212127;
+  border-radius: 10rem;
+  margin-left: 10px;
+  padding-right: 0px;
+  padding-left: 5px;
+  margin-right: 10px;
+  font-weight: Bold;
 }
 
 #workspaces button {
@@ -44,39 +75,9 @@ tooltip {
 }
 
 #workspaces button:hover {
-  /* background: #11111b; */
-  color: black;
-  border-radius: 10rem;
-}
-
-#window,
-#pulseaudio,
-#network,
-#workspaces,
-#cpu,
-#memory,
-#tray,
-#backlight {
   background: #212127;
-  padding: 2px 16px;
-  margin: 6px 0 6px 0;
-  border: 1px solid #181825;
-  font-weight: 600;
-}
-
-#tray {
+  color: white;
   border-radius: 10rem;
-  margin-right: 10px;
-}
-
-#workspaces {
-  background: #212127;
-  border-radius: 10rem;
-  margin-left: 10px;
-  padding-right: 0px;
-  padding-left: 5px;
-  margin-right: 10px;
-  font-weight: Bold;
 }
 
 #cpu {
@@ -94,7 +95,6 @@ tooltip {
   border-radius: 0 10rem 10rem 0;
   padding-right: 1rem;
   border-left: 0;
-  padding-left: 0;
 }
 
 #window {
@@ -110,6 +110,15 @@ tooltip {
   margin-left: 1.6rem;
   border-right: 0px;
   font-weight: 600;
+}
+
+#custom-swaync {
+  color: #f87171;
+  margin-right: 10px;
+  border-radius: 10rem;
+  margin-right: 10px;
+  border-radius: 10rem;
+  padding-right: 18px;
 }
 
 #network {
