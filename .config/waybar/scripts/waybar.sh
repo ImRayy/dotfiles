@@ -1,6 +1,7 @@
 #!/bin/bash
 
-CONFIG_FILES="$HOME/.config/waybar/config.jsonc $HOME/.config/waybar/style.css"
+DIR="$HOME/.config/waybar/"
+CONFIG_FILES="$DIR/config.jsonc $DIR/theme/ $DIR/style.css"
 
 trap "killall waybar" EXIT
 
