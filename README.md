@@ -2,21 +2,13 @@
 ![size](https://img.shields.io/github/languages/code-size/ImRayy/dotfiles?style=for-the-badge&logo=gnu-bash&color=ee999f&logoColor=D9E0EE&labelColor=302D41)
 ![last-commit](https://img.shields.io/github/last-commit/ImRayy/dotfiles?style=for-the-badge&logo=git&color=8bd5ca&logoColor=D9E0EE&labelColor=302D41)
 
-<div align="center">
-<h4>Bspwm</h4>
-</div>
-
-![bspwm](https://ik.imagekit.io/rayshold/dotfiles/homescreen-bspwm.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1677173057486)
-
-<div align="center">
-<h4>Hyprland</h4>
-</div>
+## Screenshots
 
 ![hyprland](https://ik.imagekit.io/rayshold/dotfiles/hyprland.webp?updatedAt=1680764325650)
 
----
+> Hyprland
 
-### Contents
+## Contents
 
 - [bspwm](https://github.com/ImRayy/dotfiles/tree/master/.config/bspwm)
 - [hyprland](https://github.com/ImRayy/dotfiles/tree/master/.config/hypr)
@@ -34,6 +26,56 @@
 - [swaync](https://github.com/ImRayy/dotfiles/tree/master/.config/swaync)
 - [neovim](https://github.com/ImRayy/dotfiles/blob/master/.config/nvim)
 - [mpv](https://github.com/ImRayy/dotfiles/tree/master/.config/mpv)
+
+## Fonts, Icons, Colorschemes & More
+
+<details>
+<summary><b><code>Hyprland Stuff</code></b></summary>
+    <ul>
+        <li>sww</li>
+        <li>grim</li>
+        <li>slurp</li>
+        <li>swaylock</li>
+        <li>wf-recorder</li>
+        <li>cliphist</li>
+        <li>hyprpicker</li>
+        <li>polkit-gnome</li>
+    </ul>
+</details>
+<details>
+<summary><b><code>Fonts</code></b></summary>
+    <ul>
+        <li>Cartograph CF</li>
+        <li>CaskaydiaCove Nerd Font</li> 
+        <li>Open Sans</li>
+        <li>Font Awesome</li>
+    </ul>
+</details>
+<details>
+<summary><b><code>Color schemes</code></b></summary>
+    <ul>
+        <li>Catpuccin Mocha</li>
+    </ul>
+</details>
+<details>
+<summary><b><code>Icons</code></b></summary>
+    <ul>
+        <li><b>Mouse Cursor: </b>Bibata Modern Ice</li>
+        <li><b>Apps: </b>Papirus</li>
+    </ul>
+</details>
+<details>
+<summary><b><code>Apps</code></b></summary>
+    <ul>
+        <li><b>📁 File Manager: </b>lf (tui) & nemo (gui)</li>
+        <li><b>🧑‍💻 Code Editor: </b>Neovim & Vscode like most</li>
+        <li><b>📽 Video Player: </b>MPV</li>
+        <li><b>🎵 Music Player: </b>Tauon Music Box</li>
+        <li><b>🗿 Emoji Picker: </b>rofi-emoji</li>
+        <li><b>📔 Note Taking: </b>Obsidian, Neovim (with <code>telekasten.nvim</code> plugin)</li>
+    </ul>
+</details>
+<br>
 
 ---
 
