@@ -34,7 +34,7 @@ tooltip {
   background: @crust;
   padding: 2px 16px;
   margin: 6px 0 6px 0;
-  border: 1px solid #181825;
+  border: 1px solid @crust;
   font-weight: 600;
   border-radius: 10rem;
 }
@@ -88,8 +88,12 @@ tooltip {
   margin-right: 60px;
 }
 
+#cpu {
+  color: @color1;
+}
+
 #clock {
-  color: @color7;
+  color: @color2;
   border-radius: 10rem;
   border-right: 0px;
   font-weight: 600;

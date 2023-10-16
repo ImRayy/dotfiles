@@ -6,14 +6,9 @@
   "passtrough": false,
   "gtk-layer-shell": true,
   "height": 0,
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["hyprland/workspaces", "cpu"],
   "modules-center": ["clock"],
-  "modules-right": [
-    "tray",
-    "network",
-    "pulseaudio",
-    "custom/swaync"
-  ],
+  "modules-right": ["tray", "network", "pulseaudio", "custom/swaync"],
   "hyprland/window": {
     "format": "{}",
     "max-length": 50
@@ -31,14 +26,19 @@
       "*": 5
     }
   },
+  "cpu": {
+    "interval": 5,
+    "format": "   {}%",
+    "max-length": 10
+  },
   "tray": {
-    "icon-size": 18,
+    "icon-size": 17,
     "tooltip": false,
     "spacing": 10
   },
   "clock": {
     "format": "{:󰥔  %R   󰃭  %a %d  %b %Y}",
-    "on-click": "eww open Calendar --toggle --config ~/.config/eww/applets/",
+    "on-click": "eww open Calendar --toggle --config ~/.config/eww/applets/"
   },
   "custom/swaync": {
     "tooltip": false,
@@ -84,5 +84,5 @@
     "format-icons": {
       "default": ["", "", "", ""]
     }
-  },
+  }
 }
