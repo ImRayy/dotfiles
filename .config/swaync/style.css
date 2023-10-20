@@ -34,7 +34,7 @@
 
 .notification {
   border-radius: 12px;
-  margin: 10px 12px;
+  margin: 4px 4px;
   box-shadow: none;
   padding: 0;
 }
@@ -216,7 +216,8 @@
 
 /* Title widget */
 .widget-title {
-  margin: 1rem 1.6rem 1rem 1.6rem;
+  margin: 0.6rem;
+  margin-bottom: 1rem;
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -236,7 +237,7 @@
 
 /* DND widget */
 .widget-dnd {
-  margin: 1.6rem 1.6rem 0 1.6rem;
+  margin: 0.4rem;
   font-size: 1.1rem;
 }
 .widget-dnd > switch {
@@ -264,7 +265,8 @@
 
 /* Mpris widget */
 .widget-mpris {
-  margin: 1.4rem 1.4rem 0 1.4rem;
+  margin: 0.4rem 0.4rem 0.4rem;
+  margin-top: 0.4rem;
   background: #27272a;
   border-radius: 10px;
 }
@@ -294,7 +296,8 @@
 
 .widget-volume {
   background-color: @noti-bg;
-  margin: 1rem 1.5rem 1rem 1.5rem;
+  margin: 0.4rem;
+  margin-bottom: 1rem;
   padding: 0.8rem 1.4rem 0.8rem 1.4rem;
   border-radius: 12px;
 }
