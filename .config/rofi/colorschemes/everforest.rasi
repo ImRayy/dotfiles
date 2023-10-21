@@ -1,0 +1,21 @@
+fuck {
+    foreground: #495156;
+    background-color: #1e2326;
+    active-background: #a7c080;
+    urgent-background: #ff5555;
+    urgent-foreground: #282a36;
+    selected-background: #272e33;
+    selected-foreground: #d3c6aa;
+    selected-active-background: #a7c080;
+    separatorcolor: #a7c080;
+    bordercolor: #a7c080;
+}
+
+* {
+    background:     #1e2326;
+    foreground:     #495156;
+    active:         #a7c080;
+    selected:       #d3c6aa;
+}
+
+/* vim:ft=css

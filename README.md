@@ -14,7 +14,7 @@
 - [hyprland](https://github.com/ImRayy/dotfiles/tree/master/.config/hypr)
 - [polybar](https://github.com/adi1090x/polybar-themes)
 - [waybar](https://github.com/ImRayy/dotfiles/tree/master/.config/waybar)
-- [rofi](https://github.com/adi1090x/rofi)
+- [rofi](https://github.com/ImRayy/dotfiles/tree/master/.config/rofi)
 - [kitty](https://github.com/ImRayy/dotfiles/tree/master/.config/kitty)
 - [wezterm](https://github.com/ImRayy/dotfiles/tree/master/.config/wezterm)
 - [zsh](https://github.com/ImRayy/dotfiles/tree/master/.config/zsh)
