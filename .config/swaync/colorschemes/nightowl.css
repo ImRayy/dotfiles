@@ -1,0 +1,23 @@
+@define-color cc-bg                             #18181b;
+@define-color cc-fg                             #71717a;
+
+@define-color floating-noti-border-color        #f692b2;
+@define-color floating-noti-bg                  #18181b;
+@define-color floating-noti-bg-darker           #262626;
+@define-color floating-noti-bg-hover            #27272a;
+@define-color floating-noti-bg-focus            #000000;
+@define-color floating-noti-close-bg            #3f3f46;
+@define-color floating-noti-close-bg-hover      #52525b;
+
+@define-color noti-border-color                 #333337;
+@define-color noti-bg                           #27272a;
+@define-color noti-bg-darker                    #262626;
+@define-color noti-bg-hover                     #2b2b2e;
+@define-color noti-bg-focus                     #000000;
+@define-color noti-close-bg                     #3f3f46;
+@define-color noti-close-bg-hover               #52525b;
+
+@define-color text-color                        #FFFFFF;
+@define-color text-color-disabled               #969696;
+
+@define-color bg-selected                       #0080FF;

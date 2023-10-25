@@ -27,9 +27,9 @@
     }
   },
   "cpu": {
-    "interval": 5,
-    "format": "   {}%",
-    "max-length": 10
+        "interval": 5,
+        "format": "  {usage}%",
+        "max-length": 10,
   },
   "tray": {
     "icon-size": 17,

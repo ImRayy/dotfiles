@@ -3,8 +3,13 @@
 
 @define-color color0    #fac376;
 @define-color color1    #bfe38b;
+@define-color color2    #fafafa;
 @define-color color3    #f692b2;
 @define-color color4    #22d3e1;
 @define-color color5    #89b4fa;
 @define-color color6    #f87171;
 @define-color color7    #ffffff;
+@define-color color8    #a6adc8;
+@define-color color9    #535764;
+
+@import "../style.css";

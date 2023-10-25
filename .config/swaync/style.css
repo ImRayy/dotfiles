@@ -1,21 +1,5 @@
-/*
- * vim: ft=less
- */
-
-@define-color cc-bg #18181b;
-
-@define-color noti-border-color rgba(255, 255, 255, 0.15);
-@define-color noti-bg #27272a;
-@define-color noti-bg-darker rgb(38, 38, 38);
-@define-color noti-bg-hover #333339;
-@define-color noti-bg-focus  rgba(0, 0, 0, 0);
-@define-color noti-close-bg rgba(255, 255, 255, 0.1);
-@define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
-
-@define-color text-color rgb(255, 255, 255);
-@define-color text-color-disabled rgb(150, 150, 150);
-
-@define-color bg-selected rgb(0, 128, 255);
+/* @import "./colorschemes/nightowl.css"; */
+@import "./colorschemes/everforest.css";
 
 * {
   font-family: Open Sans;
@@ -26,6 +10,23 @@
   opacity: 1;
   border-radius: 10px;
   background: transparent;
+}
+
+.control-center .notification-default-action,
+.control-center .notification-action {
+  background: @noti-bg;
+  border: 1px solid @noti-border-color;
+}
+
+.control-center .notification-default-action,
+.control-center .notification-action {
+  background: @noti-bg;
+  border: 2px solid @noti-border-color;
+}
+
+.control-center .notification-default-action:hover,
+.control-center .notification-action:hover {
+  background: @noti-bg-hover;
 }
 
 .notification-row {
@@ -66,7 +67,7 @@
 }
 
 .close-button {
-  background: @noti-close-bg;
+  background: @floating-noti-close-bg;
   color: @text-color;
   text-shadow: none;
   padding: 0;
@@ -81,7 +82,7 @@
 
 .close-button:hover {
   box-shadow: none;
-  background: @noti-close-bg-hover;
+  background: @floating-noti-close-bg-hover;
   transition: all 0.15s ease-in-out;
   border: none;
 }
@@ -91,8 +92,8 @@
   padding: 4px;
   margin: 0;
   box-shadow: none;
-  background: @noti-bg;
-  border: 1px solid @noti-border-color;
+  background: @floating-noti-bg;
+  border: 2px solid @floating-noti-border-color;
   color: @text-color;
   transition: all 0.15s ease-in-out;
 }
@@ -100,7 +101,7 @@
 .notification-default-action:hover,
 .notification-action:hover {
   -gtk-icon-effect: none;
-  background: @noti-bg-hover;
+  background: @floating-noti-bg-hover;
 }
 
 .notification-default-action {
@@ -126,7 +127,7 @@
 
 .notification-action:last-child {
   border-bottom-right-radius: 10px;
-  border-right: 1px solid @noti-border-color;
+  border-right: 1px solid @floating-noti-border-color;
 }
 
 .inline-reply {
@@ -200,7 +201,8 @@
 }
 
 .control-center-list-placeholder {
-  opacity: 0.5;
+  color: @cc-fg;
+  opacity: 1;
 }
 
 .floating-notifications {
@@ -220,9 +222,9 @@
   margin-bottom: 1rem;
   font-size: 1.2rem;
   font-weight: bold;
+  color: @text-color;
 }
 .widget-title > button {
-  font-weight: 600;
   font-size: initial;
   color: @text-color;
   text-shadow: none;
@@ -239,11 +241,12 @@
 .widget-dnd {
   margin: 0.4rem;
   font-size: 1.1rem;
+  color: @text-color;
 }
 .widget-dnd > switch {
   font-size: initial;
   border-radius: 10rem;
-  background: #fafafa;
+  background: @cc-fg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
 }
@@ -267,8 +270,10 @@
 .widget-mpris {
   margin: 0.4rem 0.4rem 0.4rem;
   margin-top: 0.4rem;
-  background: #27272a;
+  background: @noti-bg;
+  color: @text-color;
   border-radius: 10px;
+  border: 2px solid @noti-border-color;
 }
 .widget-mpris-player {
   padding: 1rem 1rem 0 1rem;
@@ -280,14 +285,14 @@
 }
 .widget-mpris-subtitle {
   font-size: 1.1rem;
+  margin-bottom: 1.4rem;
 }
 
 .widget-mpris-album-art {
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 .topbar-buttons > button {
-  /* Name defined in config after # */
   border: none;
   background: transparent;
 }
@@ -296,10 +301,13 @@
 
 .widget-volume {
   background-color: @noti-bg;
+  color: @text-color;
   margin: 0.4rem;
   margin-bottom: 1rem;
   padding: 0.8rem 1.4rem 0.8rem 1.4rem;
   border-radius: 12px;
+  border: 2px solid @noti-border-color;
+  font-size: 22px;
 }
 
 .widget-volume > box > button {

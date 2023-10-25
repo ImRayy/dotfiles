@@ -1,4 +1,5 @@
-@import "./theme/nightowl.css";
+/* @import "./colors/nightowl.css"; */
+/* @import "./colors/everforest.css"; */
 
 * {
   border: none;
@@ -10,16 +11,16 @@
 
 window#waybar {
   /* background: rgba(21, 18, 27, 0.4); */
-  color: #cdd6f4;
+  color: @color8;
   background: @base;
 }
 
 tooltip {
-  background: #242424;
+  background: @base;
   border-radius: 10px;
   border-width: 2px;
   border-style: solid;
-  border-color: #393939;
+  border-color: @crust;
 }
 
 #window,
@@ -55,29 +56,29 @@ tooltip {
 
 #workspaces button {
   padding: 5px;
-  color: #535764;
+  color: @color9;
   margin-right: 5px;
 }
 
 #workspaces button.active {
-  color: #a6adc8;
+  color: @color8;
 }
 
 #workspaces button.focused {
-  color: #a6adc8;
-  background: #fafafa;
+  color: @color8;
+  background: @color7;
   border-radius: 10px;
 }
 
 #workspaces button.urgent {
-  color: #11111b;
+  color: @color0;
   background: #a6e3a1;
   border-radius: 10px;
 }
 
 #workspaces button:hover {
-  background: #212127;
-  color: white;
+  background: @crust;
+  color: @color7;
   border-radius: 10rem;
 }
 

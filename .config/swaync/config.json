@@ -54,12 +54,12 @@
       "clear-all-button": true
     },
     "title": {
-      "text": "Notifications",
+      "text": "󰂚  Notifications",
       "clear-all-button": true,
-      "button-text": "Clear All"
+      "button-text": "🧹 Clear All "
     },
     "volume": {
-      "label": ""
+      "label": ""
     },
     "dnd": {
       "text": "Do Not Disturb"
