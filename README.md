@@ -4,9 +4,13 @@
 
 ## Screenshots
 
-![hyprland](https://ik.imagekit.io/rayshold/dotfiles/hyprland.webp?updatedAt=1680764325650)
+**Hyprland** 
 
-> Hyprland
+![hyprland-catppuccin ](https://ik.imagekit.io/rayshold/dotfiles/hyprland.webp?updatedAt=1680764325650)
+> Catppuccin Mocha
+
+![hyprland-everforest](https://ik.imagekit.io/rayshold/dotfiles/_config/hypr/hyprland-everforest.webp?updatedAt=1698346799068)
+> Everforest
 
 ## Contents
 
@@ -15,6 +19,7 @@
 - [polybar](https://github.com/adi1090x/polybar-themes)
 - [waybar](https://github.com/ImRayy/dotfiles/tree/master/.config/waybar)
 - [rofi](https://github.com/ImRayy/dotfiles/tree/master/.config/rofi)
+- [eww](https://github.com/ImRayy/dotfiles/tree/master/.config/eww/applets)
 - [kitty](https://github.com/ImRayy/dotfiles/tree/master/.config/kitty)
 - [wezterm](https://github.com/ImRayy/dotfiles/tree/master/.config/wezterm)
 - [zsh](https://github.com/ImRayy/dotfiles/tree/master/.config/zsh)
@@ -54,7 +59,8 @@
 <details>
 <summary><b><code>Color schemes</code></b></summary>
     <ul>
-        <li>Catpuccin Mocha</li>
+        <li>Catppuccin  Mocha</li>
+        <li>Everforest</li>
     </ul>
 </details>
 <details>
