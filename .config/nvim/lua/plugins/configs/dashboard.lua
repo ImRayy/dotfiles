@@ -42,7 +42,6 @@ dashboard.setup({
 				icon_hl = "Title",
 				desc = "Update Plugins                  ",
 				key = "u",
-				keymap = "SPC u u",
 				action = "Lazy update",
 			},
 			{
@@ -50,7 +49,6 @@ dashboard.setup({
 				icon_hl = "Title",
 				desc = "Find Files",
 				key = "f",
-				keymap = "SPC f f",
 				action = "Telescope find_files",
 			},
 			{
@@ -58,7 +56,6 @@ dashboard.setup({
 				icon_hl = "Title",
 				desc = "Recent Files",
 				key = "r",
-				keymap = "SPC f r",
 				action = "Telescope oldfiles",
 			},
 			{
@@ -66,7 +63,6 @@ dashboard.setup({
 				icon_hl = "Title",
 				desc = "Bookmarks",
 				key = "b",
-				keymap = "SPC f b",
 				action = "Telescope marks",
 			},
 			{
@@ -74,8 +70,14 @@ dashboard.setup({
 				icon_hl = "Title",
 				desc = "Change theme",
 				key = "t",
-				keymap = "SPC h t",
-				action = "Telescope marks",
+				action = "Telescope colorscheme",
+			},
+			{
+				icon = "󰆓  ",
+				icon_hl = "Title",
+				desc = "Save Current Session",
+				key = "s",
+				action = "SessionSave",
 			},
 		},
 		-- footer = footer_text,
