@@ -2,6 +2,13 @@ local status_ok, dashboard = pcall(require, "dashboard")
 if not status_ok then
 	return
 end
+local helpers = require("core/functions")
+
+-- Saves session and send notify
+function SessionSaveHandler()
+	vim.cmd("SessionSave")
+	helpers.send_notify("Session Saved!")
+end
 
 local ascii = {
 	"",
@@ -77,7 +84,7 @@ dashboard.setup({
 				icon_hl = "Title",
 				desc = "Save Current Session",
 				key = "s",
-				action = "SessionSave",
+				action = SessionSaveHandler,
 			},
 		},
 		-- footer = footer_text,

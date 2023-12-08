@@ -32,15 +32,19 @@ map("n", "<leader>fh", ":Telescope help_tags<CR>")
 map("n", "<C-n>", ":Neotree toggle reveal_force_cwd<CR>")
 
 -- BarBar
-map("n", "<A-L>", "<Cmd>BufferMovePrevious<CR>", opts)
 map("n", "<A-H>", "<Cmd>BufferMoveNext<CR>", opts)
-map("n", "<A-l>", "<Cmd>BufferPrevious<CR>", opts)
-map("n", "<A-h>", "<Cmd>BufferNext<CR>", opts)
-map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
-map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
+map("n", "<A-L>", "<Cmd>BufferMovePrevious<CR>", opts)
+map("n", "<A-l>", "<Cmd>BufferNext<CR>", opts)
+map("n", "<A-h>", "<Cmd>BufferPrevious<CR>", opts)
+map("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
+map("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
 map("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
 map("n", "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
+
+-- Format Code
 map("n", "<C-f>", ":lua require('core.utils').format_on_save()<CR>")
+
+-- Markdown Preview
 map("n", "<C-m>", ":MarkdownPreview<CR>")
 
 -- Comments
@@ -49,10 +53,13 @@ local opt = { expr = true, remap = true, replace_keycodes = false }
 
 -- Toggle in VISUAL mode
 map("x", "<C-/>", "<Plug>(comment_toggle_linewise_visual)")
-
 map("x", "<S-y>", ":w !wl-copy<CR><CR>")
-
 map("i", "<C-h>", "<Esc>caw", { noremap = true })
 
 -- Spell check
 map("n", "<leader>s", ":setlocal spell spelllang=en_us<CR>")
+
+-- Session Manager
+vim.keymap.set("n", "<C-s>", require("auto-session.session-lens").search_session, {
+	noremap = true,
+})

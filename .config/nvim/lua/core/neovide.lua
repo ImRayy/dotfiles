@@ -1,16 +1,19 @@
 local options = {
 
 	-- General
-	transparency = 0.8,
 	hide_mouse_when_typing = true,
-	remember_window_size = true,
+	remember_window_size = false,
 
 	-- Visuals/animations
-	cursor_vfx_mode = "sonicboom",
-	adding_top = 0,
-	padding_bottom = 0,
-	padding_right = 0,
-	padding_left = 0,
+	cursor_vfx_mode = "wireframe",
+    padding_top = 20,
+	padding_bottom = 20,
+	padding_right = 20,
+	padding_left = 20,
+
+    -- Theme
+    transparency = 1,
+
 }
 
 for x, y in pairs(options) do

@@ -37,7 +37,6 @@ M.null_ls = function()
 	})
 end
 
-
 M.notify = function()
 	local status_ok, notify = pcall(require, "notify")
 	if not status_ok then
@@ -91,16 +90,16 @@ M.blankline = {
 }
 
 M.autosession = {
-    auto_session_root_dir = os.getenv("HOME") .. "/" .. ".neovim_sessions/",
+	auto_session_root_dir = os.getenv("HOME") .. "/" .. ".neovim_sessions/",
 	auto_session_enable_last_session = false,
 	auto_session_create_enabled = false,
 	auto_session_suppress_dirs = { "~/", "~/Downloads/", "/" },
-    session_lens = {
-        buftypes_to_ignore={},
-        load_on_setup=true,
-        theme_conf = {border = true},
-
-    }
+	session_lens = {
+		buftypes_to_ignore = {},
+		load_on_setup = true,
+		theme_conf = { border = true },
+		prompt_title = "Projects",
+	},
 }
 
 return M

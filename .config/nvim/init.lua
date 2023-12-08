@@ -1,8 +1,10 @@
+require("core.settings")
 require("core.lazy")
 require("core.keybindings")
-require("core.settings")
 require("core.autocmd")
 -- require("core.kittymargin") -- won't work with any terminal other than kitty
+
+vim.cmd.colorscheme("catppuccin")
 
 -- neovide configuration
 if vim.g.neovide then
@@ -20,3 +22,4 @@ vim.g.neoformat_js_prettier_single_quote = 0
 require("notify").setup({
 	background_colour = "#1a1b26",
 })
+require("core.lazy")
