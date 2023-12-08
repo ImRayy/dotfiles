@@ -88,10 +88,15 @@ return {
 
 	-- Buffer
 	{
-		"akinsho/bufferline.nvim",
-		opts = function()
-			return require("plugins.configs.bufferline")
+		"romgrk/barbar.nvim",
+		dependencies = {
+			"lewis6991/gitsigns.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+		init = function()
+			vim.g.barbar_auto_setup = false
 		end,
+		opts = {},
 	},
 
 	{
@@ -120,6 +125,15 @@ return {
 		tag = "0.1.2",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+		},
+	},
+
+	-- Telekasten: Note organization
+	{
+		"renerocksai/telekasten.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		opts = {
+			home = vim.fn.expand("$HOME/Documents/Notes/Obsidian"),
 		},
 	},
 
@@ -202,6 +216,12 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
+		opts = {},
+	},
+
+	-- Nvim-colorizer
+	{
+		"NvChad/nvim-colorizer.lua",
 		opts = {},
 	},
 }

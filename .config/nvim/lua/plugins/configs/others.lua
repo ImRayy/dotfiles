@@ -37,27 +37,6 @@ M.null_ls = function()
 	})
 end
 
-M.bufferline = function()
-	local status_ok, bufferline = pcall(require, "bufferline")
-	if not status_ok then
-		return
-	end
-
-	bufferline.setup({
-		options = {
-			offsets = {
-				{ filetype = "NvimTree", text = "", padding = 1 },
-				{ filetype = "neo-tree", text = "", padding = 1 },
-				{ filetype = "Outline", text = "", padding = 1 },
-			},
-
-			text = "File Explorer",
-			highlight = "Directory",
-			text_align = "center",
-			diagnostics = "nvim_lsp",
-		},
-	})
-end
 
 M.notify = function()
 	local status_ok, notify = pcall(require, "notify")
@@ -113,9 +92,15 @@ M.blankline = {
 
 M.autosession = {
     auto_session_root_dir = os.getenv("HOME") .. "/" .. ".neovim_sessions/",
-	auto_session_enable_last_session = true,
+	auto_session_enable_last_session = false,
 	auto_session_create_enabled = false,
 	auto_session_suppress_dirs = { "~/", "~/Downloads/", "/" },
+    session_lens = {
+        buftypes_to_ignore={},
+        load_on_setup=true,
+        theme_conf = {border = true},
+
+    }
 }
 
 return M

@@ -6,7 +6,7 @@ end
 
 require('lualine').setup({
     options = {
-        theme = 'horizon',
+        theme = 'everforest',
         component_separators = '',
         section_separators = '',
         icons_enabled = true,

@@ -31,17 +31,16 @@ map("n", "<leader>fh", ":Telescope help_tags<CR>")
 -- Neotree
 map("n", "<C-n>", ":Neotree toggle reveal_force_cwd<CR>")
 
--- Bufferline
-map("n", "<S-l>", ":BufferLineCycleNext<CR>")
-map("n", "<S-h>", ":BufferLineCyclePrev<CR>")
-map("n", "<leader>c", ":bdelete<CR>")
-
--- Code format with null-ls
--- map ('n', '<C-f>', ':lua vim.lsp.buf.format{async = true}<CR>')
--- map("n", "<c-f>", ":Neoformat<CR>")
+-- BarBar
+map("n", "<A-L>", "<Cmd>BufferMovePrevious<CR>", opts)
+map("n", "<A-H>", "<Cmd>BufferMoveNext<CR>", opts)
+map("n", "<A-l>", "<Cmd>BufferPrevious<CR>", opts)
+map("n", "<A-h>", "<Cmd>BufferNext<CR>", opts)
+map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
+map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
+map("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
+map("n", "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
 map("n", "<C-f>", ":lua require('core.utils').format_on_save()<CR>")
-
--- Markdown Previews
 map("n", "<C-m>", ":MarkdownPreview<CR>")
 
 -- Comments
