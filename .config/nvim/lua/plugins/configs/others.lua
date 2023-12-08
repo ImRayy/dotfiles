@@ -69,24 +69,14 @@ M.tabnine = function()
 end
 
 M.blankline = {
-	indentLine_enabled = 1,
-	filetype_exclude = {
-		"help",
-		"terminal",
-		"lazy",
-		"lspinfo",
-		"TelescopePrompt",
-		"TelescopeResults",
-		"mason",
-		"nvdash",
-		"nvcheatsheet",
-		"dashboard",
+	enabled = true,
+	exclude = {
+		filetypes = { "dashboard" },
+		buftypes = { "terminal" },
 	},
-	buftype_exclude = { "terminal" },
-	show_trailing_blankline_indent = false,
-	show_first_indent_level = true,
-	show_current_context = true,
-	show_current_context_start = true,
+	indent = {
+		tab_char = { "." },
+	},
 }
 
 M.autosession = {

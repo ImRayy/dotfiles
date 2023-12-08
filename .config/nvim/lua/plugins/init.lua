@@ -23,7 +23,7 @@ return {
 	-- Indent blankline
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		version = "2.20.7",
+		main = "ibl",
 		opts = function()
 			return require("plugins.configs.others").blankline
 		end,
