@@ -45,7 +45,7 @@ dashboard.setup({
 		header = ascii,
 		center = {
 			{
-				icon = "  ",
+				icon = "󰐱  ",
 				icon_hl = "Title",
 				desc = "Update Plugins                  ",
 				key = "u",
@@ -59,7 +59,7 @@ dashboard.setup({
 				action = "Telescope find_files",
 			},
 			{
-				icon = "  ",
+				icon = "  ",
 				icon_hl = "Title",
 				desc = "Recent Files",
 				key = "r",
