@@ -27,11 +27,10 @@ M.null_ls = function()
 	null_ls.setup({
 		debug = false,
 		sources = {
-			formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
-			formatting.black.with({ extra_args = { "--fast" } }),
+			formatting.prettier,
 			formatting.stylua,
+			formatting.black.with({ extra_args = { "--fast" } }),
 			diagnostics.flake8,
-			-- diagnostics.misspell,
 			completion.spell,
 		},
 	})
@@ -59,7 +58,7 @@ M.tabnine = function()
 	end
 
 	tabnine.setup({
-		disable_auto_comment = true,
+		disable_auto_comment = false,
 		accept_keymap = "<Tab>",
 		dismiss_keymap = "<C-]>",
 		debounce_ms = 800,

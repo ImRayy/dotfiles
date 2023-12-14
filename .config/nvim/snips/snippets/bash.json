@@ -1,0 +1,7 @@
+{
+  "basic bash header": {
+    "prefix": "#!",
+    "body": ["#!/usr/bin/env bash"],
+    "description": "basic bash header"
+  }
+}

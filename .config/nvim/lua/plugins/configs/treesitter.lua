@@ -5,10 +5,6 @@ end
 
 require("nvim-treesitter.configs").setup({
 	auto_install = true,
-	ensure_installed = {
-		"python",
-		"html",
-	},
 	highlight = {
 		enable = true,
 		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.

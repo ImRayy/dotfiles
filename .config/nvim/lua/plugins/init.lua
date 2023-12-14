@@ -122,7 +122,6 @@ return {
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.2",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -141,7 +140,7 @@ return {
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = "cd app && npm install",
+		build = "cd app && yarn install",
 		setup = function()
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
@@ -150,12 +149,36 @@ return {
 
 	-- Autocompletion stuff
 	{
-		"williamboman/mason.nvim",
-		opts = function()
-			return require("plugins.configs.mason")
+		"williamboman/mason-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {
+			ensure_installed = require("utils").servers,
+			automatic_installation = true,
+		},
+		dependencies = {
+			{
+				"williamboman/mason.nvim",
+				event = { "BufReadPre", "BufNewFile" },
+				cmd = { "Mason" },
+				opts = function()
+					return require("plugins.configs.mason")
+				end,
+			},
+		},
+	},
+
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+		},
+		event = "BufReadPre",
+		config = function()
+			require("plugins.configs.lsp")
 		end,
 	},
 
+	-- Nvim cmp
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -185,11 +208,22 @@ return {
 
 	-- Null.ls
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"jay-babu/mason-null-ls.nvim",
+		-- event = "BufReadPre",
+		opts = {
+			automatic_setup = true,
+			ensure_installed = require("utils").linters,
+			automatic_installation = true,
+		},
+		dependencies = {
+			{
+				"jose-elias-alvarez/null-ls.nvim",
+				dependencies = "nvim-lua/plenary.nvim",
+			},
+		},
 		config = function()
 			require("plugins.configs.others").null_ls()
 		end,
-		requires = { "nvim-lua/plenary.nvim" },
 	},
 
 	-- Code Format
@@ -205,7 +239,14 @@ return {
 		end,
 	},
 
-	{ "codota/tabnine-nvim", build = "./dl_binaries.sh" },
+	-- Tabnine AI
+	{
+		"codota/tabnine-nvim",
+		build = "./dl_binaries.sh",
+		config = function()
+			require("plugins.configs.others").tabnine()
+		end,
+	},
 
 	-- Makes Commenting Easy
 	{
