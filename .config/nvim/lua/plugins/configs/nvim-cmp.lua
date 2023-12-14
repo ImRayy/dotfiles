@@ -5,30 +5,30 @@ if not status_ok then
 end
 
 local icons = {
-	Text = "",
-	Method = "",
+	Text = "󰉿",
+	Method = "󰆧",
 	Function = "",
 	Constructor = "",
-	Field = "ﰠ",
+	Field = "󰜢",
 	Variable = "",
-	Class = "ﴯ",
+	Class = "󰠱",
 	Interface = "",
 	Module = "",
-	Property = "ﰠ",
-	Unit = "塞",
-	Value = "",
+	Property = "󰜢",
+	Unit = "󰑭",
+	Value = "󰎠",
 	Enum = "",
 	Keyword = "",
 	Snippet = "",
 	Color = "",
-	File = "",
-	Reference = "",
-	Folder = "",
+	File = "󰈙",
+	Reference = "󰈇",
+	Folder = "󰉋",
 	EnumMember = "",
-	Constant = "",
-	Struct = "פּ",
+	Constant = "",
+	Struct = "󰙅",
 	Event = "",
-	Operator = "",
+	Operator = "󰆕",
 	TypeParameter = "",
 }
 
@@ -70,4 +70,3 @@ cmp.setup({
 		end,
 	},
 })
-
