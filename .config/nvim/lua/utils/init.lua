@@ -2,9 +2,7 @@ local M = {}
 
 M.linters = {
 	"black",
-	"eslint_d",
 	"prettier",
-	"stylua",
 }
 
 M.servers = {
@@ -19,8 +17,8 @@ M.servers = {
 	"mdx_analyzer",
 	"pyright",
 	"tailwindcss",
-	"tsserver",
 	"taplo",
+	"tsserver",
 }
 
 return M

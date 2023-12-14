@@ -209,7 +209,7 @@ return {
 	-- Null.ls
 	{
 		"jay-babu/mason-null-ls.nvim",
-		-- event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			automatic_setup = true,
 			ensure_installed = require("utils").linters,
@@ -217,13 +217,14 @@ return {
 		},
 		dependencies = {
 			{
+
 				"jose-elias-alvarez/null-ls.nvim",
 				dependencies = "nvim-lua/plenary.nvim",
+				config = function()
+					require("plugins.configs.others").null_ls()
+				end,
 			},
 		},
-		config = function()
-			require("plugins.configs.others").null_ls()
-		end,
 	},
 
 	-- Code Format
