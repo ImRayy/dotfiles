@@ -1,24 +1,18 @@
 local M = {}
 
-M.linters = {
-	"black",
-	"prettier",
-}
+-- Key-mapping handler
+function M.map(m, k, v, opts)
+	vim.keymap.set(m, k, v, vim.tbl_deep_extend("force", { silent = true, noremap = true }, opts or {}))
+end
 
-M.servers = {
-	"astro",
-	"bashls",
-	"cssls",
-	"eslint",
-	"html",
-	"jsonls",
-	"lua_ls",
-	"marksman",
-	"mdx_analyzer",
-	"pyright",
-	"tailwindcss",
-	"taplo",
-	"tsserver",
-}
+-- Send notification
+function M.send_notify(message)
+	local notify = require("notify")
+	vim.cmd("SessionSave")
+	notify(message, "INFO", {
+		title = "Greeting",
+		timeout = 3000,
+	})
+end
 
 return M

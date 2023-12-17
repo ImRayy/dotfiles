@@ -5,7 +5,7 @@ end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-for _, server in pairs(require("utils").servers) do
+for _, server in pairs(require("utils.ensure_installed").servers) do
 	Opts = {
 		on_attach = on_attach,
 		capabilities = capabilities,

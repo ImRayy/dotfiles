@@ -6,14 +6,13 @@ local options = {
 
 	-- Visuals/animations
 	cursor_vfx_mode = "wireframe",
-    padding_top = 20,
+	padding_top = 20,
 	padding_bottom = 20,
 	padding_right = 20,
 	padding_left = 20,
 
-    -- Theme
-    transparency = 1,
-
+	-- Theme
+	transparency = 1,
 }
 
 for x, y in pairs(options) do

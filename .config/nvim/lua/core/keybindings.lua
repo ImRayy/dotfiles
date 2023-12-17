@@ -1,54 +1,40 @@
-local function map(m, k, v)
-	vim.api.nvim_set_keymap(m, k, v, { silent = true })
-end
+local map = require("utils").map
 
--- Fix * (Keep the cursor position, don't move to next match)
-map("n", "*", "*N")
+-- General Settings
+map("n", "*", "*N", { desc = "Fix * (Keep the cursor position, don't move to next match)" })
 
--- Fix n and N. Keeping cursor in center
-map("n", "n", "nzz")
-map("n", "N", "Nzz")
+map("n", "<C-Q>", ":q!<CR>", { desc = "Quit neovim" })
 
--- Quickly save the current buffer or all buffers
-map("n", "<leader>w", ":update<CR>")
-map("n", "<leader>W", ":wall<CR>")
-
--- Quit neovim
-map("n", "<C-Q>", ":q!<CR>")
-
+-- Line Movement
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
-map("n", "<C-j>", ":move .+1<CR>")
-map("n", "<C-k>", ":move .-2<CR>")
-map("x", "<C-j>", ":move '>+1<CR>gv=gv")
-map("x", "<C-k>", ":move '<-2<CR>gv=gv")
+map("n", "<C-j>", ":move .+1<CR>", { desc = "Move line down" })
+map("n", "<C-k>", ":move .-2<CR>", { desc = "Move line up" })
+map("x", "<C-j>", ":move '>+1<CR>gv=gv", { desc = "Move multiple selected line down" })
+map("x", "<C-k>", ":move '<-2<CR>gv=gv", { desc = "Move multiple selected lines up" })
 
--- telescope
-map("n", "<leader>ff", ":Telescope find_files<CR>")
-map("n", "<leader>bf", ":Telescope live_grep<CR>")
-map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>")
-map("n", "<leader>fh", ":Telescope help_tags<CR>")
+-- Telescope
+map("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Find files" })
+map("n", "<leader>bf", ":Telescope live_grep<CR>", { desc = "Live grep" })
+map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>", { desc = "Fuzzy files" })
+map("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Help tags" })
 
--- Neotree
-map("n", "<C-n>", ":Neotree toggle reveal_force_cwd<CR>")
+-- NeoTree
+map("n", "<C-n>", ":Neotree toggle reveal_force_cwd<CR>", { desc = "Neotree toggle" })
 
--- BarBar
-map("n", "<A-H>", "<Cmd>BufferMoveNext<CR>", opts)
-map("n", "<A-L>", "<Cmd>BufferMovePrevious<CR>", opts)
-map("n", "<A-l>", "<Cmd>BufferNext<CR>", opts)
-map("n", "<A-h>", "<Cmd>BufferPrevious<CR>", opts)
-map("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
-map("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
-map("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
-map("n", "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
+-- Buffer Navigation
+map("n", "<A-H>", "<Cmd>BufferMoveNext<CR>", { desc = "Move buffer to next" })
+map("n", "<A-L>", "<Cmd>BufferMovePrevious<CR>", { desc = "Move buffer to previous" })
+map("n", "<A-l>", "<Cmd>BufferNext<CR>", { desc = "Next buffer" })
+map("n", "<A-h>", "<Cmd>BufferPrevious<CR>", { desc = "Previous buffer" })
+map("n", "<A-p>", "<Cmd>BufferPin<CR>", { desc = "Pin buffer" })
+map("n", "<A-c>", "<Cmd>BufferClose<CR>", { desc = "Close buffer" })
+map("n", "<C-p>", "<Cmd>BufferPick<CR>", { desc = "Pick buffer" })
+map("n", "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", { desc = "Order buffer by language" })
 
--- Format Code
-map("n", "<C-f>", ":lua require('core.utils').format_on_save()<CR>")
-
--- Markdown Preview
-map("n", "<C-m>", ":MarkdownPreview<CR>")
+-- Markdown
+map("n", "<C-m>", ":MarkdownPreview<CR>", { desc = "Markdown preview" })
 
 -- Comments
-
 local opt = { expr = true, remap = true, replace_keycodes = false }
 
 -- Toggle in VISUAL mode
@@ -57,9 +43,7 @@ map("x", "<S-y>", ":w !wl-copy<CR><CR>")
 map("i", "<C-h>", "<Esc>caw", { noremap = true })
 
 -- Spell check
-map("n", "<leader>s", ":setlocal spell spelllang=en_us<CR>")
+map("n", "<leader>s", ":setlocal spell spelllang=en_us<CR>", { desc = "Turn on spell check" })
 
 -- Session Manager
-vim.keymap.set("n", "<C-s>", require("auto-session.session-lens").search_session, {
-	noremap = true,
-})
+map("n", "<C-s>", require("auto-session.session-lens").search_session, { desc = "Project hop" })

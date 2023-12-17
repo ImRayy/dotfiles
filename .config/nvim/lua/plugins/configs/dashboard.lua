@@ -2,7 +2,7 @@ local status_ok, dashboard = pcall(require, "dashboard")
 if not status_ok then
 	return
 end
-local helpers = require("core/functions")
+local helpers = require("utils")
 
 -- Saves session and send notify
 function SessionSaveHandler()
