@@ -47,3 +47,12 @@ map("n", "<leader>s", ":setlocal spell spelllang=en_us<CR>", { desc = "Turn on s
 
 -- Session Manager
 map("n", "<C-s>", require("auto-session.session-lens").search_session, { desc = "Project hop" })
+
+-- Formatter
+map("n", "<Space>f", function()
+	local status_ok, format = pcall(require, "conform")
+	if not status_ok then
+		return
+	end
+	format.format({ async = true })
+end, { desc = "Format code" })

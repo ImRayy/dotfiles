@@ -12,7 +12,7 @@ local options = {
 	padding_left = 20,
 
 	-- Theme
-	transparency = 1,
+	transparency = 0.8,
 }
 
 for x, y in pairs(options) do

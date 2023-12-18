@@ -35,5 +35,4 @@ local options = {
 	mouse = "a",
 	listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂",
 }
-
 set_vim_options(options, true)
