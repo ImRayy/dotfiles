@@ -58,8 +58,8 @@ M.tabnine = function()
 	end
 
 	tabnine.setup({
-		disable_auto_comment = false,
-		accept_keymap = "<Tab>",
+		disable_auto_comment = true,
+		accept_keymap = "<C-e>",
 		dismiss_keymap = "<C-]>",
 		debounce_ms = 800,
 		suggestion_color = { gui = "#808080", cterm = 244 },

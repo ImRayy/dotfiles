@@ -12,12 +12,28 @@ return {
 
 	-- Dashboard
 	{
-		"glepnir/dashboard-nvim",
+		"goolord/alpha-nvim",
 		event = "VimEnter",
-		config = function()
-			require("plugins.configs.dashboard")
+		opts = function()
+			return require("plugins.configs.alpha")
 		end,
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function(_, dashboard)
+			require("alpha").setup(dashboard.opts)
+			vim.api.nvim_create_autocmd("User", {
+				callback = function()
+					local stats = require("lazy").stats()
+					local ms = math.floor(stats.startuptime * 100) / 100
+					dashboard.section.footer.val = "󱐌 Lazy-loaded "
+						.. stats.loaded
+						.. " out of "
+						.. stats.count
+						.. " plugins in "
+						.. ms
+						.. "ms"
+					pcall(vim.cmd.AlphaRedraw)
+				end,
+			})
+		end,
 	},
 
 	-- Indent blankline
