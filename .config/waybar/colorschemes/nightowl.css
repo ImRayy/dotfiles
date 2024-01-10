@@ -1,13 +1,13 @@
-@define-color base      #18181b;
-@define-color crust     #212127;
+@define-color base      #11111b;
+@define-color crust     #1e1e2e;
 
-@define-color color0    #fac376;
-@define-color color1    #bfe38b;
+@define-color color0    #fab387;
+@define-color color1    #a6e3a1;
 @define-color color2    #fafafa;
-@define-color color3    #f692b2;
+@define-color color3    #f38ba8;
 @define-color color4    #22d3e1;
-@define-color color5    #89b4fa;
-@define-color color6    #f87171;
+@define-color color5    #cba6f7;
+@define-color color6    #eba0ac;
 @define-color color7    #ffffff;
 @define-color color8    #a6adc8;
 @define-color color9    #535764;

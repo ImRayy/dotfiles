@@ -18,17 +18,17 @@
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      "default": "",
+      "default": "",
       "active": "󰮯",
       "urgent": "󰊠"
     },
     "persistent_workspaces": {
-      "*": 5
+      "*": 4
     }
   },
   "cpu": {
         "interval": 5,
-        "format": "  {usage}%",
+        "format": " {usage}%",
         "max-length": 10,
   },
   "tray": {
@@ -37,7 +37,7 @@
     "spacing": 10
   },
   "clock": {
-    "format": "{:󰥔  %R   󰃭  %a %d  %b %Y}",
+    "format": "{:󰥔 %R  󰃭 %a %d  %b %Y}",
     "on-click": "eww open Calendar --toggle --config ~/.config/eww/applets/"
   },
   "custom/swaync": {
@@ -63,7 +63,7 @@
   "network": {
     "format": "{ifname}",
     "format-wifi": "󰤨   {essid} {bandwidthTotalBytes}",
-    "format-ethernet": "󰊗  Enternet",
+    "format-ethernet": "󱓞 Enternet {bandwidthTotalBytes}",
     "format-disconnected": "󰤭 ",
     "tooltip-format": "{ifname} via {gwaddr} 󰊗",
     "tooltip-format-wifi": "󰤢   Signal Strength:  {signalStrength}%",
@@ -74,7 +74,7 @@
     "interval": 5
   },
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
+    "format": "{icon} {volume}%",
     "tooltip": false,
     "format-muted": " Muted",
     "on-click": "pamixer -t",
@@ -82,7 +82,7 @@
     "on-scroll-down": "pamixer -d 5",
     "scroll-step": 5,
     "format-icons": {
-      "default": ["", "", "", ""]
+      "default": ["", "", " ", " "]
     }
   }
 }

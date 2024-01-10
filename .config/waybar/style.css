@@ -4,7 +4,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: Cartograph CF Mono;
+  font-family: CommitMono Nerd Font;
   font-size: 14px;
   min-height: 0;
 }
@@ -48,8 +48,8 @@ tooltip {
 
 #workspaces {
   margin-left: 10px;
-  padding-right: 0px;
-  padding-left: 5px;
+  padding-right: 4px;
+  padding-left: 4px;
   margin-right: 10px;
   font-weight: Bold;
 }
