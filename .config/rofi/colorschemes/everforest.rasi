@@ -1,8 +1,9 @@
 * {
     background:     #1e2326;
     foreground:     #495156;
-    active:         #a7c080;
-    selected:       #d3c6aa;
+    active:         #374145;
+    selected:       #a7c080;
+    selected-text:  #1e2326;
 }
 
 /* vim:ft=css

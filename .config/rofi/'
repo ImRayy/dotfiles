@@ -7,7 +7,7 @@ configuration {
         display-name: " ";
     }
     timeout {
-        delay: 20;
+        delay: 10;
         action: "kb-cancel";
     }
 }
@@ -20,8 +20,8 @@ window {
     border-radius:    10;
     border-color:     @active;
     padding:          8;
-    width: 520px;
-    height: 385px;
+    width: 30%;
+    height: 39%;
 }
 mainbox {
     border:  0;
@@ -41,7 +41,7 @@ listview {
     border-color: @active;
     spacing:      4px ;
     scrollbar:    false;
-    padding:      10px 5px 5px;
+    padding:      10px 5px 5px 5px ;
 }
 element {
     border:  0;
