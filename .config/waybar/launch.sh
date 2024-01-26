@@ -2,12 +2,14 @@
 
 THEME_DIR="$HOME/.config/waybar/colorschemes"
 
-launch_waybar() {
-    if [[ $1 == "--nightowl" ]]; then
+case $1 in
+    --nightowl)
         waybar -s "$THEME_DIR/nightowl.css"
-    elif [[ $1 == "--everforest" ]]; then
+        ;;
+    --everforest)
         waybar -s "$THEME_DIR/everforest.css"
-    fi
-}
-
-launch_waybar $1
+        ;;
+    *)
+        waybar -s "$THEME_DIR/catppuccin-mocha.css"
+        ;;
+esac
