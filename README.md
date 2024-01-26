@@ -2,15 +2,13 @@
 ![size](https://img.shields.io/github/languages/code-size/ImRayy/dotfiles?style=for-the-badge&logo=gnu-bash&color=ee999f&logoColor=D9E0EE&labelColor=302D41)
 ![last-commit](https://img.shields.io/github/last-commit/ImRayy/dotfiles?style=for-the-badge&logo=git&color=8bd5ca&logoColor=D9E0EE&labelColor=302D41)
 
-## Screenshots
+## Hyprland
 
-**Hyprland** 
-![hyprland-everforest](https://ik.imagekit.io/rayshold/dotfiles/_config/hypr/hyprland-everforest.webp?updatedAt=1698346799068)
-> Everforest
+| ![hyprland-catppuccin-mocha](https://ik.imagekit.io/rayshold/dotfiles/_config/hypr/hyprland-catppuccin-mocha.webp?updatedAt=1706289641661) |
+| --- |
 
-![hyprland-catppuccin ](https://ik.imagekit.io/rayshold/dotfiles/hyprland.webp?updatedAt=1680764325650)
-> Catppuccin Mocha
-
+| ![hyprland-everforest](https://ik.imagekit.io/rayshold/dotfiles/_config/hypr/hyprland-everforest.webp?updatedAt=1698346799068) | ![hyprland-catppuccin ](https://ik.imagekit.io/rayshold/dotfiles/hyprland.webp?updatedAt=1680764325650) |
+| --- | --- |
 
 ## Contents
 
@@ -85,6 +83,7 @@
 <br>
 
 ## Tips
+
 <details>
 <summary><code><b>Change Colorscheme</b></code></summary>
 <br>
@@ -121,8 +120,8 @@ Even though it's not necessary to change the zsh colorscheme if you're using the
 </ul>
 </details>
 
-
 ## Misc
+
 You can download all the missing files from the following drives, such as `~/.config/neofetch/images`, wallpapers etc.
 
 [![MEGA](https://img.shields.io/badge/MEGA-D9272E?logo=mega&style=for-the-badge)](https://mega.nz/folder/b4xzlJaA#7ThCdDHl5FgxrBs00MmcSQ)
