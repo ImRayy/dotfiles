@@ -10,7 +10,6 @@
 @define-color floating-noti-border-color        @text-color;
 @define-color floating-noti-bg-darker           #262626;
 @define-color floating-noti-bg-hover            #272e33;
-@define-color floating-noti-bg-focus            #000000;
 @define-color floating-noti-close-bg            #374145;
 @define-color floating-noti-close-bg-hover      #4f5b58;
 
@@ -18,6 +17,8 @@
 @define-color noti-border-color                 #4f5b58;
 @define-color noti-bg-darker                    #232a2e;
 @define-color noti-bg-hover                     #232a2e;
-@define-color noti-bg-focus                     #000000;
 @define-color noti-close-bg                     @floating-noti-close-bg;
 @define-color noti-close-bg-hover               @floating-noti-close-bg-hover;
+
+@define-color dnd-slider-button                 @cc-fg;
+@define-color dnd-slider-button-checked         @cc-bg;

@@ -1,14 +1,14 @@
-/* @import "./colorschemes/nightowl.css"; */
-@import "./colorschemes/everforest.css";
+@import "./colorschemes/catppuccin-mocha.css";
+/* @import "./colorschemes/everforest.css"; */
 
 * {
-  font-family: Open Sans;
+  font-family: Cantarell;
 }
 
 .control-center .notification-row:focus,
 .control-center .notification-row:hover {
   opacity: 1;
-  border-radius: 10px;
+  border-radius: 6px;
   background: transparent;
 }
 
@@ -34,36 +34,16 @@
 }
 
 .notification {
-  border-radius: 12px;
+  border-radius: 6px;
   margin: 4px 4px;
   box-shadow: none;
   padding: 0;
 }
 
-/* Uncomment to enable specific urgency colors
-.low {
-  background: yellow;
-  padding: 6px;
-  border-radius: 12px;
-}
-
-.normal {
-  background: green;
-  padding: 6px;
-  border-radius: 12px;
-}
-
-.critical {
-  background: red;
-  padding: 6px;
-  border-radius: 12px;
-}
-*/
-
 .notification-content {
   border: transparent;
   padding: 1.4rem;
-  border-radius: 12px;
+  border-radius: 6px;
 }
 
 .close-button {
@@ -105,7 +85,7 @@
 }
 
 .notification-default-action {
-  border-radius: 12px;
+  border-radius: 6px;
 }
 
 /* When alternative actions are visible */
@@ -122,36 +102,40 @@
 
 /* add bottom border radius to eliminate clipping */
 .notification-action:first-child {
-  border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 6px;
 }
 
 .notification-action:last-child {
-  border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 6px;
   border-right: 1px solid @floating-noti-border-color;
 }
 
 .inline-reply {
   margin-top: 8px;
 }
+
 .inline-reply-entry {
   background: @noti-bg-darker;
   color: @text-color;
   caret-color: @text-color;
   border: 1px solid @noti-border-color;
-  border-radius: 12px;
+  border-radius: 6px;
 }
+
 .inline-reply-button {
   margin-left: 4px;
   background: @noti-bg;
   border: 1px solid @noti-border-color;
-  border-radius: 12px;
+  border-radius: 6px;
   color: @text-color;
 }
+
 .inline-reply-button:disabled {
   background: initial;
   color: @text-color-disabled;
   border: 1px solid transparent;
 }
+
 .inline-reply-button:hover {
   background: @noti-bg-hover;
 }
@@ -162,7 +146,7 @@
 .body-image {
   margin-top: 6px;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 6px;
 }
 
 .summary {
@@ -192,7 +176,11 @@
 
 .control-center {
   background: @cc-bg;
-  border-radius: 10px;
+  margin: 10px;
+  /* margin-top: 10px; */
+  /* margin-right: 10px; */
+
+  border-radius: 6px;
   padding: 1rem;
 }
 
@@ -220,12 +208,13 @@
 .widget-title {
   margin: 0.6rem;
   margin-bottom: 1rem;
-  font-size: 1.2rem;
+  font-size: 18px;
   font-weight: bold;
   color: @text-color;
 }
 .widget-title > button {
   font-size: initial;
+  font-weight: bold;
   color: @text-color;
   text-shadow: none;
   background: @noti-bg;
@@ -242,28 +231,29 @@
   margin: 0.4rem;
   font-size: 1.1rem;
   color: @text-color;
+  font-weight: bold;
 }
+
 .widget-dnd > switch {
   font-size: initial;
   border-radius: 10rem;
-  background: @cc-fg;
+  background: @noti-bg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
 }
+
 .widget-dnd > switch:checked {
   background: @bg-selected;
 }
+
 .widget-dnd > switch slider {
-  background: @noti-bg-hover;
+  background: @dnd-slider-button;
   border-radius: 10rem;
 }
 
-/* Label widget */
-.widget-label {
-  margin: 8px;
-}
-.widget-label > label {
-  font-size: 1.1rem;
+.widget-dnd > switch slider:checked {
+  background: @dnd-slider-button-checked;
+  border-radius: 10rem;
 }
 
 /* Mpris widget */
@@ -272,7 +262,7 @@
   margin-top: 0.4rem;
   background: @noti-bg;
   color: @text-color;
-  border-radius: 10px;
+  border-radius: 6px;
   border: 2px solid @noti-border-color;
 }
 .widget-mpris-player {
@@ -281,15 +271,16 @@
 }
 .widget-mpris-title {
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 16px;
 }
 .widget-mpris-subtitle {
-  font-size: 1.1rem;
+  font-size: 12px;
   margin-bottom: 1.4rem;
 }
 
-.widget-mpris-album-art {
-  border-radius: 0;
+.widget-mpris > box > button {
+  padding: 0;
+  margin: 0;
 }
 
 .topbar-buttons > button {
@@ -305,7 +296,7 @@
   margin: 0.4rem;
   margin-bottom: 1rem;
   padding: 0.8rem 1.4rem 0.8rem 1.4rem;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 2px solid @noti-border-color;
   font-size: 22px;
 }
@@ -319,23 +310,5 @@
   background-color: @noti-bg;
   padding: 4px 8px 8px 8px;
   margin: 0px 8px 8px 8px;
-  border-radius: 12px;
-}
-
-/* Title widget */
-.widget-inhibitors {
-  margin: 8px;
-  font-size: 1.5rem;
-}
-.widget-inhibitors > button {
-  font-size: initial;
-  color: @text-color;
-  text-shadow: none;
-  background: @noti-bg;
-  border: 1px solid @noti-border-color;
-  box-shadow: none;
-  border-radius: 12px;
-}
-.widget-inhibitors > button:hover {
-  background: @noti-bg-hover;
+  border-radius: 6px;
 }
