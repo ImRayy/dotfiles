@@ -73,8 +73,8 @@ tooltip {
 }
 
 #workspaces button.urgent {
-  background: #a6e3a1;
-  color: @color0;
+  background: @color4;
+  color: @color8;
 }
 
 #workspaces button:hover {
