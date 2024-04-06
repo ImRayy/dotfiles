@@ -2,8 +2,8 @@ local map = require("utils").map
 
 -- General Settings
 map("n", "*", "*N", { desc = "Fix * (Keep the cursor position, don't move to next match)" })
-
 map("n", "<C-Q>", ":q!<CR>", { desc = "Quit neovim" })
+map("i", "<C-Backspace>", "<C-W>", {noremap = true, desc = "Delete a word"})
 
 -- Line Movement
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
