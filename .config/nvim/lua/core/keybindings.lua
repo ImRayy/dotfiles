@@ -3,7 +3,7 @@ local map = require("utils").map
 -- General Settings
 map("n", "*", "*N", { desc = "Fix * (Keep the cursor position, don't move to next match)" })
 map("n", "<C-Q>", ":q!<CR>", { desc = "Quit neovim" })
-map("i", "<C-Backspace>", "<C-W>", {noremap = true, desc = "Delete a word"})
+map("i", "<C-Backspace>", "<C-W>", { noremap = true, desc = "Delete a word" })
 
 -- Line Movement
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
@@ -54,5 +54,5 @@ map("n", "<Space>f", function()
 	if not status_ok then
 		return
 	end
-	format.format({ async = true })
+	format.format({ async = true, lsp_fallback = true })
 end, { desc = "Format code" })
