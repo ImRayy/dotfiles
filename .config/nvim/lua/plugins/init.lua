@@ -80,7 +80,9 @@ return {
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},
-		opts = {},
+		opts = function()
+			return require("plugins.configs.noice-nvim")
+		end,
 	},
 
 	-- WhichKey : Shows keybindings
@@ -246,7 +248,7 @@ return {
 	-- Code Format
 	{
 		"stevearc/conform.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufWritePre" },
 		cmd = { "ConfirmInfo" },
 		opts = function()
 			return require("plugins.configs.conform")
@@ -261,12 +263,14 @@ return {
 		end,
 	},
 
-	-- Tabnine AI
+	-- AI Helper
 	{
-		"codota/tabnine-nvim",
-		build = "./dl_binaries.sh",
+		"Exafunction/codeium.vim",
+		event = "BufEnter",
 		config = function()
-			require("plugins.configs.others").tabnine()
+			vim.keymap.set("i", "<C-e>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true, silent = true })
 		end,
 	},
 
