@@ -114,7 +114,11 @@ return {
 		init = function()
 			vim.g.barbar_auto_setup = false
 		end,
-		opts = {},
+		opts = {
+			sidebar_filetypes = {
+				["neo-tree"] = { event = "BufWipeout" },
+			},
+		},
 	},
 
 	{
@@ -224,25 +228,24 @@ return {
 	{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 	{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 
-	-- Null.ls
+	-- None-ls
 	{
-		"jay-babu/mason-null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		opts = {
-			automatic_setup = true,
-			ensure_installed = require("utils.ensure_installed").linters,
-			automatic_installation = true,
-		},
+		"nvimtools/none-ls.nvim",
 		dependencies = {
-			{
-
-				"jose-elias-alvarez/null-ls.nvim",
-				dependencies = "nvim-lua/plenary.nvim",
-				config = function()
-					require("plugins.configs.others").null_ls()
-				end,
-			},
+			"nvimtools/none-ls-extras.nvim",
+			"nvim-lua/plenary.nvim",
 		},
+		config = function()
+			require("plugins.configs.others").null_ls()
+		end,
+	},
+
+	-- Trouble
+	{
+		"folke/trouble.nvim",
+		branch = "dev",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
 	},
 
 	-- Code Format

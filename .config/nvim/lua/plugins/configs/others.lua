@@ -30,8 +30,10 @@ M.null_ls = function()
 			formatting.prettier,
 			formatting.stylua,
 			formatting.black.with({ extra_args = { "--fast" } }),
-			diagnostics.flake8,
 			completion.spell,
+			diagnostics.selene,
+			require("none-ls.diagnostics.eslint"),
+			require("none-ls.diagnostics.flake8"),
 		},
 	})
 end
