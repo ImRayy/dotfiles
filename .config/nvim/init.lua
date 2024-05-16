@@ -22,4 +22,3 @@ vim.g.neoformat_js_prettier_single_quote = 0
 require("notify").setup({
 	background_colour = "#1a1b26",
 })
-require("core.lazy")

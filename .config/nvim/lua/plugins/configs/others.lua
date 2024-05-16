@@ -1,18 +1,5 @@
 local M = {}
 
-M.notify = function()
-	local status_ok, nvimnotify = pcall(require, "notify")
-	if not status_ok then
-		return
-	end
-	-- polish = function()
-	nvimnotify.setup({
-		background_colour = "#1a1b26",
-		stages = "fade",
-	})
-	vim.notify = nvimnotify
-end
-
 M.null_ls = function()
 	local status_ok, null_ls = pcall(require, "null-ls")
 
