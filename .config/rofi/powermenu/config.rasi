@@ -22,9 +22,9 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
-    border-radius:               12px;
-    border-color:                @selected;
+    border:                      3px solid;
+    border-radius:               0;
+    border-color:                @active;
     cursor:                      "default";
     background-color:            @background;
 }
@@ -34,7 +34,7 @@ mainbox {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     20px;
+    padding:                     12px;
     border:                      0px solid;
     border-radius:               0px;
     border-color:                @selected;
@@ -54,7 +54,7 @@ textbox-prompt-colon {
 prompt {
     enabled:                     true;
     padding:                     10px;
-    border-radius:               10px;
+    border-radius:               0;
     background-color:            @active;
     text-color:                  @background;
 }
@@ -65,10 +65,10 @@ message {
     margin:                      0px;
     padding:                     10px;
     border:                      0px solid;
-    border-radius:               10px;
-    border-color:                @selected;
+    border-radius:               2px;
+    border-color:                @foreground;
     background-color:            @background-alt;
-    text-color:                  @foreground;
+    text-color:                  @selected-text;
 }
 textbox {
     background-color:            inherit;
@@ -85,7 +85,7 @@ error-message {
     border-radius:               0px;
     border-color:                @selected;
     background-color:            @background;
-    text-color:                  @foreground;
+    text-color:                  @selected-text;
 }
 
 /*****----- Listview -----*****/
@@ -100,7 +100,6 @@ listview {
     reverse:                     false;
     fixed-height:                false;
     fixed-columns:               true;
-    
     spacing:                     5px;
     margin:                      0px;
     padding:                     0px;
@@ -118,8 +117,8 @@ element {
     spacing:                     0px;
     margin:                      0px;
     padding:                     10px;
+    border-radius:               2px;
     border:                      0px solid;
-    border-radius:               10px;
     border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;
@@ -133,6 +132,6 @@ element-text {
     horizontal-align:            0.0;
 }
 element selected.normal {
-    background-color:            var(selected);
-    text-color:                  var(background);
+    background-color:            @selected-text;
+    text-color:                  @selected;
 }

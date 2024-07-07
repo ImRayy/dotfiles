@@ -1,31 +1,32 @@
 configuration {
     font: "Cantarell Bold 11";
     drun {
-        display-name: " ";
+        display-name: " ";
     }
     run {
         display-name: " ";
     }
     timeout {
-        delay: 20;
+        delay: 30;
         action: "kb-cancel";
     }
 }
 
 @import "colorschemes/catppuccin-mocha.rasi"
 
+
 window {
     background-color: @background;
     border:           3;
-    border-radius:    10;
+    border-radius:    0;
     border-color:     @active;
     padding:          8;
-    width: 520px;
-    height: 385px;
+    width:  500px;
+    height: 376px;
 }
 mainbox {
     border:  0;
-    padding: 8;
+    padding: 4px;
 }
 message {
     border:       0px;
@@ -46,8 +47,9 @@ listview {
 element {
     border:  0;
     padding: 6px ;
-    border-radius: 8px;
-} element.normal.normal {
+    border-radius: 2px;
+} 
+element.normal.normal {
     background-color: @background;
     text-color:       @foreground;
 }
@@ -66,7 +68,7 @@ element.alternate.normal {
 scrollbar {
     background-color: @foreground;
     handle-color:   @selected;
-    border-radius:  10px;
+    border-radius:  2px;
     width:          2px ;
     border:         0;
     handle-width:   8px ;
@@ -83,7 +85,9 @@ button.selected {
 inputbar {
     spacing:    0;
     text-color: @selected;
-    padding:    10px ;
+    padding:    10px;
+    margin:     0   4px;
+    background-color: @background-alt;
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 case-indicator {
@@ -91,12 +95,15 @@ case-indicator {
     text-color: @selected;
 }
 entry {
-    placeholder: "  Search..";
-    text-color: @selected;
+    placeholder: "Search for apps..";
+    placeholder-color: @foreground;
+    background-color: transparent;
+    text-color: @selected-text;
 }
 prompt {
     spacing:    0;
-    text-color: @selected;
+    text-color: @selected-text;
+    background-color: transparent;
 }
 element {
     spacing: 0.5em;
@@ -108,10 +115,12 @@ element-text {
 }
 element-icon {
     size: 1.4em;
+    background-color: transparent;
 }
 textbox-prompt-colon {
     expand:     false;
-    str:        " │ ";
+    str:        "│";
     margin:     0px 0.3em 0em 0em ;
-    text-color: @foreground;
+    text-color: @active;
+    background-color: transparent;
 }
