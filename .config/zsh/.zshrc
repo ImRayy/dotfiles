@@ -7,9 +7,18 @@ function source_files() {
 }
 
 # History
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=10000
+
+setopt HIST_IGNORE_DUPS          # Ignore duplicate commands in history
+setopt HIST_IGNORE_ALL_DUPS      # Remove older duplicate entries from the history
+setopt HIST_FIND_NO_DUPS         # Do not display duplicates during history search
+setopt INC_APPEND_HISTORY        # Append history instead of overwriting
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicates first when trimming history
+setopt EXTENDED_HISTORY          # Record timestamp of command in history
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry
+
 bindkey -e
 
 # The following lines were added by compinstall
@@ -47,7 +56,18 @@ export PATH="/home/${USER}/.local/bin:$PATH"
 # zoxide
 command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
 
+# fzf
+source <(fzf --zsh)
+
 # Starship prompt
 command -v starship &>/dev/null && eval "$(starship init zsh)"
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+
+# Volta.sh
+if [[ ! -d $HOME/.volta ]];then
+    curl https://get.volta.sh | bash
+else
+    export VOLTA_HOME="$HOME/.volta"
+fi
+
+# Path
+export PATH="$VOLTA_HOME/bin:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:$HOME/go/bin:$PATH"
