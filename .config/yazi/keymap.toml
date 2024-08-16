@@ -1,0 +1,28 @@
+# GENERAL
+[[input.prepend_keymap]]
+on = ["<Esc>"]
+run = "close"
+desc = "Cancel input"
+
+# NAVIGATION
+[[manager.prepend_keymap]]
+on = ["<A-p>"]
+run = "cd ~/Pictures"
+
+[[manager.prepend_keymap]]
+on = ["<A-c>"]
+run = "ce ~/.config"
+
+[[manager.prepend_keymap]]
+on = ["<A-n>"]
+run = "cd ~/Documents/Notes"
+
+[[manager.prepend_keymap]]
+on = ["<A-m>"]
+run = "cd /media/Storage/Music"
+
+# PLUGINS
+[[manager.prepend_keymap]]
+on = ["<A-w>"]
+run = "plugin --sync set-wall"
+desc = "My own wallpaper plugin, which utilizes swww & hyprpaper"

@@ -1,0 +1,7 @@
+[manager]
+sort_dir_first = true
+linemode = "size"
+show_symlink = true
+
+[preview]
+max_width = 1000
